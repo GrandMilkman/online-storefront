@@ -1,7 +1,7 @@
 package file.entity;
 
-public class Role extends Entity {
-    
+public class Group extends Entity{
+
     private String name;
 
     public String getName() {

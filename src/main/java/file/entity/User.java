@@ -1,23 +1,13 @@
 package file.entity;
 
-public class User {
-    
-    private long id;
+public class User extends Entity{
     
     private String name;
     
     private String password;
     
-    private String role;
+    private Role role;
     
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -34,11 +24,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
     
