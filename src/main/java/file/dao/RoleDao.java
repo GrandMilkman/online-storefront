@@ -6,6 +6,6 @@ import file.entity.Role;
 
 public interface RoleDao extends Dao<Role, Long> {
     
-    public List<Role> findAll();
+    public List<Role> getAll();
     
 }

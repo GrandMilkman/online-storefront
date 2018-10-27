@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     
-    <changeSet id="1.1" author="mikita">
+    <changeSet id="1.1.0" author="mikita">
         <createTable tableName="user">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -16,7 +16,7 @@
             <column name="password" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="role" type="bigint">
+            <column name="roleid" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -30,7 +30,18 @@
             </column>
         </createTable>
     </changeSet>
+    
+    <changeSet id="1.2.0" author="mikita">
+        <createTable tableName="ware">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="price" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="groupid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
-
-
-
