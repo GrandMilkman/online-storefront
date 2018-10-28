@@ -25,8 +25,21 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
     
-    <bean id="Dao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
+    
+    <bean id="dao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
     	<property name="dataSource" ref ="dataSource"/>    
+    </bean>
+    
+    <bean id="groupDao" class="storefront.dao.jdbc.GroupJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="roleDao" class="storefront.dao.jdbc.RoleJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="userDao" class="storefront.dao.jdbc.UserJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="wareDao" class="storefront.dao.jdbc.WareJdbcDao" parent="dao">
     </bean>
     
 </beans>
