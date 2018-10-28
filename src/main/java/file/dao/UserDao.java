@@ -5,7 +5,7 @@ import java.util.List;
 import file.entity.Role;
 import file.entity.User;
 
-public interface UserDao extends Dao<User, Long> {
+public interface UserDao extends CrudDao<User, Long> {
     
     public List<User> getAll();
     
