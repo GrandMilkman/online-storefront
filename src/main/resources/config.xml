@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-
+	
     <bean id="liquibase"
         class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="dataSource" />
@@ -23,6 +23,23 @@
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
+    </bean>
+    
+    
+    <bean id="dao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
+    	<property name="dataSource" ref ="dataSource"/>    
+    </bean>
+    
+    <bean id="groupDao" class="storefront.dao.jdbc.GroupJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="roleDao" class="storefront.dao.jdbc.RoleJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="userDao" class="storefront.dao.jdbc.UserJdbcDao" parent="dao">
+    </bean>
+    
+    <bean id="wareDao" class="storefront.dao.jdbc.WareJdbcDao" parent="dao">
     </bean>
     
 </beans>
