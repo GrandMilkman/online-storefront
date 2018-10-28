@@ -43,5 +43,16 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        
+        <createTable tableName="group">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
     </changeSet>
+    
 </databaseChangeLog>
