@@ -1,7 +1,7 @@
 .classpath
 .project
 /build/
-
+/target/
 # Compiled class file
 *.class
 
