@@ -7,25 +7,25 @@
     
     <changeSet id="1.1.0" author="mikita">
         <createTable tableName="user">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="user_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)">
+            <column name="user_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="varchar(50)">
+            <column name="user_password" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="roleid" type="bigint">
+            <column name="user_roleid" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         
         <createTable tableName="role">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="role_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)">
+            <column name="role_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -33,22 +33,25 @@
     
     <changeSet id="1.2.0" author="mikita">
         <createTable tableName="ware">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="ware_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="price" type="double">
+            <column name="ware_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="groupid" type="bigint">
+            <column name="ware_price" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ware_groupid" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         
         <createTable tableName="group">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="group_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)">
+            <column name="group_name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
