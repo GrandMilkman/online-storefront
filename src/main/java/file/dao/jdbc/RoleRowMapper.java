@@ -13,8 +13,8 @@ public class RoleRowMapper implements RowMapper<Role> {
     public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
         
         final Role r = new Role();
-        r.setId(rs.getLong("id"));
-        r.setName(rs.getString("name"));
+        r.setId(rs.getLong("role_id"));
+        r.setName(rs.getString("role_name"));
         return r;
     }
     
