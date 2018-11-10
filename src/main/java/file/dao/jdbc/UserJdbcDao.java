@@ -2,9 +2,12 @@ package file.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.ParameterDisposer;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -20,8 +23,27 @@ import file.entity.User;
 
 public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
-    private ResultSetExtractor<List<User>> extractor;
-    
+    private ResultSetExtractor<List<User>> extractor = new ResultSetExtractor<List<User>>() {
+        
+        public List<User> extractData(final ResultSet rs) throws SQLException, DataAccessException {
+            final List<User> u = new ArrayList<User>();
+            int count = 0;
+            User user = null;
+            UserRowMapper urw = new UserRowMapper();
+            RoleRowMapper rrw = new RoleRowMapper();
+            while (rs.next()) {
+                if (user == null || !Long.valueOf(rs.getLong("user_id")).equals(user.getId())) {
+                    user = urw.mapRow(rs, count);
+                    user.setRoles(new ArrayList<Role>());
+                    u.add(user);
+                }
+                user.getRoles().add(rrw.mapRow(rs, count));
+                count++;
+            };
+            return u;
+        }
+    };
+
     public void setExtractor(ResultSetExtractor<List<User>> extractor) {
         this.extractor = extractor;
     }
@@ -61,11 +83,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     }
 
     @Override
-    public User read(final Long id) {
+    public User read(final Long uid) {
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
                 +"u.user_password AS user_password, u.user_roleid AS user_roleid FROM user u",
-                extractor, id);
+                extractor, uid);
         return u.get(0);
     }
 
@@ -84,9 +106,9 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     }
 
     @Override
-    public void delete(final Long id) {
+    public void delete(final Long uid) {
         
-        getJdbcTemplate().update("DELETE FROM user WHERE user_id = ?", id);
+        getJdbcTemplate().update("DELETE FROM user WHERE user_id = ?", uid);
     }
 
     @Override
@@ -97,11 +119,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     }
 
     @Override
-    public User findById(final Long id) {
+    public User findById(final Long uid) {
         
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
                 +"u.user_password AS user_password, u.user_roleid AS user_roleid FROM user u WHERE u.user_id = ?",
-                extractor, id);
+                extractor, uid);
         
         if (u.size() != 0) {
             return u.get(0);

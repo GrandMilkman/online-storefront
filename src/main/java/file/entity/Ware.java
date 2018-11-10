@@ -1,12 +1,14 @@
 package file.entity;
 
+import java.util.ArrayList;
+
 public class Ware extends Entity {
     
     private String name;
     
     private Double price;
     
-    private Group group;
+    private ArrayList<Group> group;
 
     public String getName() {
         return name;
@@ -24,12 +26,12 @@ public class Ware extends Entity {
         this.price = price;
     }
 
-    public Group getGroup() {
+    public ArrayList<Group> getGroups() {
         return group;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setGroups(ArrayList<Group> arrayList) {
+        this.group = arrayList;
     }
     
 }

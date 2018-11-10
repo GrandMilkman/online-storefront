@@ -1,12 +1,14 @@
 package file.entity;
 
+import java.util.ArrayList;
+
 public class User extends Entity{
     
     private String name;
     
     private String password;
     
-    private Role role;
+    private ArrayList<Role> roles;
     
     public String getName() {
         return name;
@@ -24,12 +26,12 @@ public class User extends Entity{
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public ArrayList<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(ArrayList<Role> arrayList) {
+        this.roles = arrayList;
     }
     
 }
