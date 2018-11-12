@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import file.dao.RoleDao;
 import file.dao.UserDao;
+import file.entity.Role;
 import file.entity.User;
 import file.service.UserService;
 
@@ -13,6 +15,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
+	@Autowired
+	private RoleDao roleDao;
+	
 	@Override
 	public void addUser(User user) {
 		userDao.create(user);
@@ -20,13 +25,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUserById(Long id) {
-		// userDao.delete(id);
+		userDao.delete(id);
 	}
 
 	@Override
-	// ?????
-	public User editUser(User user) {
-		return userDao.update(user);
+	
+	public void editUser(User user) {
+		 userDao.update(user);
 	}
 
 	@Override
@@ -42,6 +47,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUser(Long id) {
 		return userDao.findById(id);
+	}
+
+	@Override
+	public List<Role> getRoles() {
+		return roleDao.getAll();
 	}
 
 }
