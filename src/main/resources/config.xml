@@ -26,20 +26,44 @@
     </bean>
     
     
+    <bean id="groupService" class="file.service.GroupServiceImpl">
+    	<property name="groupDao" ref="groupDao"/>
+    </bean>
+    <bean id="roleService" class="file.service.RoleServiceImpl">
+    	<property name="roleDao" ref="roleDao"/>
+    </bean>
+    <bean id="userService" class="file.service.UserServiceImpl">
+    	<property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="wareService" class="file.service.WareSeviceImpl">
+    	<property name="wareDao" ref="userDao"/>
+    </bean>
+    
+    
+    <bean id="roleRowMapper" class="file.dao.jdbc.RoleRowMapper"/>
+    <bean id="groupRowMapper" class="file.dao.jdbc.GroupRowMapper"/>
+    <bean id="userRowMapper" class="file.dao.jdbc.UserRowMapper"/>
+    <bean id="wareRowMapper" class="file.dao.jdbc.WareRowMapper"/>
+    
+    
     <bean id="dao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
     	<property name="dataSource" ref ="dataSource"/>    
     </bean>
     
-    <bean id="groupDao" class="storefront.dao.jdbc.GroupJdbcDao" parent="dao">
+    <bean id="groupDao" class="file.dao.jdbc.GroupJdbcDao" parent="dao">
+    <property name="grouprowMapper" ref="groupRowMapper"/>
     </bean>
     
-    <bean id="roleDao" class="storefront.dao.jdbc.RoleJdbcDao" parent="dao">
+    <bean id="roleDao" class="file.dao.jdbc.RoleJdbcDao" parent="dao">
+    <property name="rolerowMapper" ref="roleRowMapper"/>
     </bean>
     
-    <bean id="userDao" class="storefront.dao.jdbc.UserJdbcDao" parent="dao">
+    <bean id="userDao" class="file.dao.jdbc.UserJdbcDao" parent="dao">
+    <property name="userRowMapper" ref="userRowMapper"/>
     </bean>
     
-    <bean id="wareDao" class="storefront.dao.jdbc.WareJdbcDao" parent="dao">
+    <bean id="wareDao" class="file.dao.jdbc.WareJdbcDao" parent="dao">
+    <property name="wareRowMapper" ref="wareRowMapper"/>
     </bean>
     
 </beans>
