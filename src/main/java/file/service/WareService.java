@@ -1,7 +1,6 @@
 package file.service;
 
-import file.dao.GroupDao;
-import file.dao.WareDao;
+import file.entity.Group;
 import file.entity.Ware;
 import java.util.List;
 
@@ -9,17 +8,16 @@ public interface WareService {
 
 	List<Ware> getAll();
 
-	Ware getByName(String name);
+	Ware getWare(String name);
+	
+	List<Ware> getWare(Group group);
 
-	// List<Ware> getByPrice(?);
-
-	// ??
-	List<Ware> getByGroup(GroupDao group);
-
+	Ware getWare(Long id);
+	
 	void addWare(Ware ware);
 
 	void deleteWare(Long id);
 
-	Ware editWare(Ware ware);
+	void editWare(Ware ware);
 
 }

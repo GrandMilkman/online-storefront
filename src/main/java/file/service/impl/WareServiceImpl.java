@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import file.dao.GroupDao;
 import file.dao.UserDao;
 import file.dao.WareDao;
+import file.entity.Group;
 import file.entity.Ware;
 import file.service.WareService;
 
@@ -21,14 +22,18 @@ public class WareServiceImpl implements WareService {
 	}
 
 	@Override
-	public Ware getByName(String name) {
+	public Ware getWare(String name) {
 		return wareDao.findByName(name);
 	}
 
 	@Override
-	public List<Ware> getByGroup(GroupDao group) {
-//????
-		return null;
+	public List<Ware> getWare(Group group) {
+		return wareDao.findByGroup(group);
+	}
+
+	@Override
+	public Ware getWare(Long id) {
+		return wareDao.findById(id);
 	}
 
 	@Override
@@ -38,12 +43,12 @@ public class WareServiceImpl implements WareService {
 
 	@Override
 	public void deleteWare(Long id) {
-//?????
+		wareDao.delete(id);
 	}
 
 	@Override
-	public Ware editWare(Ware ware) {
-		return wareDao.update(ware);
+	public void editWare(Ware ware) {
+		wareDao.update(ware);
 	}
 
 }
