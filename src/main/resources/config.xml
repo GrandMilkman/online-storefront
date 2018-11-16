@@ -63,7 +63,7 @@
     </bean>
     
     <bean id="wareDao" class="file.dao.jdbc.WareJdbcDao" parent="dao">
-    <property name="wareRowMapper" ref="wareRowMapper"/>
+    <property name="wareRowMapper" ref="wareRowMapper"/> 
     </bean>
     
 </beans>
