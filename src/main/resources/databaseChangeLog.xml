@@ -5,6 +5,16 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     
+    <changeSet id="1.0.0" author="mikita" context="derby">
+        <createProcedure>
+            CREATE FUNCTION MD5(str VARCHAR(100)) RETURNS
+            VARCHAR(100)
+            PARAMETER STYLE JAVA
+            NO SQL LANGUAGE JAVA
+            EXTERNAL NAME 'files.util.MD5.md5';
+        </createProcedure>
+    </changeSet>
+    
     <changeSet id="1.1.0" author="mikita">
         <createTable tableName="user">
             <column name="user_id" type="bigint" autoIncrement="true">
@@ -56,6 +66,21 @@
             </column>
         </createTable>
         
+    </changeSet>
+    
+    <changeSet id="1.3.0" author="mikita">
+        <insert tableName="role">
+            <column name="role_id" valueNumeric="0"/>
+            <column name="role_name">SYSTEM</column>
+        </insert>
+        <insert tableName="role">
+            <column name="role_id" valueNumeric="1"/>
+            <column name="role_name">ADMIN</column>
+        </insert>
+        <insert tableName="role">
+            <column name="role_id" valueNumeric="2"/>
+            <column name="role_name">USER</column>
+        </insert>
     </changeSet>
     
 </databaseChangeLog>
