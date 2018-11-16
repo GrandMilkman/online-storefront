@@ -1,0 +1,57 @@
+package file.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import file.dao.RoleDao;
+import file.dao.UserDao;
+import file.entity.Role;
+import file.entity.User;
+import file.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserDao userDao;
+
+	@Autowired
+	private RoleDao roleDao;
+	
+	@Override
+	public void addUser(User user) {
+		userDao.create(user);
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userDao.delete(id);
+	}
+
+	@Override
+	
+	public void editUser(User user) {
+		 userDao.update(user);
+	}
+
+	@Override
+	public List<User> getAll() {
+		return this.getAll();
+	}
+
+	@Override
+	public User getUser(String name) {
+		return userDao.findByName(name);
+	}
+
+	@Override
+	public User getUser(Long id) {
+		return userDao.findById(id);
+	}
+
+	@Override
+	public List<Role> getRoles() {
+		return roleDao.getAll();
+	}
+
+}
