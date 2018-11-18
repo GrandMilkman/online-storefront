@@ -14,8 +14,8 @@
     </bean>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <property name="prefix" value="/WEB-INF/jsp/" />
-      <property name="suffix" value=".jsp" />
+      <property name="prefix" value="/WEB-INF/" />
+      <property name="suffix" value=".html" />
     </bean>
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -51,19 +51,19 @@
     </bean>
     
     <bean id="groupDao" class="file.dao.jdbc.GroupJdbcDao" parent="dao">
-    <property name="grouprowMapper" ref="groupRowMapper"/>
+        <property name="groupRowMapper" ref="groupRowMapper"/>
     </bean>
     
     <bean id="roleDao" class="file.dao.jdbc.RoleJdbcDao" parent="dao">
-    <property name="rolerowMapper" ref="roleRowMapper"/>
+        <property name="roleRowMapper" ref="roleRowMapper"/>
     </bean>
     
     <bean id="userDao" class="file.dao.jdbc.UserJdbcDao" parent="dao">
-    <property name="userRowMapper" ref="userRowMapper"/>
+        <property name="userRowMapper" ref="userRowMapper"/>
     </bean>
     
     <bean id="wareDao" class="file.dao.jdbc.WareJdbcDao" parent="dao">
-    <property name="wareRowMapper" ref="wareRowMapper"/> 
+        <property name="wareRowMapper" ref="wareRowMapper"/> 
     </bean>
     
 </beans>

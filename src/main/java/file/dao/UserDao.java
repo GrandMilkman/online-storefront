@@ -2,7 +2,6 @@ package file.dao;
 
 import java.util.List;
 
-import file.entity.Role;
 import file.entity.User;
 
 public interface UserDao extends CrudDao<User, Long> {
@@ -13,6 +12,6 @@ public interface UserDao extends CrudDao<User, Long> {
     
     public User findByName(String name);
     
-    public List<User> findByRole(Role r);
+    /*public List<User> findByRole(Role r);*/
 
 }

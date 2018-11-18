@@ -18,7 +18,7 @@
     <changeSet id="1.1.0" author="mikita">
         <createTable tableName="user">
             <column name="user_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" primaryKeyName="user_pk"/>
             </column>
             <column name="user_name" type="varchar(50)">
                 <constraints nullable="false"/>
@@ -26,14 +26,15 @@
             <column name="user_password" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="user_roleid" type="bigint">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
+        
+        <createIndex tableName="user" indexName="user_name_uk" unique="true">
+            <column name="user_name" />
+        </createIndex>
         
         <createTable tableName="role">
             <column name="role_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" primaryKeyName="role_pk"/>
             </column>
             <column name="role_name" type="varchar(50)">
                 <constraints nullable="false"/>
@@ -42,9 +43,31 @@
     </changeSet>
     
     <changeSet id="1.2.0" author="mikita">
+        <createTable tableName="user_role">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable = "false"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey tableName="user_role" columnNames="user_id, role_id"/>
+        
+        <addForeignKeyConstraint constraintName="user_role_user_fk"
+         referencedTableName="user" referencedColumnNames="user_id"
+         baseColumnNames="user_id" baseTableName="user_role"/>
+         
+        <addForeignKeyConstraint constraintName="user_role_role_fk"
+         referencedTableName="role" referencedColumnNames="role_id"
+         baseColumnNames="role_id" baseTableName="user_role"/>
+         
+    </changeSet>
+    
+    <changeSet id="1.3.0" author="mikita">
         <createTable tableName="ware">
             <column name="ware_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" primaryKeyName="ware_pk"/>
             </column>
             <column name="ware_name" type="varchar(50)">
                 <constraints nullable="false"/>
@@ -59,7 +82,7 @@
         
         <createTable tableName="group">
             <column name="group_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" primaryKeyName="group_pk"/>
             </column>
             <column name="group_name" type="varchar(50)">
                 <constraints nullable="false"/>
@@ -74,12 +97,34 @@
             <column name="role_name">SYSTEM</column>
         </insert>
         <insert tableName="role">
-            <column name="role_id" valueNumeric="1"/>
             <column name="role_name">ADMIN</column>
         </insert>
         <insert tableName="role">
-            <column name="role_id" valueNumeric="2"/>
             <column name="role_name">USER</column>
+        </insert>
+        
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="0"/>
+            <column name="user_name">system</column>
+        </insert>
+        <insert tableName="user">
+            <column name="user_name">admin</column>
+            <column name="user_password" valueComputed="md5('admin')"></column>
+        </insert>
+        
+        <insert tableName="user_role">
+            <column name="user_id" valueNumeric="0" />
+            <column name="role_id" valueNumeric="0" />
+        </insert>
+        
+        <insert tableName="user_role">
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="1" />
+        </insert>
+        
+        <insert tableName="user_role">
+            <column name="user_id" valueNumeric="1" />
+            <column name="role_id" valueNumeric="2" />
         </insert>
     </changeSet>
     
