@@ -36,7 +36,7 @@
     	<property name="userDao" ref="userDao"/>
     </bean>
     <bean id="wareService" class="file.service.WareSeviceImpl">
-    	<property name="wareDao" ref="userDao"/>
+    	<property name="wareDao" ref="wareDao"/>
     </bean>
     
     
@@ -64,6 +64,10 @@
     
     <bean id="wareDao" class="file.dao.jdbc.WareJdbcDao" parent="dao">
         <property name="wareRowMapper" ref="wareRowMapper"/> 
+    </bean>
+    
+    <bean id="authenticationManagerBean" class="org.springframework.security.authentication.AuthenticationManager">
+        <property name="userDetailService" ref="userDetailServiceImpl"/>
     </bean>
     
 </beans>
