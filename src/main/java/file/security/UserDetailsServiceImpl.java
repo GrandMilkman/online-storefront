@@ -5,12 +5,12 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import file.entity.Role;
-import file.entity.User;
 import file.service.UserService;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final User u = userService.getUser(username);
+        final file.entity.User u = userService.getUser(username);
         
         if (u == null) {
             throw new UsernameNotFoundException("User not found");
@@ -36,8 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         
         sga.add(new SimpleGrantedAuthority(username));
         
-        //TODO FIX RETURN VALUE
-        return null;//new User();
+        return new User(username, u.getPassword(), true, true, true, true, sga);
     }
-
 }
