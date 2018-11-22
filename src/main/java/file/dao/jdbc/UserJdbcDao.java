@@ -18,6 +18,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import file.dao.UserDao;
+import file.entity.Cart;
 import file.entity.Role;
 import file.entity.User;
 
@@ -31,10 +32,12 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
             User user = null;
             UserRowMapper urw = new UserRowMapper();
             RoleRowMapper rrw = new RoleRowMapper();
+            CartRowMapper crw = new CartRowMapper();
             while (rs.next()) {
                 if (user == null || !Long.valueOf(rs.getLong("user_id")).equals(user.getId())) {
                     user = urw.mapRow(rs, count);
                     user.setRoles(new ArrayList<Role>());
+                    user.setCart(new Cart());
                     u.add(user);
                 }
                 user.getRoles().add(rrw.mapRow(rs, count));
@@ -116,7 +119,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> findAll() {
         
         return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
                 + "u.user_password AS user_password FROM user u"

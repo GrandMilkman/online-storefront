@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import file.dao.GroupDao;
-import file.dao.UserDao;
 import file.dao.WareDao;
 import file.entity.Group;
 import file.entity.Ware;
@@ -18,7 +16,7 @@ public class WareServiceImpl implements WareService {
 
 	@Override
 	public List<Ware> getAll() {
-		return this.getAll();
+		return wareDao.findAll();
 	}
 
 	@Override

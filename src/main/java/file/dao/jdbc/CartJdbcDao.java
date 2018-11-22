@@ -16,32 +16,29 @@ import file.entity.Ware;
 
 public class CartJdbcDao extends JdbcDaoSupport implements CartDao {
 
-    private ResultSetExtractor<List<Cart>> extractor = new ResultSetExtractor<List<Cart>>() {
+    private ResultSetExtractor<Cart> extractor = new ResultSetExtractor<Cart>() {
 
-        public List<Cart> extractData(final ResultSet rs) throws SQLException, DataAccessException {
-            final List<Cart> c = new ArrayList<Cart>();
+        public Cart extractData(final ResultSet rs) throws SQLException, DataAccessException {
+            Cart cart = new Cart();
             int count = 0;
-            Cart cart = null;
             CartRowMapper crw = new CartRowMapper();
-            UserRowMapper urw = new UserRowMapper();
             WareRowMapper wrw = new WareRowMapper();
             while (rs.next()) {
                 if (cart == null || !Long.valueOf(rs.getLong("user_id")).equals(cart.getId())) {
                     cart = crw.mapRow(rs, count);
                     cart.setUser(new User());
                     cart.setWares(new ArrayList<Ware>());
-                    c.add(cart);
                 }
                 cart.getWares().add(wrw.mapRow(rs, count));
                 count++;
             }
             ;
-            return c;
+            return cart;
         }
     };
 
     @Override
-    public List<Cart> getCart(final Long cid) {
+    public Cart findCart(final Long cid) {
         return getJdbcTemplate().query("SELECT c.cart_id AS cart_id FROM cart c"
                 + "LEFT JOIN cart_user cu ON ur.cart_id = c.cart_id" + "LEFT JOIN user u ON cu.user_id = u.user_id"
                 + "LEFT JOIN user_ware uw ON uw.user_id = cu.user_id" + "LEFT JOIN ware w ON uw.ware_id = w.ware_id",

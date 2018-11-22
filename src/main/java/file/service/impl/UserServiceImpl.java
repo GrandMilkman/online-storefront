@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAll() {
-		return this.getAll();
+		return userDao.findAll();
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Role> getRoles() {
-		return roleDao.getAll();
+		return roleDao.findAll();
 	}
 
 }

@@ -7,7 +7,7 @@ import file.entity.Ware;
 
 public interface WareDao extends CrudDao<Ware, Long> {
     
-    public List<Ware> getAll();
+    public List<Ware> findAll();
     
     public Ware findById(Long id);
     

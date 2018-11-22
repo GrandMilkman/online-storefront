@@ -6,7 +6,7 @@ import file.entity.User;
 
 public interface UserDao extends CrudDao<User, Long> {
     
-    public List<User> getAll();
+    public List<User> findAll();
     
     public User findById(Long id);
     
