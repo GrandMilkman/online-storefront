@@ -9,3 +9,5 @@ public class Application {
 
 }
 
+/*TODO ADD HTML VIEW: USERS PAGE, USER PAGE (EDIT USER)
+ *TODO ADMIN PAGE */
