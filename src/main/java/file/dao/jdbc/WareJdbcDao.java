@@ -100,7 +100,7 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
     }
 
     @Override
-    public List<Ware> getAll() {
+    public List<Ware> findAll() {
 
         return getJdbcTemplate().query("SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
                 + "w.ware_price AS ware_price, w.ware_groupid AS ware_groupid FROM ware w", extractor);

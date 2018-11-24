@@ -6,6 +6,6 @@ import file.entity.Group;
 
 public interface GroupDao extends CrudDao<Group, Long> {
 
-    public List<Group> getAll();
+    public List<Group> findAll();
     
 }

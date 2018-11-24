@@ -93,7 +93,7 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
     }
 
     @Override
-    public List<Group> getAll() {
+    public List<Group> findAll() {
         
         return getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM group g", extractor);
     }

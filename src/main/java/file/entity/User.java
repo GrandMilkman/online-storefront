@@ -10,6 +10,8 @@ public class User extends Entity{
     
     private ArrayList<Role> roles;
     
+    private Cart cart;
+    
     public String getName() {
         return name;
     }
@@ -32,6 +34,14 @@ public class User extends Entity{
 
     public void setRoles(ArrayList<Role> arrayList) {
         this.roles = arrayList;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
     
 }

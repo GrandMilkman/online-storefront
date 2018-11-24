@@ -2,19 +2,19 @@ package file.dao.jdbc;
 
 import java.util.List;
 
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import file.dao.RoleDao;
 import file.entity.Role;
 
 public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao{
-
-    private RowMapper<Role> rowMapper;
+    
+    
+    private RoleRowMapper roleRowMapper;
 
     @Override
-    public List<Role> getAll() {
+    public List<Role> findAll() {
         
-        return getJdbcTemplate().query("SELECT id AS id, name AS name FROM role", rowMapper);
+        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM role r", roleRowMapper);
     }
 }
