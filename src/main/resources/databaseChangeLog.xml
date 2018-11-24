@@ -94,22 +94,27 @@
     <changeSet id="1.4.0" author="mikita">
         <insert tableName="role">
             <column name="role_id" valueNumeric="0"/>
-            <column name="role_name">SYSTEM</column>
+            <column name="role_name">ROLE_SYSTEM</column>
         </insert>
         <insert tableName="role">
-            <column name="role_name">ADMIN</column>
+            <column name="role_name">ROLE_ADMIN</column>
         </insert>
         <insert tableName="role">
-            <column name="role_name">USER</column>
+            <column name="role_name">ROLE_USER</column>
         </insert>
         
         <insert tableName="user">
             <column name="user_id" valueNumeric="0"/>
             <column name="user_name">system</column>
+            <column name="user_password" valueComputed="md5('system')" />
         </insert>
         <insert tableName="user">
             <column name="user_name">admin</column>
-            <column name="user_password" valueComputed="md5('admin')"></column>
+            <column name="user_password" valueComputed="md5('admin')" />
+        </insert>
+        <insert tableName="user">
+            <column name="user_name">user</column>
+            <column name="user_password" valueComputed="md5('user')" />
         </insert>
         
         <insert tableName="user_role">

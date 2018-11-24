@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     PermissionEvaluatorImpl permissionEvaluator;
@@ -28,7 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/login*", "/styles/**", "/js/**", "/fonts/**", "/images/**", "/plugins/**").permitAll()
+                .antMatchers("/login*", "/index*", "/shop*", "/signup*", "/product*",
+                        "/styles/**", "/js/**", "/fonts/**", "/images/**", "/plugins/**").permitAll()
+                .antMatchers("/cart*").hasRole("ROLE_USER")
+                .antMatchers("/users*").hasRole("ROLE_ADMIN, ROLE_SYSTEM")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
