@@ -445,6 +445,46 @@ section
 	background: rgba(0,0,0,0.1);
 	content: '';
 }
+.top_bar_user div:nth-child(3)
+{
+	margin-right: 21px;
+}
+.top_bar_user div:nth-child(3)::after
+{
+	display: block;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	right: -13px;
+	width: 1px;
+	height: 17px;
+	background: rgba(0,0,0,0.1);
+	content: '';
+}
+.top_bar_user div:nth-child(4)
+{
+	margin-right: 21px;
+}
+.top_bar_user div:nth-child(4)::after
+{
+	display: block;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	right: -13px;
+	width: 1px;
+	height: 17px;
+	background: rgba(0,0,0,0.1);
+	content: '';
+}
 .top_bar_user a
 {
 	font-size: 16px;
