@@ -10,7 +10,7 @@ public class UsersController {
     public ModelAndView users() {
         
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("users");
+        mav.setViewName("user_list");
         return mav;
         
     }
