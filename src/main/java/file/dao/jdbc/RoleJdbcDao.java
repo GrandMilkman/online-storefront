@@ -3,10 +3,12 @@ package file.dao.jdbc;
 import java.util.List;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Component;
 
 import file.dao.RoleDao;
 import file.entity.Role;
 
+@Component
 public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao{
     
     

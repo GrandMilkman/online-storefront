@@ -16,11 +16,13 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import file.dao.WareDao;
 import file.entity.Group;
 import file.entity.Ware;
 
+@Component
 public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
 
     private ResultSetExtractor<List<Ware>> extractor = new ResultSetExtractor<List<Ware>>() {

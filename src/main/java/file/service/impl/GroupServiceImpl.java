@@ -3,11 +3,13 @@ package file.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import file.dao.GroupDao;
 import file.entity.Group;
 import file.service.GroupService;
 
+@Service
 public class GroupServiceImpl implements GroupService {
 
 	@Autowired

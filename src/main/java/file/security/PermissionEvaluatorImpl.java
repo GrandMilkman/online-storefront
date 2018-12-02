@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PermissionEvaluatorImpl implements PermissionEvaluator {
 
     @Override

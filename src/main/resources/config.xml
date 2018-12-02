@@ -2,7 +2,9 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    xsi:schemaLocation=" http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd
+    http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -31,29 +33,17 @@
         <property name="maxIdle" value="2" />
     </bean>
     
+    <!-- bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/-->
     
-    <bean id="groupService" class="file.service.GroupServiceImpl">
-    	<property name="groupDao" ref="groupDao"/>
-    </bean>
-    <bean id="roleService" class="file.service.RoleServiceImpl">
-    	<property name="roleDao" ref="roleDao"/>
-    </bean>
-    <bean id="userService" class="file.service.UserServiceImpl">
-    	<property name="userDao" ref="userDao"/>
-    </bean>
-    <bean id="wareService" class="file.service.WareSeviceImpl">
-    	<property name="wareDao" ref="wareDao"/>
-    </bean>
-    
-    
+    <!--
     <bean id="roleRowMapper" class="file.dao.jdbc.RoleRowMapper"/>
     <bean id="groupRowMapper" class="file.dao.jdbc.GroupRowMapper"/>
     <bean id="userRowMapper" class="file.dao.jdbc.UserRowMapper"/>
     <bean id="wareRowMapper" class="file.dao.jdbc.WareRowMapper"/>
-    
+    <bean id="cartRowMapper" class="file.dao.jdbc.CartRowMapper"/>
     
     <bean id="dao" abstract="true" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
-    	<property name="dataSource" ref ="dataSource"/>    
+        <property name="dataSource" ref ="dataSource"/>    
     </bean>
     
     <bean id="groupDao" class="file.dao.jdbc.GroupJdbcDao" parent="dao">
@@ -72,8 +62,25 @@
         <property name="wareRowMapper" ref="wareRowMapper"/> 
     </bean>
     
+    <bean id="cartDao" class="file.dao.jdbc.CartJdbcDao" parent="dao">
+        <property name="cartRowMapper" ref="cartRowMapper" />
+    </bean>
+    
+    <bean id="groupService" class="file.service.impl.GroupServiceImpl">
+    	<property name="groupDao" ref="groupJdbcDao"/>
+    </bean>
+    <bean id="roleService" class="file.service.impl.RoleServiceImpl">
+    	<property name="roleDao" ref="roleJdbcDao"/>
+    </bean>
+    <bean id="userService" class="file.service.impl.UserServiceImpl">
+    	<property name="userDao" ref="userJdbcDao"/>
+    </bean>
+    <bean id="wareService" class="file.service.impl.WareSeviceImpl">
+    	<property name="wareDao" ref="wareJdbcDao"/>
+    </bean>
+    
     <bean id="authenticationManagerBean" class="org.springframework.security.authentication.AuthenticationManager">
         <property name="userDetailService" ref="userDetailServiceImpl"/>
     </bean>
-    
+    -->
 </beans>

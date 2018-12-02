@@ -16,10 +16,12 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import file.dao.GroupDao;
 import file.entity.Group;
 
+@Component
 public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
 
     private ResultSetExtractor<List<Group>> extractor = new ResultSetExtractor<List<Group>>() {

@@ -8,12 +8,14 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Component;
 
 import file.dao.CartDao;
 import file.entity.Cart;
 import file.entity.User;
 import file.entity.Ware;
 
+@Component
 public class CartJdbcDao extends JdbcDaoSupport implements CartDao {
 
     private ResultSetExtractor<Cart> extractor = new ResultSetExtractor<Cart>() {

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
     
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/storefront", method = RequestMethod.GET)
     public ModelAndView index() {
         
         ModelAndView mav = new ModelAndView();

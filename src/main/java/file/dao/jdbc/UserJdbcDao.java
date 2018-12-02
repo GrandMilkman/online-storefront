@@ -16,12 +16,14 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import file.dao.UserDao;
 import file.entity.Cart;
 import file.entity.Role;
 import file.entity.User;
 
+@Component
 public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
     private ResultSetExtractor<List<User>> extractor = new ResultSetExtractor<List<User>>() {

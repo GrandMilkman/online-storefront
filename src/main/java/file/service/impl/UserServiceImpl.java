@@ -3,6 +3,7 @@ package file.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import file.dao.RoleDao;
 import file.dao.UserDao;
@@ -10,6 +11,7 @@ import file.entity.Role;
 import file.entity.User;
 import file.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
