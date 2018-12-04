@@ -6,6 +6,10 @@
     
    <display-name>Spring MVC Application</display-name>
    
+   <welcome-file-list>
+		<welcome-file>index.html</welcome-file>   
+   </welcome-file-list>
+   
    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -13,7 +17,7 @@
         </param-value>
     </context-param>
     
-    <listener>
+    <!--listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     
@@ -26,6 +30,6 @@
    <servlet-mapping>
         <servlet-name>mvc</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping-->
 
 </web-app>
