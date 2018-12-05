@@ -12,10 +12,8 @@ import file.service.WareService;
 @Controller
 public class WareController {
     
-    @Autowired
     private WareService wareService;
     
-    @Autowired
     private GroupService groupService;
     
     @RequestMapping(value = "/store/{id:\\d+}")

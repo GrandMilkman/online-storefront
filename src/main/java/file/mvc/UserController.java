@@ -15,10 +15,8 @@ import file.service.UserService;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserValidator userValidator;
+	private UserValidator userValidator;
     
-    @Autowired
     private UserService userService;
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)

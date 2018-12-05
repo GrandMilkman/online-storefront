@@ -9,7 +9,7 @@
 	<properties>
 		<HOST>${env.COMPUTERNAME}</HOST>
 		<java-version>1.8</java-version>
-		<org.springframework-version>5.0.4.RELEASE</org.springframework-version>
+		<org.springframework-version>5.1.1.RELEASE</org.springframework-version>
 	</properties>
 
 	<dependencies>

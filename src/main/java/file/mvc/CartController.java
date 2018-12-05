@@ -16,44 +16,26 @@ import file.service.UserService;
 
 @Controller
 public class CartController {
-    
-    @Autowired
-    private CartService cartService;
-    
-    @Autowired
-    private UserService userService;
+	
+	private CartService cartService;
+	
+	private UserService userService;
 
-    public UserService getUserService() {
-        return userService;
-    }
+	@RequestMapping(value = "/cart/getCart", method = RequestMethod.GET)
+	public ModelAndView getCartId() {
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+		ModelAndView mav = new ModelAndView();
+		User authenticatedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-    public CartService getCartService() {
-        return cartService;
-    }
+		String username = authenticatedUser.getName();
+		User u = userService.getUser(username);
 
-    public void setCartService(CartService cartService) {
-        this.cartService = cartService;
-    }
-    
-    @RequestMapping(value = "/cart/getCart", method = RequestMethod.GET)
-    public ModelAndView getCartId() {
-        
-        ModelAndView mav = new ModelAndView();
-        User authenticatedUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        
-        String username = authenticatedUser.getName();
-        User u = userService.getUser(username);
-        
-        mav.addObject("cartId", u.getCart().getId());
-        return mav;
-    }
-    
-    @RequestMapping("/cart/getCart/{cartId}")
-    public @ResponseBody Cart getCartItems(@PathVariable(value="cartId")Long cid){
-        return cartService.getCart(cid);
-}
+		mav.addObject("cartId", u.getCart().getId());
+		return mav;
+	}
+
+	@RequestMapping("/cart/getCart/{cartId}")
+	public @ResponseBody Cart getCartItems(@PathVariable(value = "cartId") Long cid) {
+		return cartService.getCart(cid);
+	}
 }

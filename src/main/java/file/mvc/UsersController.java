@@ -1,17 +1,20 @@
 package file.mvc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
+import file.service.UserService;
+
+@Controller
 public class UsersController {
-    
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public ModelAndView users() {
-        
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("user_list");
-        return mav;
-        
-    }
+
+	private UserService userService;
+
+	@RequestMapping("/users")
+	public String users(Model model) {
+		model.addAttribute("USER_LIST", userService.getAll());
+		return "users";
+	}
 }

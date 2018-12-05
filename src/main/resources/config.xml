@@ -2,10 +2,13 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation=" http://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-3.1.xsd
+    http://www.springframework.org/schema/security/spring-security-5.1.xsd
     http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="classpath:config.properties" />
@@ -19,10 +22,10 @@
         <property name="contexts" value="test, production" />
     </bean>
     
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name="prefix" value="/WEB-INF/" />
       <property name="suffix" value=".html" />
-    </bean>
+    </bean-->
     
      <bean id="dataSource"
         class="org.apache.commons.dbcp2.BasicDataSource"
@@ -32,6 +35,9 @@
         <property name="maxTotal" value="10" />
         <property name="maxIdle" value="2" />
     </bean>
+    
+	<context:component-scan
+		base-package="file.dao.jdbc, file.service.impl, file.mvc" />
     
     <!-- bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/-->
     
