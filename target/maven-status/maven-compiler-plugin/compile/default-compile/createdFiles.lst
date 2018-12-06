@@ -12,8 +12,8 @@ file/entity/Role.class
 file/dao/UserDao.class
 file/dao/jdbc/GroupJdbcDao$2.class
 file/security/MD5.class
-file/dao/GroupDao.class
 file/dao/RoleDao.class
+file/dao/GroupDao.class
 file/dao/jdbc/RoleJdbcDao.class
 file/service/WareService.class
 file/mvc/UserController.class
