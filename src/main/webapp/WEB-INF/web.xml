@@ -21,7 +21,7 @@
 	<!--listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
-	</listener-->
+	</listener>
 
 	<servlet>
 		<servlet-name>mvc</servlet-name>
@@ -37,6 +37,6 @@
 	<servlet-mapping>
 		<servlet-name>mvc</servlet-name>
 		<url-pattern>/storefront</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping-->
 
 </web-app>

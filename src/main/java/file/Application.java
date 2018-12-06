@@ -1,13 +1,20 @@
 package file;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.XmlWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 @ComponentScan
-public class Application /*implements WebApplicationInitializer*/{
+public class Application implements WebApplicationInitializer{
     
-    /*@Override
+    @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         
         XmlWebApplicationContext context = new XmlWebApplicationContext();
@@ -18,7 +25,7 @@ public class Application /*implements WebApplicationInitializer*/{
         mvc.addMapping("/storefront");
         
     }
-    */
+    
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config.xml");
         ctx.start();
