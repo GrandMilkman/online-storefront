@@ -24,7 +24,7 @@
     
     <!--bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name="prefix" value="/WEB-INF/" />
-      <property name="suffix" value=".html" />
+      <property name="suffix" value=".jsp" />
     </bean-->
     
      <bean id="dataSource"

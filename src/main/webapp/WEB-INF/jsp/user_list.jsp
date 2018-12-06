@@ -93,7 +93,7 @@
 		</div>
 		
 		<!-- user list -->
-		<div class="table"
+		<div class="table">
  			<body>
   			<table>
   				${USER_LIST}			
