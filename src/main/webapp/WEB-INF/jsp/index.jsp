@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+<%@page %>
+<html>
 <html lang="en">
 <head>
 <title>Online storefront</title>

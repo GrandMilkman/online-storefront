@@ -1,12 +1,6 @@
-<!--
-Author: Colorlib
-Author URL: https://colorlib.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
-<!DOCTYPE html>
+<%@page %>
 <html>
+<html lang="en">
 <head>
 <title>SignUp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">

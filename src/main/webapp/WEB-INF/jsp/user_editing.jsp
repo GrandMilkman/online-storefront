@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@page %>
+<html>
 <html lang="en">
 <head>
 <title>Profile Editing</title>
