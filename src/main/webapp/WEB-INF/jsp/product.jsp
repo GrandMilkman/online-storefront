@@ -1,4 +1,3 @@
-<%@page %>
 <html>
 <html lang="en">
 <head>
@@ -34,8 +33,8 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="sign_up.html">Register</a></div>
-								<div><a href="login.html">Sign in</a></div>
+								<div><a href="sign_up">Register</a></div>
+								<div><a href="login">Sign in</a></div>
 							</div>
 						</div>
 					</div>
@@ -52,7 +51,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="index.html">OneTech</a></div>
+							<div class="logo"><a href="index">Storefront</a></div>
 						</div>
 					</div>
 
@@ -95,7 +94,7 @@
 										<div class="cart_count"><span>10</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="cart.html">Cart</a></div>
+										<div class="cart_text"><a href="cart">Cart</a></div>
 										<div class="cart_price">$85</div>
 									</div>
 								</div>
@@ -156,8 +155,8 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="index.html">Home<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="shop.html">Catalog<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="index">Home<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="shop">Catalog<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -226,10 +225,10 @@
 							</div>
 							<ul class="page_menu_nav">
 								<li class="page_menu_item">
-									<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+									<a href="index">Home<i class="fa fa-angle-down"></i></a>
 								</li>
 								<li class="page_menu_item">
-									<a href="shop.html">Catalog<i class="fa fa-angle-down"></i></a>
+									<a href="shop">Catalog<i class="fa fa-angle-down"></i></a>
 								</li>
 								<li class="page_menu_item has-children">
 									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>

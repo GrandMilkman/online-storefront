@@ -22,8 +22,8 @@
         <property name="contexts" value="test, production" />
     </bean>
     
-    <!--bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <property name="prefix" value="/WEB-INF/" />
+    <!-- bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/jsp/" />
       <property name="suffix" value=".jsp" />
     </bean-->
     
@@ -37,7 +37,7 @@
     </bean>
     
 	<context:component-scan
-		base-package="file.dao.jdbc, file.service.impl, file.mvc" />
+		base-package="file.dao.jdbc, file.service.impl " />
     
     <!-- bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/-->
     

@@ -1,4 +1,3 @@
-<%@page %>
 <html>
 <html lang="en">
 <head>

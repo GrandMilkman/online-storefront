@@ -8,7 +8,7 @@
 	<display-name>Spring MVC Application</display-name>
 
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
@@ -21,9 +21,9 @@
 	<!--listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
-	</listener>
+	</listener-->
 
-	<servlet>
+	<!--servlet>
 		<servlet-name>mvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
@@ -32,9 +32,9 @@
 			<param-value>/WEB-INF/mvc-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
+	</servlet-->
 
-	<servlet-mapping>
+	<!--servlet-mapping>
 		<servlet-name>mvc</servlet-name>
 		<url-pattern>/storefront</url-pattern>
 	</servlet-mapping-->

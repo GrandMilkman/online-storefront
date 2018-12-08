@@ -1,4 +1,3 @@
-<%@page %>
 <html>
 <html lang="en">
 <head>
@@ -33,10 +32,10 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="sign_up.html">Register</a></div>
-								<div><a href="login.html">Sign in</a></div>
-								<div><a href="user_list.html">User list</a></div>
-								<div><a href="index.html">Home</a></div>
+								<div><a href="sign_up">Register</a></div>
+								<div><a href="login">Sign in</a></div>
+								<div><a href="user_list">User list</a></div>
+								<div><a href="index">Home</a></div>
 							</div>
 						</div>
 					</div>
@@ -53,7 +52,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="index.html">OneTech</a></div>
+							<div class="logo"><a href="index">Storefront</a></div>
 						</div>
 					</div>
 
