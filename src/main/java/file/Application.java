@@ -33,6 +33,3 @@ public class Application implements WebApplicationInitializer{
     }
 
 }
-
-
-
