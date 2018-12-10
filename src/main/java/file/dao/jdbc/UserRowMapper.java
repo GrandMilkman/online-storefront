@@ -9,8 +9,7 @@ import file.entity.User;
 
 public class UserRowMapper implements RowMapper<User> {
 
-    @Override
-    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public User mapRow(final ResultSet rs, final int count) throws SQLException {
 
         final User u = new User();
         u.setId(rs.getLong("user_id"));

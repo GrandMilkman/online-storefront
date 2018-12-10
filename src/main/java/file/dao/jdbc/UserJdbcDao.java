@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.ParameterDisposer;
@@ -34,7 +38,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     
     private ResultSetExtractor<List<User>> extractor = new ResultSetExtractor<List<User>>() {
         
-        public List<User> extractData(final ResultSet rs) throws SQLException, DataAccessException {
+        public List<User> extractData(ResultSet rs) throws SQLException, DataAccessException {
             final List<User> u = new ArrayList<User>();
             int count = 0;
             User user = null;
@@ -45,17 +49,27 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
                     user.setCart(new Cart());
                     u.add(user);
                 }
-                user.getRoles().add(rrm.mapRow(rs, count));
+                Role role = rrm.mapRow(rs, count);
+                
+                if (role.getName() != null) {
+                    user.getRoles().add(role);
+                }
                 count++;
             };
             return u;
         }
     };
-
     public void setExtractor(ResultSetExtractor<List<User>> extractor) {
         this.extractor = extractor;
     }
+
+    @Autowired
+    private DataSource dataSource;
     
+    @PostConstruct
+    private void initialize() {
+        setDataSource(dataSource);
+    }
     @Override
     public void create(final User u) {
         

@@ -39,9 +39,15 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="sign_up">Register</a></div>
-								<div><a href="login>Sign in</a></div>
-								<div><a href="index">Home</a></div>
+								<div>
+								    <a href="sign_up">Register</a>
+								</div>
+								<div>
+								    <a href="login">Sign in</a>
+								</div>
+								<div>
+								    <a href="index">Home</a>
+								</div>
 							</div>
 						</div>
 					</div>

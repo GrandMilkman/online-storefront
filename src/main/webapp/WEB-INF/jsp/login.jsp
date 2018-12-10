@@ -50,22 +50,28 @@
 						class="login100-form-avatar"> <img
 						src="images/avatar-01.jpg" alt="AVATAR">
 					</span>
-					<div class="wrap-input100 validate-input m-t-85 m-b-35"
-						data-validate="Enter username">
-						<input class="input100" type="text" name="username"> <span
-							class="focus-input100" data-placeholder="Username"></span>
-					</div>
+					<c:if test="${param.error ne null}">
+					   <div style="color: red">Invalid credentials.</div>
+					</c:if>
+					<form action="/storefront/login" method="post">
+						<div class="wrap-input100 validate-input m-t-85 m-b-35"
+							data-validate="Enter username">
+							<input class="input100" type="text" id="name" name="name">
+							<span class="focus-input100" data-placeholder="Username"></span>
+						</div>
 
-					<div class="wrap-input100 validate-input m-b-50"
-						data-validate="Enter password">
-						<input class="input100" type="password" name="pass"> <span
-							class="focus-input100" data-placeholder="Password"></span>
-					</div>
+						<div class="wrap-input100 validate-input m-b-50"
+							data-validate="Enter password">
+							<input class="input100" type="password" id="pwd" name="password">
+							<span class="focus-input100" data-placeholder="Password"></span>
+						</div>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">Login</button>
-					</div>
-
+						<div class="container-login100-form-btn">
+							<button type="submit" class="login100-form-btn">Submit</button>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</div>
+					</form>
 					<ul class="login-more p-t-190">
 
 
