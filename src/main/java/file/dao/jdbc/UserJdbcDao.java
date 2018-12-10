@@ -28,13 +28,13 @@ import file.entity.User;
 
 public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
-    private UserRowMapper urm;
+    private UserRowMapper userRowMapper;
     
-    public void setUserRowMapper(UserRowMapper urm) {
-        this.urm = urm;
+    public void setUserRowMapper(UserRowMapper userRowMapper) {
+        this.userRowMapper = userRowMapper;
     }
     
-    private RoleRowMapper rrm;
+    private RoleRowMapper roleRowMapper;
     
     private ResultSetExtractor<List<User>> extractor = new ResultSetExtractor<List<User>>() {
         
@@ -44,12 +44,12 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
             User user = null;
             while (rs.next()) {
                 if (user == null || !Long.valueOf(rs.getLong("user_id")).equals(user.getId())) {
-                    user = urm.mapRow(rs, count);
+                    user = userRowMapper.mapRow(rs, count);
                     user.setRoles(new ArrayList<Role>());
                     user.setCart(new Cart());
                     u.add(user);
                 }
-                Role role = rrm.mapRow(rs, count);
+                Role role = roleRowMapper.mapRow(rs, count);
                 
                 if (role.getName() != null) {
                     user.getRoles().add(role);

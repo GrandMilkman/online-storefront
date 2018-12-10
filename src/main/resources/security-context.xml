@@ -20,7 +20,7 @@
         <intercept-url pattern="/user_list**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/shop**" access="hasRole('ROLE_USER')"/>
         
-        <form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login?error" username-parameter="name" password-parameter="password" />
+        <form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login?error" username-parameter="user_name" password-parameter="user_password" />
         
 
         <logout logout-success-url="/login?logout" />

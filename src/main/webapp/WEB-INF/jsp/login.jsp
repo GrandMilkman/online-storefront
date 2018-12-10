@@ -45,7 +45,6 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-70"> Welcome </span> <span
 						class="login100-form-avatar"> <img
 						src="images/avatar-01.jpg" alt="AVATAR">
@@ -56,13 +55,13 @@
 					<form action="/storefront/login" method="post">
 						<div class="wrap-input100 validate-input m-t-85 m-b-35"
 							data-validate="Enter username">
-							<input class="input100" type="text" id="name" name="name">
+							<input class="input100" type="text" id="user_name" name="user_name">
 							<span class="focus-input100" data-placeholder="Username"></span>
 						</div>
 
 						<div class="wrap-input100 validate-input m-b-50"
 							data-validate="Enter password">
-							<input class="input100" type="password" id="pwd" name="password">
+							<input class="input100" type="password" id="user_password" name="user_password">
 							<span class="focus-input100" data-placeholder="Password"></span>
 						</div>
 
@@ -78,7 +77,6 @@
 						<li><span class="txt1"> Donât have an account? </span> <a
 							href="#" class="txt2"> Sign up </a></li>
 					</ul>
-				</form>
 			</div>
 		</div>
 	</div>
