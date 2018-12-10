@@ -3,20 +3,26 @@ package file.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import file.dao.WareDao;
 import file.entity.Group;
 import file.entity.Ware;
 import file.service.WareService;
 
-@Service
 public class WareServiceImpl implements WareService {
 
 	@Autowired
 	private WareDao wareDao;
 
-	@Override
+	public WareDao getWareDao() {
+        return wareDao;
+    }
+
+    public void setWareDao(WareDao wareDao) {
+        this.wareDao = wareDao;
+    }
+
+    @Override
 	public List<Ware> getAll() {
 		return wareDao.findAll();
 	}

@@ -16,33 +16,36 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
 
 import file.dao.UserDao;
 import file.entity.Cart;
 import file.entity.Role;
 import file.entity.User;
 
-@Component
 public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
+    private UserRowMapper urm;
+    
+    public void setUserRowMapper(UserRowMapper urm) {
+        this.urm = urm;
+    }
+    
+    private RoleRowMapper rrm;
+    
     private ResultSetExtractor<List<User>> extractor = new ResultSetExtractor<List<User>>() {
         
         public List<User> extractData(final ResultSet rs) throws SQLException, DataAccessException {
             final List<User> u = new ArrayList<User>();
             int count = 0;
             User user = null;
-            UserRowMapper urw = new UserRowMapper();
-            RoleRowMapper rrw = new RoleRowMapper();
-            CartRowMapper crw = new CartRowMapper();
             while (rs.next()) {
                 if (user == null || !Long.valueOf(rs.getLong("user_id")).equals(user.getId())) {
-                    user = urw.mapRow(rs, count);
+                    user = urm.mapRow(rs, count);
                     user.setRoles(new ArrayList<Role>());
                     user.setCart(new Cart());
                     u.add(user);
                 }
-                user.getRoles().add(rrw.mapRow(rs, count));
+                user.getRoles().add(rrm.mapRow(rs, count));
                 count++;
             };
             return u;

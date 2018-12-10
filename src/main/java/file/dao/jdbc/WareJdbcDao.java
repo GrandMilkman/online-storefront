@@ -16,30 +16,35 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
 
 import file.dao.WareDao;
 import file.entity.Group;
 import file.entity.Ware;
 
-@Component
 public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
 
+    private WareRowMapper wrm;
+    
+    public void setWareRowMapper(WareRowMapper wrm) {
+        this.wrm = wrm;
+    }
+    
+    private GroupRowMapper grm;
+    
     private ResultSetExtractor<List<Ware>> extractor = new ResultSetExtractor<List<Ware>>() {
 
         public List<Ware> extractData(final ResultSet rs) throws SQLException, DataAccessException {
             final List<Ware> w = new ArrayList<Ware>();
             int count = 0;
             Ware ware = null;
-            WareRowMapper wrw = new WareRowMapper();
-            GroupRowMapper grw = new GroupRowMapper();
+            
             while (rs.next()) {
                 if (ware == null || !Long.valueOf(rs.getLong("ware_id")).equals(ware.getId())) {
-                    ware = wrw.mapRow(rs, count);
+                    ware = wrm.mapRow(rs, count);
                     ware.setGroups(new ArrayList<Group>());
                     w.add(ware);
                 }
-                ware.getGroups().add(grw.mapRow(rs, count));
+                ware.getGroups().add(grm.mapRow(rs, count));
                 count++;
             }
             return w;

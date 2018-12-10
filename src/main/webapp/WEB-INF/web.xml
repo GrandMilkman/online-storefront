@@ -1,5 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <web-app id="WebApp_ID" version="2.4"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
@@ -17,6 +18,20 @@
 			classpath:/config.xml
 		</param-value>
 	</context-param>
+    
+    <!--filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>ERROR</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping-->
 
 	<!--listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener

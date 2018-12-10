@@ -1,3 +1,4 @@
+/*
 package file.mvc;
 
 import org.springframework.stereotype.Controller;
@@ -16,3 +17,4 @@ public class StoreController {
         return mav;
     }
 }
+*/

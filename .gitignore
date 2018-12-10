@@ -1,7 +1,6 @@
 .classpath
 .project
 /build/
-/target/
 # Compiled class file
 *.class
 
@@ -29,3 +28,4 @@ hs_err_pid*
 .settings
 /bin/
 /.derby/
+/target/

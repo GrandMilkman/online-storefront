@@ -1,4 +1,4 @@
-package file.mvc;
+/*package file.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -56,3 +56,4 @@ public class UserController {
 
     
 }
+*/
