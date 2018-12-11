@@ -18,7 +18,7 @@
     
     <changeSet id="1.1.0" author="mikita">
         <!-- ValidCheckSum>8:c8e6ebf8f232a1378e322a722c882f53</validCheckSum-->
-        <createTable tableName="user">
+        <createTable tableName="users">
             <column name="user_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="user_pk"/>
             </column>
@@ -30,7 +30,7 @@
             </column>
         </createTable>
         
-        <createIndex tableName="user" indexName="user_name_uk" unique="true">
+        <createIndex tableName="users" indexName="user_name_uk" unique="true">
             <column name="user_name" />
         </createIndex>
         
@@ -58,7 +58,7 @@
         <addPrimaryKey tableName="user_role" columnNames="user_id, role_id"/>
         
         <addForeignKeyConstraint constraintName="user_role_user_fk"
-         referencedTableName="user" referencedColumnNames="user_id"
+         referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="user_role"/>
          
         <addForeignKeyConstraint constraintName="user_role_role_fk"
@@ -106,16 +106,16 @@
             <column name="role_name">ROLE_USER</column>
         </insert>
         
-        <insert tableName="user">
+        <insert tableName="users">
             <column name="user_id" valueNumeric="0"/>
             <column name="user_name">system</column>
             <column name="user_password">system</column>
         </insert>
-        <insert tableName="user">
+        <insert tableName="users">
             <column name="user_name">admin</column>
              <column name="user_password">admin</column>
         </insert>
-        <insert tableName="user">
+        <insert tableName="users">
             <column name="user_name">user</column>
              <column name="user_password">user</column>
         </insert>
@@ -164,7 +164,7 @@
          baseColumnNames="cart_id" baseTableName="cart_user"/>
          
         <addForeignKeyConstraint constraintName="cart_user_user_fk"
-         referencedTableName="user" referencedColumnNames="user_id"
+         referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="cart_user"/>
          
     </changeSet>
@@ -182,7 +182,7 @@
         <addPrimaryKey tableName="user_ware" columnNames="user_id, ware_id"/>
         
         <addForeignKeyConstraint constraintName="user_ware_user_fk"
-         referencedTableName="user" referencedColumnNames="user_id"
+         referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="user_ware"/>
          
          <addForeignKeyConstraint constraintName="user_ware_ware_fk"

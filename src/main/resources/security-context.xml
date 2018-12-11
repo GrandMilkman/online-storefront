@@ -35,8 +35,8 @@
         <b:constructor-arg value="MD5" />
     </b:bean>
     
-    <b:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-        <b:property name="dataSource" ref="dataSource" />
+    <b:bean id="userDetailsService" class="file.security.UserDetailsServiceImpl">
+        <b:property name="userService" ref="userService" />
     </b:bean>
     
 </b:beans>
