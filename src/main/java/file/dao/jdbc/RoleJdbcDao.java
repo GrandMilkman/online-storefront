@@ -19,6 +19,6 @@ public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao{
     @Override
     public List<Role> findAll() {
         
-        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM role r", rrm);
+        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM roles r", rrm);
     }
 }

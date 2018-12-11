@@ -21,7 +21,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="changeLog"
 			value="classpath:databaseChangeLog.xml" />
-		<property name="contexts" value="test, production" />
+		<property name="contexts" value="${liquibase.contexts}" />
 	</bean>
 
 	<!-- bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
@@ -33,8 +33,9 @@
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.class}" />
 		<property name="url" value="${jdbc.url}" />
-		<property name="maxTotal" value="10" />
-		<property name="maxIdle" value="2" />
+		<property name="maxTotal" value="100" />
+		<property name="maxIdle" value="20" />
+		<property name="poolPreparedStatements" value="true" />
 	</bean>
 
 	<context:component-scan
