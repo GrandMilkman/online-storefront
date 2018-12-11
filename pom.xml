@@ -80,6 +80,7 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>5.1.1.RELEASE</version>
 		</dependency>
+		<!--3.6.2 -->
 
 		<dependency>
 			<groupId>org.liquibase</groupId>
@@ -93,7 +94,7 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-			<!-- WARNING 5.1.39-->
+		<!-- WARNING 5.1.39 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -105,7 +106,7 @@
 			<artifactId>plexus-utils</artifactId>
 			<version>1.0.4</version>
 		</dependency>
-<!-- WARNING 10.14.2.0-->
+		<!-- WARNING 10.14.2.0 -->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
