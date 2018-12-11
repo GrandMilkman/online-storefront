@@ -2,6 +2,7 @@ file/service/UserService.class
 file/dao/jdbc/CartJdbcDao.class
 file/dao/WareDao.class
 file/dao/jdbc/WareRowMapper.class
+file/dao/jdbc/UserJdbcDao$2.class
 file/Application.class
 file/dao/CrudDao.class
 file/entity/Entity.class
@@ -10,11 +11,11 @@ file/entity/Ware.class
 file/entity/Role.class
 file/dao/UserDao.class
 file/dao/jdbc/GroupJdbcDao$2.class
-file/security/MD5.class
 file/mvc/JSPIndexController.class
+file/security/MD5.class
 file/service/CartService.class
-file/dao/RoleDao.class
 file/dao/GroupDao.class
+file/dao/RoleDao.class
 file/dao/jdbc/RoleJdbcDao.class
 file/service/WareService.class
 file/service/impl/GroupServiceImpl.class
@@ -37,8 +38,8 @@ file/service/impl/UserServiceImpl.class
 file/service/GroupService.class
 file/dao/jdbc/CartJdbcDao$1.class
 file/service/impl/CartServiceImpl.class
-file/mvc/JSPCartController.class
 file/mvc/JSPUserListController.class
+file/mvc/JSPCartController.class
 file/dao/jdbc/UserRowMapper.class
 file/dao/jdbc/GroupRowMapper.class
 file/dao/jdbc/GroupJdbcDao$1.class
