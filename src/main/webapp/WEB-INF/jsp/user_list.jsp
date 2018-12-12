@@ -1,3 +1,8 @@
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+
 <html>
 <html lang="en">
 <head>
@@ -99,11 +104,34 @@
 		
 		<!-- user list -->
 		<div class="table">
- 			<body>
-  			<table>
-  				${USER_LIST}			
- 			</table>
- 			</body>
+ 			
+ 		
+ 			   <head>
+      <title>SELECT Operation</title>
+   </head>
+
+   <body>
+     <sql:setDataSource url="jdbc:derby:.derby" var="storefront" driver="org.apache.derby.jdbc.EmbeddedDriver"/>
+        
+ 
+      <sql:query  dataSource="${storefront}" var = "result">
+         SELECT * FROM users
+      </sql:query>
+ 
+      <table  width = "40%">
+         <tr>
+            <th>user ID</th>
+            <th>user Name</th>
+         </tr>
+         
+         <c:forEach var = "row" items = "${result.rows}">
+            <tr>
+               <td><c:out value = "${row.user_id}"/></td>
+               <td><c:out value = "${row.user_name}"/></td>
+            </tr>
+         </c:forEach>
+      </table>
+ 			
  		</div>
  		<!-- Copyright -->
 
@@ -130,4 +158,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/product_custom.js"></script>
+
 </body>
+</html>

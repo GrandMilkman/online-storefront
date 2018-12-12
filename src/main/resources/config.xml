@@ -39,7 +39,7 @@
 	</bean>
 
 	<context:component-scan
-		base-package="file.dao.jdbc, file.service.impl " />
+		base-package="file.dao.jdbc, file.service.impl, file.mvc " />
 
 	<!-- bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/ -->
 

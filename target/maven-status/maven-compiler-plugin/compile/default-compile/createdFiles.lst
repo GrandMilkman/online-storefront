@@ -38,7 +38,6 @@ file/service/impl/UserServiceImpl.class
 file/service/GroupService.class
 file/dao/jdbc/CartJdbcDao$1.class
 file/service/impl/CartServiceImpl.class
-file/mvc/JSPUserListController.class
 file/mvc/JSPCartController.class
 file/dao/jdbc/UserRowMapper.class
 file/dao/jdbc/GroupRowMapper.class
