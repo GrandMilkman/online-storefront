@@ -1,4 +1,5 @@
-<html>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <html lang="en">
 <head>
 <title>Profile Editing</title>
@@ -89,43 +90,26 @@
 
 	</header>
 
-	<!-- User_Editing -->
+	<!-- User_Creation -->
 	<div class="user_editing">
 		<div class="container">
 			<div class="row">
 				<div class="form-group">
-					<div class="name_editing">
-						<h3>%UserName% Editing</h3>
-					</div>
-					<!-- Settings -->
-					<form>
-  						<div class="form-group">
-   							 <label for="InputName">Name</label>
-   							 <input type="name" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Enter name">
-   						</div>
- 						<div class="form-group">
-   							 <label for="exampleInputPassword1">Password</label>
-   							 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  						</div>
-	  					<div class="form-group">
-  							<label for="ChangeRoles">Roles</label>
-  							<div class="row">
-  								<div class="col-sm">
-  									<div class="form-check">
-   						 				<input type="checkbox" class="form-check-input" id="RolesCheck1">
-    									<label class="form-check-label" for="RolesCheckAdmin">Admin</label>
- 									</div>
-	 							</div>
- 								<div class="col-sm">
-  									<div class="form-check">
-   						 				<input type="checkbox" class="form-check-input" id="RolesCheck2">
-    									<label class="form-check-label" for="RolesCheckUser">User</label>
- 									</div>
- 								</div>
-	 						</div>
- 						</div>
- 						 <button type="submit" class="btn btn-primary">Submit</button>
+					<form action="user_editing" method="post" >
+						<h3>User Creation</h3>
+   							Name:     <input type="text" name="name"/>
+ 						 	<br><br>
+ 						 	Password: <input type="password" name="password"/>
+	  						<br><br>
+	  						Roles
+	  						<br>
+  							<input type="checkbox" name="role1"/>Admin
+  							<input type="checkbox" name="role2"/>User
+ 						    <button type="submit" class="btn btn-primary">Submit</button>
 					</form>	
+					<div>
+					<a href="user_list">Back</a>
+				    </div>
 				</div>
 			</div>
 		</div>
@@ -169,4 +153,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/easing/easing.js"></script>
 </body>
 
-</html>
+</html> 

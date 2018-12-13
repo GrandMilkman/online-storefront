@@ -104,7 +104,8 @@
 		
 		<!-- user list -->
 		<div class="table">
- 			
+ 		<div><a href="user_editing">Create new user</a></div>
+		</br>			
  		
  			   <head>
       <title>SELECT Operation</title>
@@ -130,8 +131,7 @@
                <td><c:out value = "${row.user_name}"/></td>
             </tr>
          </c:forEach>
-      </table>
- 			
+      </table>	
  		</div>
  		<!-- Copyright -->
 
