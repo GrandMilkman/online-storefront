@@ -71,12 +71,6 @@
 								value="${_csrf.token}" />
 						</div>
 					</form>
-					<ul class="login-more p-t-190">
-
-
-						<li><span class="txt1"> Donât have an account? </span> <a
-							href="#" class="txt2"> Sign up </a></li>
-					</ul>
 			</div>
 		</div>
 	</div>

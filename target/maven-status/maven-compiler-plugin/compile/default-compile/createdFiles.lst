@@ -11,11 +11,11 @@ file/entity/Ware.class
 file/entity/Role.class
 file/dao/UserDao.class
 file/dao/jdbc/GroupJdbcDao$2.class
-file/mvc/JSPIndexController.class
 file/security/MD5.class
+file/mvc/JSPIndexController.class
 file/service/CartService.class
-file/dao/GroupDao.class
 file/dao/RoleDao.class
+file/dao/GroupDao.class
 file/dao/jdbc/RoleJdbcDao.class
 file/service/WareService.class
 file/service/impl/GroupServiceImpl.class

@@ -1,3 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+    language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <html lang="en">
 <head>
@@ -37,6 +42,11 @@
 								<div><a href="sign_up">Register</a></div>
 								<div><a href="login">Sign in</a></div>
 								<div><a href="user_list">User list</a></div>
+								<c:if test="${pageContext.request.userPrincipal != null}">
+								    <div><a class="nav-link" href="login?logout" onclick="${pageContext.request.userPrincipal = null}">Logout
+								        </a>
+								    </div>
+								</c:if>
 							</div>
 						</div>
 					</div>
