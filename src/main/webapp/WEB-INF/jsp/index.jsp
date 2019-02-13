@@ -43,7 +43,7 @@
 								<div><a href="login">Sign in</a></div>
 								<div><a href="user_list">User list</a></div>
 								<c:if test="${pageContext.request.userPrincipal != null}">
-								    <div><a class="nav-link" href="login?logout" onclick="${pageContext.request.userPrincipal = null}">Logout
+								    <div><a class="nav-link" href="login?logout" >Logout
 								        </a>
 								    </div>
 								</c:if>
