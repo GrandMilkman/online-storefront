@@ -68,8 +68,8 @@ public class Application {
 //            }
 //        }
 //        
-//        ctx.stop();
-//        ctx.close();
+        ctx.stop();
+        ctx.close();
     }
 
 }
