@@ -153,7 +153,6 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
                 + "u.user_password AS user_password FROM users u "
                 + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
                 + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id > 0 ",
-
                 extractor);
     }
 

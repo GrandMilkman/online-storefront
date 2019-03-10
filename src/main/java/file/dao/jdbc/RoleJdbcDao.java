@@ -8,22 +8,22 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import file.dao.RoleDao;
 import file.entity.Role;
 
-public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao{
-    
-    @Autowired
-    private RoleRowMapper roleRowMapper;
-    
-    public void setRoleRowMapper(RoleRowMapper roleRowMapper) {
-        this.roleRowMapper = roleRowMapper;
-    }
-    
-    public RoleRowMapper getRoleMapper() {
-    	return roleRowMapper;
-    }
+public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao {
 
-    @Override
-    public List<Role> findAll() {
-        
-        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM roles r", roleRowMapper);
-    }
+	@Autowired
+	private RoleRowMapper roleRowMapper;
+
+	public void setRoleRowMapper(RoleRowMapper roleRowMapper) {
+		this.roleRowMapper = roleRowMapper;
+	}
+
+	public RoleRowMapper getRoleMapper() {
+		return roleRowMapper;
+	}
+
+	@Override
+	public List<Role> findAll() {
+		return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM roles r",
+				roleRowMapper);
+	}
 }
