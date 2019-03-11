@@ -35,7 +35,7 @@ public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao {
             int count = 0;
             Role role = null;
             while (rs.next()) {
-                if (role == null || !Long.valueOf(rs.getLong("user_id")).equals(role.getId())) {
+                if (role == null || !Long.valueOf(rs.getLong("role_id")).equals(role.getId())) {
                     role = roleRowMapper.mapRow(rs, count);
                     r.add(role);
                 }

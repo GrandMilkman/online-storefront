@@ -41,33 +41,33 @@ public class Application {
         final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config.xml");
         ctx.start();
         
-//        final UserService userService = ctx.getBean(UserService.class);
-//        
-//        for (Role role : userService.getRoles()) {
-//            log.info(role.getName());
-//        }
-//        
-//        for (User user : userService.getAll()) {
-//            log.info(user.getName());
-//        }
-//        
-//        User u = new User();
-//        u.setName("user_" + new Random().nextInt());
-//        u.setPassword("user_password");
-//        userService.addUser(u);
-//        
-//        log.info("id:" + u.getId());
-//        System.out.println("HELLO_WORLD!!!!!");
-//        
-//        for (User user : userService.getAll()) {
-//            log.info("user: {}", user.getName());
-//            if (user.getRoles() != null) {
-//                for (Role role : user.getRoles()) {
-//                    log.info("role: {}", role.getName());
-//                }
-//            }
-//        }
-//        
+        final UserService userService = ctx.getBean(UserService.class);
+        
+        for (Role role : userService.getRoles()) {
+            log.info(role.getName());
+        }
+        
+        for (User user : userService.getAll()) {
+            log.info(user.getName());
+        }
+        
+        User u = new User();
+        u.setName("user_" + new Random().nextInt());
+        u.setPassword("user_password");
+        userService.addUser(u);
+        
+        log.info("id:" + u.getId());
+        System.out.println("HELLO_WORLD!!!!!");
+        
+        for (User user : userService.getAll()) {
+            log.info("user: {}", user.getName());
+            if (user.getRoles() != null) {
+                for (Role role : user.getRoles()) {
+                    log.info("role: {}", role.getName());
+                }
+            }
+        }
+        
         ctx.stop();
         ctx.close();
     }

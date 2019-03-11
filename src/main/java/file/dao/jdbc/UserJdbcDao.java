@@ -89,7 +89,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
                 
-                final PreparedStatement ps = con.prepareStatement("INSERT INTO users (user_name, user_password VALUES (?, md5(?))",
+                final PreparedStatement ps = con.prepareStatement("INSERT INTO users (user_name, user_password) VALUES (?, md5(?))",
                         PreparedStatement.RETURN_GENERATED_KEYS);
                 final PreparedStatementSetter pss = new ArgumentPreparedStatementSetter(
                         new Object[] {
@@ -149,10 +149,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     @Override
     public List<User> findAll() {
         
-        return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
-                + "u.user_password AS user_password FROM users u "
+        return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
+                + "u.user_password AS user_password, r.role_id AS role_id, "
+                + "r.role_name AS role_name " + "FROM users u "
                 + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id > 0 ",
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id >0",
                 extractor);
     }
 

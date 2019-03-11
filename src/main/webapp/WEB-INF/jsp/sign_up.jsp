@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
 
@@ -11,12 +12,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="styles/sign_up.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-<!-- web font -->
-<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-<!-- //web font -->
+
+
+<link href="<c:url value="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/sign_up.css" />" rel="stylesheet">
 
 </head>
 
@@ -40,15 +39,12 @@
                     </div>
                     <input type="submit" value="SIGNUP">
                 </form>
-                <p>Don't have an Account? <a href="#"> Login Now!</a></p>
+                <p>Don't have an Account? <a href="sign_up"> Login Now!</a></p>
             </div>
         </div>
-        <!-- copyright -->
         <div class="colorlibcopy-agile">
             <p>Â© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
         </div>
-        <!-- //copyright -->
     </div>
-    <!-- //main -->
 </body>
 </html>

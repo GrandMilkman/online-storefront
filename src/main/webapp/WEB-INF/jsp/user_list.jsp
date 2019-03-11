@@ -9,29 +9,54 @@
 
 <title>Users</title>
 
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css"
-	href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/product_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="styles/product_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/user_list.css">
+<link
+	href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />"
+	rel="stylesheet">
+<link
+	href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.cs" />"
+	rel="stylesheet">
+<link
+	href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />"
+	rel="stylesheet">
+<link
+	href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />"
+	rel="stylesheet">
+<link
+	href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/styles/product_styles.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/styles/product_responsive.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/styles/user_list.css" />"
+	rel="stylesheet">
+
+<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+<script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
+<script
+	src="<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>"></script>
+<script src="<c:url value="/resources/plugins/slick-1.8.0/slick.js"/>"></script>
+<script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
+<script src="<c:url value="/resources/js/custom.js"/>"></script>
 
 </head>
-
 
 <body>
 
@@ -51,7 +76,7 @@
 							<div class="top_bar_content ml-auto">
 								<div class="top_bar_user">
 									<div class="user_icon">
-										<img src="images/user.svg" alt="">
+										<img src="resources/images/user.svg" alt="">
 									</div>
 									<div>
 										<a href="sign_up">Register</a>
@@ -105,7 +130,7 @@
 											</div>
 											<button type="submit" class="header_search_button trans_300"
 												value="Submit">
-												<img src="images/search.png" alt="">
+												<img src="resources/images/search.png" alt="">
 											</button>
 										</form>
 									</div>
@@ -125,8 +150,8 @@
 				</tr>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td><c:out value="${user.getId}" /></td>
-						<td><c:out value="${user.getName}" /></td>
+						<td><c:out value="${user.id}" /></td>
+						<td><c:out value="${user.name}" /></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -160,17 +185,7 @@
 
 
 		</header>
+	</div>
 
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="styles/bootstrap4/popper.js"></script>
-		<script src="styles/bootstrap4/bootstrap.min.js"></script>
-		<script src="plugins/greensock/TweenMax.min.js"></script>
-		<script src="plugins/greensock/TimelineMax.min.js"></script>
-		<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-		<script src="plugins/greensock/animation.gsap.min.js"></script>
-		<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-		<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-		<script src="plugins/easing/easing.js"></script>
-		<script src="js/product_custom.js"></script>
 </body>
 </html>

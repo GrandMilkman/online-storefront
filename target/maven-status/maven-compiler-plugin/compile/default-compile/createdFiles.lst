@@ -17,6 +17,7 @@ file/service/CartService.class
 file/dao/GroupDao.class
 file/dao/RoleDao.class
 file/dao/jdbc/RoleJdbcDao.class
+file/dao/jdbc/RoleJdbcDao$1.class
 file/service/WareService.class
 file/service/impl/GroupServiceImpl.class
 file/mvc/ErrorController.class

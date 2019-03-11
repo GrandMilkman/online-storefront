@@ -1,5 +1,8 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
 <head>
@@ -11,12 +14,23 @@
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/user_editing_styles.css">
+<link href="<c:url value="/resources/styles/user_editing_styles.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />" rel="stylesheet">
+
+<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+<script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
+<script src="<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
+<script src="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>"></script>
+<script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
 
 </head>
 
@@ -36,7 +50,7 @@
 					<div class="col d-flex flex-row">
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="images/user.svg" alt=""></div>
+								<div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
 								<div><a href="sign_up">Register</a></div>
 								<div><a href="login">Sign in</a></div>
 								<div><a href="user_list">User list</a></div>
@@ -82,7 +96,7 @@
 												</ul>
 											</div>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="resources/images/search.png" alt=""></button>
 									</form>
 								</div>
 							</div>
@@ -132,10 +146,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
 						<div class="logos ml-sm-auto">
 							<ul class="logos_list">
-								<li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
+								<li><a href="#"><img src="resources/images/logos_1.png" alt=""></a></li>
+								<li><a href="#"><img src="resources/images/logos_2.png" alt=""></a></li>
+								<li><a href="#"><img src="resources/images/logos_3.png" alt=""></a></li>
+								<li><a href="#"><img src="resources/images/logos_4.png" alt=""></a></li>
 							</ul>
 						</div>
 					</div>
@@ -145,16 +159,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div>
 </div>
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
+
 </body>
 
 </html> 
