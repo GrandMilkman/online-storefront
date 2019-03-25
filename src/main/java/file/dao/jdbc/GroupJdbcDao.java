@@ -16,24 +16,27 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
 
 import file.dao.GroupDao;
 import file.entity.Group;
 
-@Component
 public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
 
+    private GroupRowMapper grm;
+    
+    public void setGroupRowMapper(GroupRowMapper grm) {
+        this.grm = grm;
+    }
+    
     private ResultSetExtractor<List<Group>> extractor = new ResultSetExtractor<List<Group>>() {
 
         public List<Group> extractData(final ResultSet rs) throws SQLException, DataAccessException {
             final List<Group> g = new ArrayList<Group>();
             int count = 0;
             Group group = null;
-            GroupRowMapper grw = new GroupRowMapper();
             while (rs.next()) {
                 if (group == null || !Long.valueOf(rs.getLong("group_id")).equals(group.getId())) {
-                    group = grw.mapRow(rs, count);
+                    group = grm.mapRow(rs, count);
                     g.add(group);
                 }
                 count++;
@@ -41,7 +44,8 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
             return g;
         }
     };
-
+    
+    
     @Override
     public void create(Group g) {
 

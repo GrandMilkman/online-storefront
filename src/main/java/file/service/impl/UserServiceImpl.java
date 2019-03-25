@@ -3,7 +3,6 @@ package file.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import file.dao.RoleDao;
 import file.dao.UserDao;
@@ -11,16 +10,31 @@ import file.entity.Role;
 import file.entity.User;
 import file.service.UserService;
 
-@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
+	public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    @Autowired
 	private RoleDao roleDao;
 	
-	@Override
+	public RoleDao getRoleDao() {
+        return roleDao;
+    }
+
+    public void setRoleDao(RoleDao roleDao) {
+        this.roleDao = roleDao;
+    }
+
+    @Override
 	public void addUser(User user) {
 		userDao.create(user);
 	}

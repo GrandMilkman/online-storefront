@@ -4,15 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 
 import file.entity.User;
 
-@Component
 public class UserRowMapper implements RowMapper<User> {
 
-    @Override
-    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public User mapRow(final ResultSet rs, final int count) throws SQLException {
 
         final User u = new User();
         u.setId(rs.getLong("user_id"));
