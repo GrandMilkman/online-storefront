@@ -5,7 +5,7 @@
     xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    
+
     <changeSet id="1.1.0" author="mikita" context="derby">
         <createProcedure>
             CREATE FUNCTION md5(str VARCHAR(100)) RETURNS
@@ -15,9 +15,9 @@
             EXTERNAL NAME 'file.security.MD5.md5';
         </createProcedure>
     </changeSet>
-    
+
     <changeSet id="1.2.0" author="mikita">
-        <!-- ValidCheckSum>8:c8e6ebf8f232a1378e322a722c882f53</validCheckSum-->
+
         <createTable tableName="users">
             <column name="user_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="user_pk"/>
@@ -28,12 +28,18 @@
             <column name="user_password" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="user_mail" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-        
-        <createIndex tableName="users" indexName="user_name_uk" unique="true">
+
+        <!--createIndex tableName="users" indexName="user_name_uk" unique="true">
             <column name="user_name" />
+        </createIndex-->
+        <createIndex tableName="users" indexName="user_mail_uk" unique="true">
+            <column name="user_mail" />
         </createIndex>
-        
+
         <createTable tableName="roles">
             <column name="role_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="role_pk"/>
@@ -43,7 +49,7 @@
             </column>
         </createTable>
     </changeSet>
-    
+
     <changeSet id="1.3.0" author="mikita">
         <!--validCheckSum>8:d1d459804d9f9f8fc78945757300c15b</validCheckSum-->
         <createTable tableName="user_role">
@@ -54,19 +60,19 @@
                 <constraints nullable = "false"/>
             </column>
         </createTable>
-        
+
         <addPrimaryKey tableName="user_role" columnNames="user_id, role_id"/>
-        
+
         <addForeignKeyConstraint constraintName="user_role_user_fk"
          referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="user_role"/>
-         
+
         <addForeignKeyConstraint constraintName="user_role_role_fk"
          referencedTableName="roles" referencedColumnNames="role_id"
          baseColumnNames="role_id" baseTableName="user_role"/>
-         
+
     </changeSet>
-    
+
     <changeSet id="1.4.0" author="mikita">
         <createTable tableName="ware">
             <column name="ware_id" type="bigint" autoIncrement="true">
@@ -82,7 +88,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        
+
         <createTable tableName="group">
             <column name="group_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="group_pk"/>
@@ -91,10 +97,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        
+
     </changeSet>
-    
+
     <changeSet id="1.5.0" author="mikita">
+            <!--validCheckSum>8:36956f7ca1c865edf3ed6caa0f45c0d0</validCheckSum-->
         <insert tableName="roles">
             <column name="role_id" valueNumeric="0"/>
             <column name="role_name">ROLE_SYSTEM</column>
@@ -105,49 +112,52 @@
         <insert tableName="roles">
             <column name="role_name">ROLE_USER</column>
         </insert>
-        
+
         <insert tableName="users">
             <column name="user_id" valueNumeric="0"/>
             <column name="user_name">system</column>
+             <column name="user_mail">system</column>
             <column name="user_password" valueComputed="md5('system')" />
         </insert>
         <insert tableName="users">
             <column name="user_name">admin</column>
+             <column name="user_mail">admin</column>
              <column name="user_password" valueComputed="md5('admin')" />
         </insert>
         <insert tableName="users">
             <column name="user_name">user</column>
+            <column name="user_mail">user@user.net</column>
              <column name="user_password" valueComputed="md5('user')" />
         </insert>
-        
+
         <insert tableName="user_role">
             <column name="user_id" valueNumeric="0" />
             <column name="role_id" valueNumeric="0" />
         </insert>
-        
+
         <insert tableName="user_role">
             <column name="user_id" valueNumeric="1" />
             <column name="role_id" valueNumeric="1" />
         </insert>
-        
+
         <insert tableName="user_role">
             <column name="user_id" valueNumeric="1" />
             <column name="role_id" valueNumeric="2" />
         </insert>
-        
+
         <insert tableName="user_role">
             <column name="user_id" valueNumeric="2" />
             <column name="role_id" valueNumeric="2" />
         </insert>
     </changeSet>
-    
+
     <changeSet id="1.6.0" author="mikita">
         <createTable tableName="cart">
             <column name="cart_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="cart_pk" />
             </column>
         </createTable>
-        
+
         <createTable tableName="cart_user">
             <column name="cart_id" type="bigint">
                 <constraints nullable="false"/>
@@ -156,19 +166,19 @@
                 <constraints nullable = "false"/>
             </column>
         </createTable>
-        
+
         <addPrimaryKey tableName="cart_user" columnNames="cart_id, user_id"/>
-        
+
         <addForeignKeyConstraint constraintName="cart_user_cart_fk"
          referencedTableName="cart" referencedColumnNames="cart_id"
          baseColumnNames="cart_id" baseTableName="cart_user"/>
-         
+
         <addForeignKeyConstraint constraintName="cart_user_user_fk"
          referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="cart_user"/>
-         
+
     </changeSet>
-    
+
     <changeSet id="1.7.0" author="mikita">
         <createTable tableName="user_ware">
             <column name="user_id" type="bigint">
@@ -178,17 +188,17 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        
+
         <addPrimaryKey tableName="user_ware" columnNames="user_id, ware_id"/>
-        
+
         <addForeignKeyConstraint constraintName="user_ware_user_fk"
          referencedTableName="users" referencedColumnNames="user_id"
          baseColumnNames="user_id" baseTableName="user_ware"/>
-         
+
          <addForeignKeyConstraint constraintName="user_ware_ware_fk"
          referencedTableName="ware" referencedColumnNames="ware_id"
          baseColumnNames="ware_id" baseTableName="user_ware"/>
-         
+
     </changeSet>
-    
+
 </databaseChangeLog>

@@ -59,7 +59,7 @@
 </head>
 
 <body>
-
+	<div class="all">
 	<div class="super_container">
 
 		<!-- Header -->
@@ -142,19 +142,24 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- user table  -->
-			<table border="1">
+			<div class="user_table">
+			<table >
 				<tr>
-					<th>Id</th>
-					<th>Name</th>
+					<th>User id</th>
+					<th>User name</th>
+					<th>Mail</th>
 				</tr>
 				<c:forEach items="${users}" var="user">
 					<tr>
 						<td><c:out value="${user.id}" /></td>
 						<td><c:out value="${user.name}" /></td>
+						<td><c:out value="${user.mail}" /></td>
 					</tr>
 				</c:forEach>
 			</table>
+			</div>
 			<!-- user table end -->
 
 			<!-- Copyright -->
@@ -186,6 +191,6 @@
 
 		</header>
 	</div>
-
+</div>
 </body>
 </html>

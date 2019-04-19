@@ -14,10 +14,10 @@ public interface UserService {
 
 	List<User> getAll();
 
-	User getUser(String name);
+	User getUser(String mail);
 
 	User getUser(Long id);
-	
+
 	List<Role> getRoles();
 
 }

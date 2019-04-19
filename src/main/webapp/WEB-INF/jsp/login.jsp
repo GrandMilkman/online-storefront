@@ -62,7 +62,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-85 p-b-20">
-				<span class="login100-form-title p-b-70"> Welcome </span> <span
+				<span class="login100-form-title p-b-70"> Welcome ${userName}</span> <span
 					class="login100-form-avatar"> <img
 					src="resources/images/avatar-01.jpg" alt="AVATAR">
 				</span>

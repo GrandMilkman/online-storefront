@@ -54,6 +54,7 @@ public class Application {
         User u = new User();
         u.setName("user_" + new Random().nextInt());
         u.setPassword("user_password");
+        u.setMail("user_mail");
         userService.addUser(u);
         
         log.info("id:" + u.getId());

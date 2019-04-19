@@ -55,7 +55,9 @@
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
 								<div><a href="sign_up">Register</a></div>
-								<div><a href="login">Sign in</a></div>
+								
+									<div><a href="login">Sign UP ${userName}</a></div>
+							
 								<div><a href="user_list">User list</a></div>
 								<c:if test="${pageContext.request.userPrincipal != null}">
 								    <div><a class="nav-link" href="login?logout" >Logout
