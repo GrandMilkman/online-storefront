@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,11 +28,15 @@ public class Sign_upController {
 	public UserService us;
 
 	@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-	@ModelAttribute("user") User user) {
+	public String submit( @ModelAttribute("user") User user,BindingResult result) {
 
-			us.addUser(user);
-			return new ModelAndView("login", "userName", user.getName());}
-		
+		SignUpValidator validator = new SignUpValidator();
+		validator.validate(user, result);
+		if (result.hasErrors()) {
+			return "sign_up";
+		}
+		us.addUser(user);
+		return "login";
 
 	}
+}

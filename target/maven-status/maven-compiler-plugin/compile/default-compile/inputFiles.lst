@@ -17,6 +17,7 @@
 /home/amio/git/online-storefront/src/main/java/file/service/impl/WareServiceImpl.java
 /home/amio/git/online-storefront/src/main/java/file/mvc/ProductController.java
 /home/amio/git/online-storefront/src/main/java/file/dao/UserDao.java
+/home/amio/git/online-storefront/src/main/java/file/mvc/SignUpValidator.java
 /home/amio/git/online-storefront/src/main/java/file/dao/jdbc/WareRowMapper.java
 /home/amio/git/online-storefront/src/main/java/file/dao/Dao.java
 /home/amio/git/online-storefront/src/main/java/file/dao/CartDao.java

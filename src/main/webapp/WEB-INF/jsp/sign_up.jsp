@@ -21,19 +21,31 @@
 			<div class="login-table">
 
 				<table>
-
+					<div class="Mail-Validation">
+						<form:errors path="mail" cssClass="error" />
+					</div>
 					<div class="Mail">
 						<form:label path="mail">Mail</form:label>
 						<form:input  path="mail" name="mail"
 							id="mail" />
 					</div>
 
+					<div class="Username-Validation">
+						<form:errors path="name" cssClass="error" />
+					</div>
+
 					<div class="Username">
-						<form:label path="name">Username</form:label>
+						<form:label path="name">Your Name</form:label>
 						<form:input path="name" name="name" id="name" />
 					</div>
 
+
+					<div class="Password-Validation">
+					<form:errors path="password" cssClass="error" />
+					</div>
+
 					<div class="Password">
+
 						<form:label path="password">Password</form:label>
 						<form:password path="password" name="password"
 							id="password" />

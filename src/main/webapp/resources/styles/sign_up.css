@@ -11,6 +11,9 @@
     padding-top:3vh !important;
     background-color: #4682B4 !important;
 }
+.Username-Validation{
+    color: DarkRed !important;
+}
 .Username{
     color: white !important;
 }
@@ -29,6 +32,9 @@
     background-color: white !important;
     color: blue !important;
 }
+.Password-Validation{
+    color: DarkRed !important;
+}
 .Password{
     color: white !important;
 }
@@ -46,6 +52,9 @@
 .Password input[type=password]:focus{
     background-color: white !important;
     color: blue !important;
+}
+.Mail-Validation{
+    color: DarkRed !important;
 }
 .Mail{
     color: white !important;
