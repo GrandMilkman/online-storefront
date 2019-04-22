@@ -4,57 +4,28 @@
     margin: 0;
     padding: 0;
 }
-
 .login-table {
     margin-left: 35% !important;
     margin-right: 40% !important;
     padding-top:3vh !important;
     background-color: #4682B4 !important;
 }
-.Username-Validation{
-    color: DarkRed !important;
-}
-.Username{
+.header{
+    padding-top: 15vh !important;
+    margin-left:  35vw !important;
     color: white !important;
 }
-.Username input[type=text]{
-    font-size: 1vw !important;
-    width: 100% !important;
-    padding: 12px 20px !important;
-    margin: 8px 0 !important;
-    box-sizing: border-box !important;
+.Submit button{
+    width: 5vw !important;
+    height: 4vh !important;
+    background-color: #AFEEEE !important;
+    color:#4682B4 !important;
     border: 2px solid white !important;
     border-radius: 6px !important;
-    background-color:#AFEEEE !important;
-    color:  #4682B4 !important;
 }
-.Username input[type=text]:focus{
-    background-color: white !important;
-    color: blue !important;
-}
-.Password-Validation{
-    color: DarkRed !important;
-}
-.Password{
-    color: white !important;
-}
-.Password input[type=password]{
-    font-size: 1vw !important;
-    width: 100% !important;
-    padding: 12px 20px !important;
-    margin: 8px 0 !important;
-    box-sizing: border-box !important;
-    border: 2px solid white !important;
-    border-radius: 6px !important;
-    background-color:  #AFEEEE !important;
-    color: #4682B4 !important;
-}
-.Password input[type=password]:focus{
-    background-color: white !important;
-    color: blue !important;
-}
-.Mail-Validation{
-    color: DarkRed !important;
+.Er{
+    padding-top: 2vh !important;
+    margin-left:  35vw !important;
 }
 .Mail{
     color: white !important;
@@ -74,19 +45,21 @@
     background-color: white !important;
     color: blue !important;
 }
-.Register button{
-    width: 5vw !important;
-    height: 4vh !important;
-    background-color: #AFEEEE !important;
-    color:#4682B4 !important;
+.Password{
+    color: white !important;
+}
+.Password input[type=password]{
+    font-size: 1vw !important;
+    width: 100% !important;
+    padding: 12px 20px !important;
+    margin: 8px 0 !important;
+    box-sizing: border-box !important;
     border: 2px solid white !important;
     border-radius: 6px !important;
+    background-color:  #AFEEEE !important;
+    color: #4682B4 !important;
 }
-.Register button:focus{
+.Password input[type=password]:focus{
     background-color: white !important;
-}
-.header{
-    padding-top: 15vh !important;
-    margin-left:  35vw !important;
-    color: white !important;
+    color: blue !important;
 }

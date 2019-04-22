@@ -58,7 +58,7 @@ public class User extends Entity{
     public void setCart(Cart cart) {
         this.cart = cart;
     }
-    
+
     public String getMail() {
         return mail;
     }

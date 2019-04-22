@@ -8,6 +8,7 @@ import file.entity.User;
 import file.service.UserService;
 
 
+
 @Component
 public class UserValidator implements Validator {
 
@@ -22,10 +23,28 @@ public class UserValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 
 		User user = (User) target;
-		validateName(user, errors);
+		validateMail(user, errors);
 		validatePassword(user, errors);
+		validateName(user,errors);
 	}
 
+	private void validateMail(User u, Errors e) {
+
+		if (u.getId() == null) {
+			if (u.getMail() == null || u.getMail().equals("")) {
+				e.rejectValue("mail", "isEmpty");
+			}
+
+			if (userService.getUser(u.getMail()).getMail() != null) {
+				e.rejectValue("mail", "mailExist");
+			}
+		} else {
+			User userFound = userService.getUser(u.getMail());
+			if (userFound.getMail() != null && userFound.getId() != u.getId()) {
+				e.rejectValue("mail", "mailExist");
+			}
+		}
+	}
 	private void validateName(User u, Errors e) {
 
 		if (u.getId() == null) {
@@ -37,7 +56,7 @@ public class UserValidator implements Validator {
 				e.rejectValue("user_name", "nameExist");
 			}
 		} else {
-			User userFound = userService.getUser(u.getName());
+			User userFound = userService.getUser(u.getMail());
 			if (userFound.getName() != null && userFound.getId() != u.getId()) {
 				e.rejectValue("user_name", "nameExist");
 			}
@@ -48,7 +67,7 @@ public class UserValidator implements Validator {
 
 		if (u.getId() == null) {
 			if (u.getPassword() == null || u.getPassword().equals("")) {
-				e.rejectValue("user_password", "isEmpty");
+				e.rejectValue("password", "isEmpty");
 			}
 		}
 	}

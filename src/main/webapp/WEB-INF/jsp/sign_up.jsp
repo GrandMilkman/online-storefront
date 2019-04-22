@@ -16,7 +16,7 @@
 		<div class="header">
 			<h2>Sign up</h2>
 		</div>
-		<form:form id="regForm" modelAttribute="user" action="registerProcess"
+		<form:form id="regForm" modelAttribute="userJSP" action="registerProcess"
 			method="post">
 			<div class="login-table">
 
