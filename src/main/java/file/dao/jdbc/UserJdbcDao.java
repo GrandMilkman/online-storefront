@@ -130,7 +130,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     public User update(final User u) {
 
         if (u.getPassword() != null) {
-            getJdbcTemplate().update("UPDATE users SET user_name = ?,user_mail = ?, user_password = ? WHERE user_id = ? ",
+            getJdbcTemplate().update("UPDATE users SET user_name = ?,user_mail = ?, user_password = md5(?) WHERE user_id = ? ",
                     u.getName(), u.getMail(),u.getPassword(), u.getId());
         } else {
             getJdbcTemplate().update("UPDATE users SET user_name = ? , user_mail = ? WHERE user_id = ?",

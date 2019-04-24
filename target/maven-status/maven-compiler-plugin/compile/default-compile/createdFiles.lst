@@ -29,7 +29,6 @@ file/service/RoleService.class
 file/mvc/MvcController.class
 file/mvc/ProductController.class
 file/dao/jdbc/CartRowMapper.class
-file/mvc/Sign_upController.class
 file/dao/jdbc/RoleRowMapper.class
 file/dao/CartDao.class
 file/dao/Dao.class
@@ -37,7 +36,6 @@ file/dao/jdbc/WareJdbcDao$2.class
 file/entity/User.class
 file/service/impl/UserServiceImpl.class
 file/service/GroupService.class
-file/mvc/User_editingController.class
 file/dao/jdbc/CartJdbcDao$1.class
 file/mvc/CartController.class
 file/service/impl/CartServiceImpl.class

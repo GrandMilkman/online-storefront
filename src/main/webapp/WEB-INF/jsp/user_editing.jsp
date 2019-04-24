@@ -1,25 +1,29 @@
+<%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
-<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
-<title>Profile Editing</title>
+<title>Online storefront</title>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="<c:url value="/resources/styles/user_editing_styles.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/plugins/slick-1.8.0/slick.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/main_styles.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/responsive.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/index.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/styles/edit.css" />" rel="stylesheet">
 
 <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
 <script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
@@ -30,16 +34,18 @@
 <script src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
 <script src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
 <script src="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>"></script>
+<script src="<c:url value="/resources/plugins/slick-1.8.0/slick.js"/>"></script>
 <script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
+<script src="<c:url value="/resources/js/custom.js"/>"></script>
 
 </head>
 
 <body>
 
 <div class="super_container">
-	
+
 	<!-- Header -->
-	
+
 	<header class="header">
 
 		<!-- Top Bar -->
@@ -50,54 +56,32 @@
 					<div class="col d-flex flex-row">
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
-								<div><a href="sign_up">Register</a></div>
-								<div><a href="login">Sign in</a></div>
-								<div><a href="user_list">User list</a></div>
-								<div><a href="index">Home</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>		
-		</div>
-
-		<!-- Header Main -->
-
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
-
-					<!-- Logo -->
-					<div class="col-lg-2 col-sm-3 col-3 order-1">
-						<div class="logo_container">
-							<div class="logo"><a href="index">Storefront</a></div>
-						</div>
-					</div>
-
-					<!-- Search -->
-					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">All Categories</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
-													<li><a class="clc" href="#">Hardware</a></li>
-													<li><a class="clc" href="#">Smartphones</a></li>
-												</ul>
-											</div>
+								<div class="Login">
+									<c:if test="${pageContext.request.userPrincipal == null}">
+										<div class="log">
+											<a href="login">Sign UP </a>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="resources/images/search.png" alt=""></button>
-									</form>
+									</c:if>
+								</div>
+
+								<div class="User_list">
+									<sec:authorize access="hasRole('ROLE_ADMIN')">
+										<div class="Userlist">
+											<c:if test="${pageContext.request.userPrincipal != null}">
+												<a href="user_list">User list</a>
+											</c:if>
+										</div>
+									</sec:authorize>
+								</div>
+
+								<div class="Home">
+									<a href="index">Home</a>
+								</div>
+
+								 <div class="Logout">
+									 <c:if test="${pageContext.request.userPrincipal != null}">
+										 <a href="login?logout" >Logout</a>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -106,39 +90,103 @@
 			</div>
 		</div>
 
-	</header>
+		<!-- Header Main -->
 
-	<!-- User_Creation -->
-	<div class="user_editing">
-		<div class="container">
-			<div class="row">
-				<div class="form-group">
-					<form action="user_editing" method="post" >
-						<h3>User Creation</h3>
-   							Name:     <input type="text" name="name"/>
- 						 	<br><br>
- 						 	Password: <input type="password" name="password"/>
-	  						<br><br>
-	  						Roles
-	  						<br>
-  							<input type="checkbox" name="role1"/>Admin
-  							<input type="checkbox" name="role2"/>User
- 						    <button type="submit" class="btn btn-primary">Submit</button>
-					</form>	
-					<div>
-					<a href="user_list">Back</a>
-				    </div>
+				<div class="header_main">
+					<div class="container">
+						<div class="row">
+
+							<!-- Logo -->
+							<div class="col-lg-2 col-sm-3 col-3 order-1">
+								<div class="logo_container">
+									<div class="logo"><a href="index">Storefront</a></div>
+								</div>
+							</div>
+							<!-- Search -->
+							<div
+								class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+								<div class="header_search">
+									<div class="header_search_content">
+										<div class="header_search_form_container">
+											<form action="#" class="header_search_form clearfix">
+												<input type="search" required="required"
+													class="header_search_input" placeholder="Search users..">
+												<div class="custom_dropdown">
+													<div class="custom_dropdown_list">
+														<span class="custom_dropdown_placeholder clc">All
+															Categories</span> <i class="fas fa-chevron-down"></i>
+														<ul class="custom_list clc">
+															<li><a class="clc" href="#">Name</a></li>
+															<li><a class="clc" href="#">ID</a></li>
+														</ul>
+													</div>
+												</div>
+												<button type="submit" class="header_search_button trans_300"
+													value="Submit">
+													<img src="resources/images/search.png" alt="">
+												</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Copyright -->
+
+				<form:form id="regForm" modelAttribute="userJSP" action="editProcess"
+					method="post">
+					<div class="login-table">
+
+						<table>
+							<div class="Mail-Validation">
+								<form:errors path="mail" cssClass="error" />
+							</div>
+							<div class="Mail">
+								<form:label path="mail">Mail</form:label>
+								<form:input  path="mail" name="mail"
+									id="mail" />
+							</div>
+
+							<div class="Username-Validation">
+								<form:errors path="name" cssClass="error" />
+							</div>
+
+							<div class="Username">
+								<form:label path="name">Your Name</form:label>
+								<form:input path="name" name="name" id="name" />
+							</div>
+
+
+							<div class="Password-Validation">
+							<form:errors path="password" cssClass="error" />
+							</div>
+
+							<div class="Password">
+
+								<form:label path="password">Password</form:label>
+								<form:password path="password" name="password"
+									id="password" />
+							</div>
+
+							<div class="Register">
+								<form:button id="register" name="register">Edit</form:button>
+							</div>
+
+							</table>
+						</div>
+					</form:form>
+
+		</header>
+
+
+<!-- Copyright -->
 
 	<div class="copyright">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					
+
 					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
 						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -162,4 +210,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 
-</html> 
+</html>
