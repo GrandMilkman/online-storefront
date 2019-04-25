@@ -29,3 +29,5 @@ hs_err_pid*
 /bin/
 /.derby/
 /target/
+/target/storefront/WEB-INF/web.xml
+/target/maven-*
