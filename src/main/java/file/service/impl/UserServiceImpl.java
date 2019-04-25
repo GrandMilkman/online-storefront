@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
 	private RoleDao roleDao;
-	
+
 	public RoleDao getRoleDao() {
         return roleDao;
     }
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	
+
 	public void editUser(User user) {
 		 userDao.update(user);
 	}
@@ -56,8 +56,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String name) {
-		return userDao.findByName(name);
+	public User getUser(String mail) {
+		return userDao.findByMail(mail);
 	}
 
 	@Override
@@ -69,5 +69,5 @@ public class UserServiceImpl implements UserService {
 	public List<Role> getRoles() {
 		return roleDao.findAll();
 	}
-
+	
 }

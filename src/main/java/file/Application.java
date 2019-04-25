@@ -20,45 +20,46 @@ import file.entity.User;
 import file.service.UserService;
 
 @ComponentScan
-public class Application implements WebApplicationInitializer{
-    
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        
-        XmlWebApplicationContext context = new XmlWebApplicationContext();
-        context.setConfigLocation("/WEB-INF/mvc-servlet.xml");
-        
-        ServletRegistration.Dynamic mvc = servletContext.addServlet("mvc", new DispatcherServlet(context));
-        mvc.setLoadOnStartup(1);
-        mvc.addMapping("/storefront");
-        
-    }
-    
+public class Application {
+
+//    @Override
+//    public void onStartup(ServletContext servletContext) throws ServletException {
+//
+//        XmlWebApplicationContext context = new XmlWebApplicationContext();
+//        context.setConfigLocation("/WEB-INF/mvc-servlet.xml");
+//
+//        ServletRegistration.Dynamic mvc = servletContext.addServlet("mvc", new DispatcherServlet(context));
+//        mvc.setLoadOnStartup(1);
+//        mvc.addMapping("/storefront");
+//
+//    }
+
     private static final Logger log = LoggerFactory.getLogger(Application.class);
-    
+
     public static void main(String[] args) {
-        
+
         final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config.xml");
         ctx.start();
-        
+
         final UserService userService = ctx.getBean(UserService.class);
-        
+
         for (Role role : userService.getRoles()) {
             log.info(role.getName());
         }
-        
+
         for (User user : userService.getAll()) {
             log.info(user.getName());
         }
-        
+
         User u = new User();
         u.setName("user_" + new Random().nextInt());
         u.setPassword("user_password");
+        u.setMail("user_mail");
         userService.addUser(u);
-        
+
         log.info("id:" + u.getId());
         System.out.println("HELLO_WORLD!!!!!");
-        
+
         for (User user : userService.getAll()) {
             log.info("user: {}", user.getName());
             if (user.getRoles() != null) {
@@ -67,7 +68,7 @@ public class Application implements WebApplicationInitializer{
                 }
             }
         }
-        
+
         ctx.stop();
         ctx.close();
     }
