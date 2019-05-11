@@ -13,18 +13,21 @@ public class User extends Entity{
     private Cart cart;
 
     private String mail;
+    
+    private String confirm;
 
     public User() {
 
     }
 
-    public User(long id,String name, String password, ArrayList<Role> roles, Cart cart,String mail) {
+    public User(long id,String name, String password, ArrayList<Role> roles, Cart cart,String mail,Boolean confirm) {
         super();
         this.mail = mail;
         this.name = name;
         this.password = password;
         this.roles = roles;
         this.cart = cart;
+        this.confirm=confirm.toString();
     }
 
     public String getName() {
@@ -66,5 +69,13 @@ public class User extends Entity{
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+	public boolean isConfirm() {
+		return Boolean.parseBoolean(confirm);
+	}
+
+	public void setConfirm(String string) {
+		this.confirm = string;
+	}
 
 }

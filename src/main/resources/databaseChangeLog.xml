@@ -31,6 +31,9 @@
             <column name="user_mail" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
+            <column name="user_confirm" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <!--createIndex tableName="users" indexName="user_name_uk" unique="true">
@@ -117,16 +120,19 @@
             <column name="user_id" valueNumeric="0"/>
             <column name="user_name">system</column>
              <column name="user_mail">system</column>
+             <column name="user_confirm">true</column>
             <column name="user_password" valueComputed="md5('system')" />
         </insert>
         <insert tableName="users">
             <column name="user_name">admin</column>
              <column name="user_mail">admin</column>
+             <column name="user_confirm">true</column>
              <column name="user_password" valueComputed="md5('admin')" />
         </insert>
         <insert tableName="users">
             <column name="user_name">user</column>
             <column name="user_mail">user@user.net</column>
+            <column name="user_confirm">true</column>
              <column name="user_password" valueComputed="md5('user')" />
         </insert>
 
