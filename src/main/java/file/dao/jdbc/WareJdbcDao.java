@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ParameterDisposer;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -16,13 +20,25 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import file.dao.WareDao;
 import file.entity.Group;
 import file.entity.Ware;
 
+@Component
 public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
-
+    
+    @Autowired
+    public void setDs(DataSource dataSource) {
+         setDataSource(dataSource);
+    }
+    
+//    @Autowired
+//    public void setJT(JdbcTemplate jdbcTemplate) {
+//         setJdbcTemplate(jdbcTemplate);
+//    }
+    
     private WareRowMapper wrm;
     
     public void setWareRowMapper(WareRowMapper wrm) {
