@@ -15,7 +15,6 @@
 		<property name="locations">
             <list>
             	<value>classpath:config.properties</value>
-                <value>classpath:gmail.com.properties</value>
             </list>
         </property>
 	</bean>
@@ -53,27 +52,7 @@
 
 	<!-- bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy"/ -->
 	
-	
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.smtps.auth">${mail.smtps.auth}</prop>
-			</props>
-		</property>
-		<property name="host" value="${mail.host}"/>
-		<property name="port" value="${mail.port}"/>
-		<property name="username" value="${mail.username}"/>
-		<property name="password" value="${mail.password}"/>
-		<property name="protocol" value="${mail.protocol}"/>
-	</bean>
-	
-	<bean id="templateConfirmMessage" class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="${mail.from}"/>
-		<property name="subject" value="Confirm registration"/>
-	
-	</bean>
-	
-	
+		
 	<bean id="roleRowMapper" class="file.dao.jdbc.RoleRowMapper" />
 	<bean id="groupRowMapper" class="file.dao.jdbc.GroupRowMapper" />
 	<bean id="userRowMapper" class="file.dao.jdbc.UserRowMapper" />

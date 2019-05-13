@@ -40,9 +40,9 @@ public class Application {
 
         final ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config.xml");
         ctx.start();
-
+        
         final UserService userService = ctx.getBean(UserService.class);
-
+        
         for (Role role : userService.getRoles()) {
             log.info(role.getName());
         }
@@ -55,6 +55,7 @@ public class Application {
         u.setName("user_" + new Random().nextInt());
         u.setPassword("user_password");
         u.setMail("user_mail");
+        u.setConfirm("true");
         userService.addUser(u);
 
         log.info("id:" + u.getId());
