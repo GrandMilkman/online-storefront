@@ -1,5 +1,8 @@
 package file.mvc;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import file.entity.User;
+import file.mail.MailSender;
 import file.service.UserService;
 
 
@@ -30,14 +34,20 @@ public class Sign_upController {
 	public UserService us;
 
 	@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-	public ModelAndView submit( @ModelAttribute("userJSP") User user,BindingResult result) {
+	public ModelAndView submit( @ModelAttribute("userJSP") User user,BindingResult result) throws IOException {
 
 		SignUpValidator validator = new SignUpValidator();
 		validator.validate(user, result);
 		if (result.hasErrors()) {
 			return new ModelAndView("sign_up");
 		}
+		user.setConfirm("false");
+		(new MailSender()).sendMailTo(user);
 		us.addUser(user);
+	    
+		
+		
+		
 		return new ModelAndView("login");
 
 	}
