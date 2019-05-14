@@ -155,7 +155,7 @@
                             </div>
 
                             <div class="Register">
-                                <button id="register" name="register">Edit</button>
+                                <button type="submit" id="register" name="register">Edit</button>
                             </div>
                             </table>
                         </div>

@@ -9,15 +9,12 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Component;
 
 import file.dao.RoleDao;
-import file.entity.Cart;
 import file.entity.Role;
-import file.entity.User;
 
 @Component
 public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao {
