@@ -1,15 +1,28 @@
 package file.mvc;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import file.entity.Ware;
+import file.service.impl.WareServiceImpl;
 
 @Controller
 public class ShopController {
-	@RequestMapping(value = "shop", method = RequestMethod.GET)
-    public String shop() {
-        return "/shop";
+
+    @Autowired
+    WareServiceImpl u;
+
+    @RequestMapping(value = "shop", method = RequestMethod.GET)
+    public String Shop(Model model) {
+        List<Ware> ware = u.getAll();
+        model.addAttribute("wares", ware);
+        return "shop";
     }
 }

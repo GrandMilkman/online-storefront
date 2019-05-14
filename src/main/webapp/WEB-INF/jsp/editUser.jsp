@@ -57,13 +57,9 @@
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_user">
                                 <div class="User_list">
-                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
                                         <div class="Userlist">
-                                            <c:if test="${pageContext.request.userPrincipal != null}">
                                                 <a href="user_list">User list</a>
-                                            </c:if>
                                         </div>
-                                    </sec:authorize>
                                 </div>
 
                                 <div class="Home">
@@ -71,9 +67,7 @@
                                 </div>
 
                                  <div class="Logout">
-                                     <c:if test="${pageContext.request.userPrincipal != null}">
                                          <a href="login?logout" >Logout</a>
-                                    </c:if>
                                 </div>
                             </div>
                         </div>
@@ -126,11 +120,15 @@
                     </div>
                 </div>
 
-                <form:form id="regForm" modelAttribute="userJSP" action="editProcess"
+                <form:form id="regForm"  modelAttribute="userJSP" action="editUserProcess"
                     method="post">
                     <div class="login-table">
 
                         <table>
+                            <div class="ID">
+                                <form:input path="id" name="id"
+                                    id="id" type="hidden"  />
+                            </div>
                             <div class="Mail-Validation">
                                 <form:errors path="mail" cssClass="error" />
                             </div>

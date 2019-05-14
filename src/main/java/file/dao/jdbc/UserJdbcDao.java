@@ -142,7 +142,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
     @Override
     public void delete(final Long uid) {
-
+        getJdbcTemplate().update("DELETE FROM user_role WHERE user_id = ?", uid);
         getJdbcTemplate().update("DELETE FROM users WHERE user_id = ?", uid);
     }
 
