@@ -41,7 +41,7 @@ public class Sign_upController {
 		if (result.hasErrors()) {
 			return new ModelAndView("sign_up");
 		}
-		user.setConfirm("false");
+		user.setConfirmToken(user.generateToken());
 		(new MailSender()).sendMailTo(user);
 		us.addUser(user);
 	    

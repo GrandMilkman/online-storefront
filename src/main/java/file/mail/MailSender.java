@@ -16,10 +16,6 @@ import file.entity.User;
 
 public class MailSender {
 	
-	private String getLink(User u) {
-		
-		return "";
-	}
 	
 	public void sendMailTo(User user) {
 		final Properties prop=new Properties();
@@ -34,7 +30,10 @@ public class MailSender {
 		message.setFrom(new InternetAddress("testforme1324"));
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getMail()));
 		message.setSubject("Confirm message");
-		message.setText("This is confirmation message.\nClick the link below to confirm your account:\n"+getLink(user));}catch(AddressException e) {
+		message.setText("This is confirmation message.\nClick the link below to confirm your account:\n"
+				+"http://localhost:8080/storefront/confirm/"+user.getConfirmToken()
+				);
+		}catch(AddressException e) {
 			e.printStackTrace();
 		}catch(MessagingException e) {
 			e.printStackTrace();

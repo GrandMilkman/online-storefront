@@ -11,7 +11,8 @@ public interface UserDao extends CrudDao<User, Long> {
     public User findById(Long id);
 
     public User findByMail(String mail);
-
+    
+    public User findByConfirmToken(String token);
     /*public List<User> findByRole(Role r);*/
 
 }

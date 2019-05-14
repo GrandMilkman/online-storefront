@@ -55,7 +55,7 @@ public class Application {
         u.setName("user_" + new Random().nextInt());
         u.setPassword("user_password");
         u.setMail("user_mail");
-        u.setConfirm("true");
+        u.setConfirmToken("true");
         userService.addUser(u);
 
         log.info("id:" + u.getId());
