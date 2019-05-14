@@ -34,13 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .authorizeRequests()
                 .antMatchers("/login**", "/index**",
                         "/sign_up**", "/fonts/**", "/images/**",
-                        "/js/**", "/plugins/**", "styles/**").permitAll()
+                        "/js/**", "/plugins/**", "styles/**", "/resources/**").permitAll()
                 .antMatchers("/user_list**").hasAuthority("ROLE_ADMIN")
                 .and()
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .failureUrl("/login")
+                .usernameParameter("mail")
+                .passwordParameter("password")
+                .failureUrl("/login?error")
                 .and()
             .logout()
                 .logoutUrl("/logout")

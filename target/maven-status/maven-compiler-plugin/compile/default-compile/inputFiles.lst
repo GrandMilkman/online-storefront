@@ -42,6 +42,7 @@
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/MvcController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/ShopController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/CartService.java
+/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/config/ThymeleafConfig.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/UserService.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/Dao.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/UserValidator.java
