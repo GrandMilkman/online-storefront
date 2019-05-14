@@ -159,7 +159,7 @@
                             </div>
 
                             <div class="Register">
-                                <button type="submit" id="register" name="register">Edit</button>
+                                <input type="submit" value="Edit">
                             </div>
 
                             </table>

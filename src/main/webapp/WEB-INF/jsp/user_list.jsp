@@ -137,16 +137,8 @@
                         <td th:text="${user.id}"></td>
                         <td th:text = "${user.name}"></td>
                         <td th:text="${user.mail}"></td>
-                        <td> 
-                            <form th:action="@{delete{id}(id=${user.id})}" th:object="${user}" method="post">
-                                <input type="submit" th:field="${user}" value="delete"/>
-                            </form>
-                        </td>
-                        <td>
-                            <form th:action="@{edit{id}(id=${user.id})}" th:object="${user}" method="get">
-                                <input type="submit" th:field="${user}" value="edit"/>
-                            </form>
-                        </td>
+                        <td><a th:href="@{delete{id}(id=${user.id})}"> Delete </a></td>
+                        <td><a th:href="@{edit{id}(id=${user.id})}"> Edit </a></td>
                     </tr>
             </table>
             </div>
