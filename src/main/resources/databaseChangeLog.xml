@@ -39,9 +39,6 @@
         <!--createIndex tableName="users" indexName="user_name_uk" unique="true">
             <column name="user_name" />
         </createIndex-->
-        <createIndex tableName="users" indexName="user_mail_uk" unique="true">
-            <column name="user_mail" />
-        </createIndex>
 
         <createTable tableName="roles">
             <column name="role_id" type="bigint" autoIncrement="true">

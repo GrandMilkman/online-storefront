@@ -17,6 +17,8 @@ public interface UserService {
 	User getUser(String mail);
 
 	User getUser(Long id);
+	
+	User getUserByConfirmToken(String token);
 
 	List<Role> getRoles();
 
