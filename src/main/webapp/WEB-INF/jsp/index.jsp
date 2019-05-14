@@ -1,11 +1,11 @@
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
+<!-- <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> -->
 
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 
@@ -15,29 +15,50 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--c:url value="/resources/styles/bootstrap4/bootstrap.min.css  />
+<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />
+<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />
+<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />
+<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />
+<c:url value="/resources/plugins/slick-1.8.0/slick.css" />
+<c:url value="/resources/styles/main_styles.css" />
+<c:url value="/resources/styles/responsive.css" />
+<c:url value="/resources/styles/index.css" />
+<c:url value="/resources/js/jquery-3.3.1.min.js"/>
+<c:url value="/resources/styles/bootstrap4/popper.js"/>
+<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>
+<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>
+<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>
+<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>
+<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>
+<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>
+<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>
+<c:url value="/resources/plugins/slick-1.8.0/slick.js"/>
+<c:url value="/resources/plugins/easing/easing.js"/>
+<c:url value="/resources/js/custom.js"/-->
 
-<link href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/slick-1.8.0/slick.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/main_styles.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/responsive.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/index.css" />" rel="stylesheet">
+<link th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css}" rel="stylesheet"/>
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css}" rel="stylesheet"/>
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}" rel="stylesheet"/>
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/animate.css}" rel="stylesheet"/>
+<link th:href="@{/resources/styles/plugins/slick-1.8.0/slick.css}" rel="stylesheet"/>
+<link th:href="@{/resources/styles/main_styles.css}" rel="stylesheet"/>
+<link th:href="@{/resources/styles/responsive.css}" rel="stylesheet"/>
+<link th:href="@{/resources/styles/index.css}" rel="stylesheet"/>
 
-<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>"></script>
-<script src="<c:url value="/resources/plugins/slick-1.8.0/slick.js"/>"></script>
-<script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
-<script src="<c:url value="/resources/js/custom.js"/>"></script>
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/styles/bootstrap4/popper.js"></script>
+<script src="/resources/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/resources/js/custom.js"></script>
+<script src="/resources/plugins/greensock/TweenMax.min.js"></script>
+<script src="/resources/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/resources/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/resources/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/resources/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/resources/plugins/slick-1.8.0/slick.js"></script>
+<script src="/resources/plugins/easing/easing.js"></script>
 
 </head>
 
@@ -57,48 +78,29 @@
                     <div class="col d-flex flex-row">
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_user">
-
                                 <div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
-                                <div class="Mail">
-                                        <c:if test="${pageContext.request.userPrincipal != null}">
-                                            <div>
-                                                <a class="userPrincipal" href="user_editing" >
-                                                    ${pageContext.request.userPrincipal.name}
-                                                </a>
-                                            </div>
-                                        </c:if>
+                                <div class="Mail" sec:authorize="isAuthenticated()">
+                                    <div>
+                                        <a class="userPrincipal" href="user_editing" sec:authentication="name"></a>
+                                    </div>
                                 </div>
-
-                                <div class="Register">
-                                    <c:if test="${pageContext.request.userPrincipal == null}">
-                                        <div>
-                                            <a href="sign_up">Register</a>
-                                        </div>
-                                    </c:if>
+                                <div class="Register" sec:authorize="!isAuthenticated()">
+                                    <a href="sign_up"> Sign Up</a>
                                 </div>
-
-                                <div class="Login">
-                                    <c:if test="${pageContext.request.userPrincipal == null}">
-                                        <div class="log">
-                                            <a href="login">Sign UP </a>
-                                        </div>
-                                    </c:if>
+                                <div class="Login" sec:authorize="!isAuthenticated()">
+                                    <div class="log">
+                                        <a href="login"> Log In</a>
+                                    </div>
                                 </div>
-
-                                <div class="User_list">
-                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                        <div class="Userlist">
-                                            <c:if test="${pageContext.request.userPrincipal != null}">
-                                                <a href="user_list">User list</a>
-                                            </c:if>
-                                        </div>
-                                    </sec:authorize>
+                                <div class="User_list" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="Userlist">
+                                        <a href="user_list"> User list </a>
+                                    </div>
                                 </div>
-
-                                 <div class="Logout">
-                                     <c:if test="${pageContext.request.userPrincipal != null}">
-                                         <a href="login?logout" >Logout</a>
-                                    </c:if>
+                                 <div class="Logout" sec:authorize="isAuthenticated()">
+                                     <form th:action="@{/logout}" method="POST">
+                                        <input type="submit" value="Logout">
+                                     </form>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +114,6 @@
                 <div class="header_main">
                     <div class="container">
                         <div class="row">
-
                             <!-- Logo -->
                             <div class="col-lg-2 col-sm-3 col-3 order-1">
                                 <div class="logo_container">
@@ -177,7 +178,6 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-
                                 <div class="main_nav_content d-flex flex-row">
 
                                     <!-- Categories Menu -->
@@ -187,7 +187,6 @@
                                             <div class="cat_burger"><span></span><span></span><span></span></div>
                                             <div class="cat_menu_text">categories</div>
                                         </div>
-
                                         <ul class="cat_menu">
                                             <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
                                             <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
@@ -268,7 +267,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -281,9 +279,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-
                                 <div class="page_menu_content">
-
                                     <div class="page_menu_search">
                                         <form action="#">
                                             <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -324,16 +320,12 @@
                                             </ul>
                                         </li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
         </header>
-
-
     <!-- Banner -->
 
     <div class="banner">
@@ -378,8 +370,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
-
-
 </body>
-
 </html>

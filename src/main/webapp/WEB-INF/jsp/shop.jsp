@@ -1,8 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<!--%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%-->
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -13,39 +13,37 @@
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/animate.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/shop_styles.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/shop.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/shop_responsive.css" />" rel="stylesheet">
+<link th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/animate.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/shop_styles.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/shop_responsive.css}" rel="stylesheet">
 
-<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"/>"></script>
-<script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
-<script src="<c:url value="/resources/plugins/Isotope/isotope.pkgd.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"/>"></script>
-<script src="<c:url value="/resources/plugins/parallax-js-master/parallax.min.js"/>"></script>
-<script src="<c:url value="/resources/js/shop_custom.js"/>"></script>
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/styles/bootstrap4/popper.js"></script>
+<script src="/resources/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/resources/plugins/greensock/TweenMax.min.js"></script>
+<script src="/resources/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/resources/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/resources/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/resources/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/resources/plugins/easing/easing.js"></script>
+<script src="/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="/resources/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/resources/js/shop_custom.js"></script>
 
 </head>
 
 <body>
-
 <div class="super_container">
-
+    
     <!-- Header -->
-
+    
     <header class="header">
 
         <!-- Top Bar -->
@@ -57,8 +55,32 @@
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
-                                <div><a href="sign_up">Register</a></div>
-                                <div><a href="login">Sign in</a></div>
+                                <div class="Mail" sec:authorize="isAuthenticated()">
+                                    <div>
+                                        <a class="userPrincipal" href="user_editing" sec:authentication="name"></a>
+                                    </div>
+                                </div>
+                                <div class="Register" sec:authorize="!isAuthenticated()">
+                                    <a href="sign_up">  Sign Up  </a>
+                                </div>
+                                <div class="Login" sec:authorize="!isAuthenticated()">
+                                    <div class="log">
+                                        <a href="login">  Log In  </a>
+                                    </div>
+                                </div>
+                                <div class="User_list" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="Userlist">
+                                        <a href="user_list">  User list  </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="index">  Home  </a>
+                                </div>
+                                 <div class="Logout" sec:authorize="isAuthenticated()">
+                                     <form th:action="@{/logout}" method="POST">
+                                        <input type="submit" value="Logout">
+                                     </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,14 +151,12 @@
                 </div>
             </div>
         </div>
-
         <!-- Main Navigation -->
 
         <nav class="main_nav">
             <div class="container">
                 <div class="row">
                     <div class="col">
-
                         <div class="main_nav_content d-flex flex-row">
 
                             <!-- Categories Menu -->
@@ -233,16 +253,13 @@
                 </div>
             </div>
         </nav>
-
         <!-- Menu -->
 
         <div class="page_menu">
             <div class="container">
                 <div class="row">
-                    <div class="col">
-
+                    <div class="col">                        
                         <div class="page_menu_content">
-
                             <div class="page_menu_search">
                                 <form action="#">
                                     <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -283,7 +300,6 @@
                                     </ul>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div>
@@ -291,7 +307,6 @@
         </div>
 
     </header>
-
     <!-- Home -->
 
     <div class="home">
@@ -363,7 +378,6 @@
                 </div>
 
                 <div class="col-lg-9">
-
                     <!-- Shop Content -->
 
                     <div class="shop_content">
@@ -386,6 +400,7 @@
 
                         <div class="product_grid">
                             <div class="product_grid_border"></div>
+
                             <!-- ware table-->
                             <div class="ware_table">
                                 <table >
@@ -421,9 +436,7 @@
                             </ul>
                             <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -435,7 +448,6 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-
                     <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                         <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -455,8 +467,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
-
-
 </body>
-
 </html>

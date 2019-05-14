@@ -3,12 +3,14 @@ package file.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import file.dao.CartDao;
 import file.entity.Cart;
 import file.entity.Ware;
 import file.service.CartService;
 
+@Component
 public class CartServiceImpl implements CartService {
 
     @Autowired
