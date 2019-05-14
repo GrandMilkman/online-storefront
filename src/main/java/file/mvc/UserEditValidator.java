@@ -8,11 +8,11 @@ import org.springframework.validation.Validator;
 
 import file.entity.User;
 
-public class SignUpValidator implements Validator {
+public class UserEditValidator implements Validator {
 
     @Override
     public boolean supports(Class c) {
-        return User.class.isAssignableFrom(c); // == instansof
+        return User.class.isAssignableFrom(c);
     }
 
     @Override

@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -23,21 +24,35 @@ import file.entity.Ware;
 
 public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
 
+    @Autowired
     private WareRowMapper wrm;
-    
+
+    @Autowired
+    private GroupRowMapper grm;
+
+    public WareRowMapper getWareRowMapper() {
+        return wrm;
+    }
+
     public void setWareRowMapper(WareRowMapper wrm) {
         this.wrm = wrm;
     }
-    
-    private GroupRowMapper grm;
-    
+
+    public GroupRowMapper getGroupRowMapper() {
+        return grm;
+    }
+
+    public void setGroupRowMapper(GroupRowMapper grm) {
+        this.grm = grm;
+    }
+
     private ResultSetExtractor<List<Ware>> extractor = new ResultSetExtractor<List<Ware>>() {
 
         public List<Ware> extractData(final ResultSet rs) throws SQLException, DataAccessException {
             final List<Ware> w = new ArrayList<Ware>();
             int count = 0;
             Ware ware = null;
-            
+
             while (rs.next()) {
                 if (ware == null || !Long.valueOf(rs.getLong("ware_id")).equals(ware.getId())) {
                     ware = wrm.mapRow(rs, count);
@@ -46,7 +61,7 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
                 }
                 ware.getGroups().add(grm.mapRow(rs, count));
                 count++;
-            }
+            };
             return w;
         }
     };

@@ -1,14 +1,13 @@
-.Userlist {
-	margin-inline-start: 1vw;
+.User_list{
+    margin-left: 1vw;
 }
-.Logout {
-	margin-inline-start:  1vw;
+.Logout{
+    margin-inline-start:1vw;
 }
-.Register {
-	margin-inline-start:  0vw;
-	margin-inline-end:  0vw;
-
+.Register{
+    margin-inline-start:0vw;
+    margin-inline-end:0vw;
 }
 .log{
-		margin-inline-start:  1vw;
+    margin-inline-start:1vw;
 }
