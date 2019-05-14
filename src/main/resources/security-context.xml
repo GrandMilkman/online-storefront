@@ -16,6 +16,7 @@
         <intercept-url pattern="/js/**" access="permitAll"/>
         <intercept-url pattern="/plugins/**" access="permitAll"/>
         <intercept-url pattern="/styles/**" access="permitAll"/>
+        <intercept-url pattern="/confirm**" access="permitAll"/>
 
         <intercept-url pattern="/user_list**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/shop**" access="hasRole('ROLE_USER')"/>
