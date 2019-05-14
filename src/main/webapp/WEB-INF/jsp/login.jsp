@@ -16,10 +16,8 @@
 <link rel="icon" type="image/png"
     th:href="@{resources/images/icons/favicon.ico}" />
 <link th:href="@{/resources/styles/login.css}" rel="stylesheet">
-
 </head>
 <body>
-
     <div class="header">
         <h2>Welcome</h2>
     </div>
@@ -52,6 +50,5 @@
             </div>
         </div>
     </form>
-
 </body>
 </html>

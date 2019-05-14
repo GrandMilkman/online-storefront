@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class CartController {
 	@RequestMapping(value = "cart", method = RequestMethod.GET)
     public String cart() {
-        return "/cart";
+        return "cart";
     }
 }

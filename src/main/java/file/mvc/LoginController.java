@@ -21,7 +21,7 @@ import file.entity.User;
 @SessionAttributes("userJSP")
 public class LoginController {
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response,Model model) {
 		ModelAndView m = new ModelAndView();
 		m.addObject("userJSP",new User());

@@ -16,48 +16,27 @@
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link
-    th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}"
-    rel="stylesheet">
-<link
-    th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.cs}"
-    rel="stylesheet">
-<link
-    th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css}"
-    rel="stylesheet">
-<link
-    th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}"
-    rel="stylesheet">
-<link
-    th:href="@{/resources/plugins/OwlCarousel2-2.2.1/animate.css}"
-    rel="stylesheet">
-<link th:href="@{/resources/styles/product_styles.css}"
-    rel="stylesheet">
-<link th:href="@{/resources/styles/product_responsive.css}"
-    rel="stylesheet">
-<link th:href="@{/resources/styles/user_list.css}"
-    rel="stylesheet">
+<link th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.cs}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/animate.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/product_styles.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/product_responsive.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/user_list.css}" rel="stylesheet">
 
 <script src="/resources/js/jquery-3.3.1.min.js"></script>
 <script src="/resources/styles/bootstrap4/popper.js"></script>
-<script
-    src="/resources/styles/bootstrap4/bootstrap.min.js"></script>
-<script
-    src="/resources/plugins/greensock/TweenMax.min.js"></script>
-<script
-    src="/resources/plugins/greensock/TimelineMax.min.js"></script>
-<script
-    src="/resources/plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script
-    src="/resources/plugins/greensock/animation.gsap.min.js"></script>
-<script
-    src="/resources/plugins/greensock/ScrollToPlugin.min.js"></script>
-<script
-    src="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/resources/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/resources/plugins/greensock/TweenMax.min.js"></script>
+<script src="/resources/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/resources/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/resources/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/resources/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="/resources/plugins/slick-1.8.0/slick.js"></script>
 <script src="/resources/plugins/easing/easing.js"></script>
 <script src="/resources/js/custom.js"></script>
-
 </head>
 
 <body>
@@ -142,8 +121,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -156,16 +133,20 @@
                     <th>User name</th>
                     <th>Mail</th>
                 </tr>
-                    <tr th:each="user : ${users}">
+                    <tr id="123" th:each="user : ${users}">
                         <td th:text="${user.id}"></td>
                         <td th:text = "${user.name}"></td>
                         <td th:text="${user.mail}"></td>
+                        <td><a href="delete${user.id}">delete</a></td>
+                        <td><a href="edit${user.id}">edit</a></td>
                     </tr>
             </table>
             </div>
             <!-- user table end -->
-
-            <!-- Copyright -->
+                          
+             <div class="free-space"></div>
+            
+               <!-- Copyright -->
 
             <div class="copyright">
                 <div class="container">
@@ -190,8 +171,6 @@
                     </div>
                 </div>
             </div>
-
-
         </header>
     </div>
 </div>

@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class MvcController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String start_index() {
-        return "/index";
+        return "index";
     }
 }

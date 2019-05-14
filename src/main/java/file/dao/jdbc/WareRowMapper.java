@@ -11,9 +11,8 @@ import file.entity.Ware;
 @Component
 public class WareRowMapper implements RowMapper<Ware> {
 
-    @Override
-    public Ware mapRow(ResultSet rs, int rowNum) throws SQLException {
-        
+    public Ware mapRow(final ResultSet rs,final int rowNum) throws SQLException {
+
         final Ware w = new Ware();
         w.setId(rs.getLong("ware_id"));
         w.setName(rs.getString("ware_name"));

@@ -201,4 +201,29 @@
 
     </changeSet>
 
+    <changeSet id="1.8.0" author="vic">
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="0"/>
+            <column name="ware_name">one peace</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="1"/>
+            <column name="ware_name">naruto</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="2"/>
+            <column name="ware_name">gintama</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="group">
+            <column name="group_id" valueNumeric="0"/>
+            <column name="group_name">manga</column>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

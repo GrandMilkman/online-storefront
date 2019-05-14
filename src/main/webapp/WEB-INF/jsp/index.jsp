@@ -114,7 +114,6 @@
                 <div class="header_main">
                     <div class="container">
                         <div class="row">
-                        
                             <!-- Logo -->
                             <div class="col-lg-2 col-sm-3 col-3 order-1">
                                 <div class="logo_container">
@@ -153,6 +152,7 @@
                             <!-- Wishlist -->
                             <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+
                                     <!-- Cart -->
                                     <div class="cart">
                                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
@@ -325,9 +325,7 @@
                         </div>
                     </div>
                 </div>
-
         </header>
-
     <!-- Banner -->
 
     <div class="banner">
@@ -372,8 +370,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
-
-
 </body>
-
 </html>
