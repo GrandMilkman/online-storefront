@@ -4,6 +4,14 @@
 .Logout{
     margin-inline-start:1vw;
 }
+.Logout input{
+    font-family: 'Rubik', sans-serif !important;
+	font-size: 16px !important;
+    background-color:#fafafa !important;
+    color:#2F4F4F !important;
+    border: 0px solid white !important;
+    border-radius: 0px !important;
+}
 .Register{
     margin-inline-start:0vw;
     margin-inline-end:0vw;

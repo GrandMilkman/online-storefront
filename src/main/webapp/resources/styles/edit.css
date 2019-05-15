@@ -29,7 +29,7 @@ label{
     color:  #4682B4 !important;
 }
 .Username input[type=text]:focus{
-     background-color: blue !important;
+    background-color: blue !important;
     color: white !important;
 }
 .Password-Validation{
@@ -74,7 +74,10 @@ label{
     background-color: blue !important;
     color: white !important;
 }
-.Register button{
+.padd{
+    margin-top: 25vh;
+}
+.Register input{
     width: 5vw !important;
     height: 4vh !important;
     background-color: #AFEEEE !important;
@@ -84,4 +87,15 @@ label{
 }
 .Register button:focus{
     background-color: white !important;
+}
+.Logout{
+    margin-inline-start:1vw;
+}
+.Logout input{
+    font-family: 'Rubik', sans-serif !important;
+    font-size: 16px !important;
+    background-color:#fafafa !important;
+    color:#2F4F4F !important;
+    border: 0px solid white !important;
+    border-radius: 0px !important;
 }

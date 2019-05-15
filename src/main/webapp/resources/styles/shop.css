@@ -2,7 +2,18 @@ tr{
     cursor: pointer;
 }
 tr:hover{
-  color: blue !important;
+    color: blue !important;
+}
+.Logout{
+    margin-inline-start:1vw;
+}
+.Logout input{
+    font-family: 'Rubik', sans-serif !important;
+    font-size: 16px !important;
+    background-color:#fafafa !important;
+    color:#2F4F4F !important;
+    border: 0px solid white !important;
+    border-radius: 0px !important;
 }
 .ware_table table {
     margin-left: 0vw !important;
@@ -34,7 +45,7 @@ tr:hover{
     border-left: white;
 }
 .ware_table th:last-child{
-   border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
     border-top: white;
     border-right: white;
 }
