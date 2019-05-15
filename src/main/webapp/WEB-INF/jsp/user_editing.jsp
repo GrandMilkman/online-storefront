@@ -126,8 +126,8 @@
                     method="post" th:object="${userJSP}">
                     <div class="login-table">
                         <table>
-                            <div class="Mail-Validation">
-                                <th:errors path="mail" cssClass="error" />
+                            <div class="Mail-Validation"
+                                th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">
                             </div>
                             <div class="Mail">
                                 <label for="mail">Mail</label>
@@ -135,8 +135,8 @@
                                     th:value="${userJSP} ? ${userJSP.mail}"/>
                             </div>
 
-                            <div class="Username-Validation">
-                                <th:errors path="name" cssClass="error" />
+                            <div class="Username-Validation"
+                                th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
                             </div>
 
                             <div class="Username">
@@ -145,8 +145,8 @@
                                     th:value="${userJSP} ? ${userJSP.name}"/>
                             </div>
                             
-                            <div class="Password-Validation">
-                                <th:errors path="password" cssClass="error" />
+                            <div class="Password-Validation"
+                                th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
                             </div>
 
                             <div class="Password">
@@ -155,7 +155,7 @@
                             </div>
 
                             <div class="Register">
-                                <button type="submit" id="register" name="register">Edit</button>
+                                <input type="submit" id="register" name="register" value="Edit"/>
                             </div>
                             </table>
                         </div>

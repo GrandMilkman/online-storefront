@@ -2,6 +2,7 @@ package file.mvc;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class UserEditController {
     }
 
     @RequestMapping(value = "/editProcess", method = RequestMethod.POST)
-    public ModelAndView submitEdit( @ModelAttribute("userJSP") User user,BindingResult result,Principal principal) {
+    public ModelAndView submitEdit(@Valid @ModelAttribute("userJSP") User user,BindingResult result,Principal principal) {
         String userMail  = principal.getName();
 
         UserEditValidator validator = new UserEditValidator();
