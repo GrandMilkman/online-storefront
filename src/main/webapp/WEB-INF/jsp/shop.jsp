@@ -409,15 +409,12 @@
                                         <th>name</th>
                                         <th>price</th>
                                     </tr>
-                                    <c:forEach items="${wares}" var="ware">
-                                        <tr>
-                                            <td><div><c:out value="${ware.id}" type="hidden" /></div></td>
-                                            <td><div><c:out value="${ware.name}" /></div></td>
-                                            <td><div><c:out value="${ware.price}" /></div></td>
+                                        <tr th:each="ware : ${wares}">
+                                            <td th:text="${ware.id}" type="hidden" />
+                                            <td th:text="${ware.name}" />
+                                            <td th:text="${ware.price}" />
                                             <td><a href="button">button</a></td>
                                         </tr>
-
-                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- ware table end-->

@@ -16,7 +16,7 @@ import file.service.UserService;
 
 
 @Controller
-public class Sign_upController {
+public class SignUpController {
 	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
 	public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("sign_up");

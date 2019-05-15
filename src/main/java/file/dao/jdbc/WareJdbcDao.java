@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 
 import file.dao.WareDao;
 import file.entity.Group;
+import file.entity.User;
 import file.entity.Ware;
 
 @Component
@@ -79,7 +80,9 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
             return w;
         }
     };
-
+    public void setExtractor(ResultSetExtractor<List<Ware>> extractor) {
+        this.extractor = extractor;
+    }
     @Override
     public void create(final Ware w) {
 
@@ -139,7 +142,8 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
     public List<Ware> findAll() {
 
         return getJdbcTemplate().query("SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
-                + "w.ware_price AS ware_price, w.ware_groupid AS ware_groupid FROM ware w", extractor);
+                + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w " + 
+                "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid", extractor);
     }
 
     @Override
@@ -147,7 +151,8 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
 
         final List<Ware> w = getJdbcTemplate().query(
                 "SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
-                        + "w.ware_price AS ware_price, ware_groupid AS ware_groupid FROM ware w WHERE ware_id = ?",
+                        + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w" + 
+                        "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid WHERE ware_id = ?",
                 extractor, wid);
 
         if (w != null) {
