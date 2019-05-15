@@ -2,6 +2,8 @@ package file.mvc;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +44,7 @@ public class UserListController {
         return mav;
     }
     @RequestMapping(value="/editUserProcess", method = RequestMethod.POST)
-    public String editContact(@ModelAttribute("userJSP") User user,BindingResult result) {
+    public String editContact(@Valid @ModelAttribute("userJSP") User user,BindingResult result) {
         UserEditValidator validator = new UserEditValidator();
         validator.validate(user, result);
         if (result.hasErrors()) {

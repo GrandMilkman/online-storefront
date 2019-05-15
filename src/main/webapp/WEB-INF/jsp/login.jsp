@@ -48,6 +48,13 @@
                 <input type="hidden" th:name="${_csrf.parameterName}"
                     th:value="${_csrf.token}" />
             </div>
+            
+            <div class="regText">
+                    <a>Don`t have an account?</a>
+            </div>
+            <div class="Register">
+                <input type="button" value="Register" onclick="window.location.href='sign_up'" />
+            </div>
         </div>
     </form>
 </body>

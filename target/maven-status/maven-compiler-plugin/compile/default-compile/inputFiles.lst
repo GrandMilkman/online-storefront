@@ -1,13 +1,13 @@
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/jdbc/UserJdbcDao.java
-/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/User_editingController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/WareService.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/impl/RoleServiceImpl.java
+/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/SignUpController.java
+/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/UserEditValidator.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/impl/CartServiceImpl.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/CrudDao.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/impl/UserServiceImpl.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/IndexController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/jdbc/UserRowMapper.java
-/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/Sign_upController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/entity/User.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/RoleDao.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/SignUpValidator.java
@@ -35,7 +35,6 @@
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/WareDao.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/config/WebMvcConfig.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/jdbc/GroupRowMapper.java
-/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/User_listController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/CartController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/ErrorController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/entity/Entity.java
@@ -45,9 +44,11 @@
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/config/ThymeleafConfig.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/UserService.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/Dao.java
+/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/UserEditController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/UserValidator.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/LoginController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/ProductController.java
+/home/mikita/eclipse-workspace/online-storefront/src/main/java/file/mvc/UserListController.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/entity/Group.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/service/RoleService.java
 /home/mikita/eclipse-workspace/online-storefront/src/main/java/file/dao/jdbc/WareRowMapper.java
