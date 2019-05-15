@@ -12,7 +12,7 @@ import file.entity.Group;
 public class GroupRowMapper implements RowMapper<Group> {
 
     @Override
-    public Group mapRow(final ResultSet rs,final int rowNum) throws SQLException {
+    public Group mapRow(final ResultSet rs, final int rowNum) throws SQLException {
 
         Group g = new Group();
         g.setId(rs.getLong("group_id"));

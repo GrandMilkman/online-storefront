@@ -14,10 +14,10 @@ import file.service.UserService;
 @Component
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
-	public UserDao getUserDao() {
+    public UserDao getUserDao() {
         return userDao;
     }
 
@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Autowired
-	private RoleDao roleDao;
+    private RoleDao roleDao;
 
-	public RoleDao getRoleDao() {
+    public RoleDao getRoleDao() {
         return roleDao;
     }
 
@@ -37,39 +37,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-	public void addUser(User user) {
-		userDao.create(user);
-	}
+    public void addUser(User user) {
+        userDao.create(user);
+    }
 
-	@Override
-	public void deleteUserById(Long id) {
-		userDao.delete(id);
-	}
+    @Override
+    public void deleteUserById(Long id) {
+        userDao.delete(id);
+    }
 
-	@Override
+    @Override
 
-	public void editUser(User user) {
-		 userDao.update(user);
-	}
+    public void editUser(User user) {
+        userDao.update(user);
+    }
 
-	@Override
-	public List<User> getAll() {
-		return userDao.findAll();
-	}
+    @Override
+    public List<User> getAll() {
+        return userDao.findAll();
+    }
 
-	@Override
-	public User getUser(String mail) {
-		return userDao.findByMail(mail);
-	}
+    @Override
+    public User getUser(String mail) {
+        return userDao.findByMail(mail);
+    }
 
-	@Override
-	public User getUser(Long id) {
-		return userDao.findById(id);
-	}
+    @Override
+    public User getUser(Long id) {
+        return userDao.findById(id);
+    }
 
-	@Override
-	public List<Role> getRoles() {
-		return roleDao.findAll();
-	}
-	
+    @Override
+    public List<Role> getRoles() {
+        return roleDao.findAll();
+    }
+
 }

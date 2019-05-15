@@ -30,21 +30,24 @@ public class UserListController {
         model.addAttribute("users", user);
         return "user_list";
     }
+
     @RequestMapping("/delete{contactId}")
     public String deleteContact(@PathVariable("contactId") Long contactId) {
         u.deleteUserById(contactId);
         return "redirect:/user_list";
     }
-    @RequestMapping(value="/edit{contactId}", method = RequestMethod.GET)
-    public ModelAndView editContact(Model model,@PathVariable("contactId") Long contactId) {
+
+    @RequestMapping(value = "/edit{contactId}", method = RequestMethod.GET)
+    public ModelAndView editContact(Model model, @PathVariable("contactId") Long contactId) {
         ModelAndView mav = new ModelAndView("editUser");
         User user = u.getUser(contactId);
         mav.addObject("userJSP", user);
         model.addAttribute("user", user);
         return mav;
     }
-    @RequestMapping(value="/editUserProcess", method = RequestMethod.POST)
-    public String editContact(@Valid @ModelAttribute("userJSP") User user,BindingResult result) {
+
+    @RequestMapping(value = "/editUserProcess", method = RequestMethod.POST)
+    public String editContact(@Valid @ModelAttribute("userJSP") User user, BindingResult result) {
         UserEditValidator validator = new UserEditValidator();
         validator.validate(user, result);
         if (result.hasErrors()) {

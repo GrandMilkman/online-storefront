@@ -23,9 +23,9 @@ public class UserEditController {
     public UserService us;
 
     @RequestMapping(value = "user_editing", method = RequestMethod.GET)
-    public ModelAndView editUser(Model model,Principal principal) {
+    public ModelAndView editUser(Model model, Principal principal) {
         ModelAndView mav = new ModelAndView("user_editing");
-        String userMail  = principal.getName();
+        String userMail = principal.getName();
         User editUser = us.getUser(userMail);
         mav.addObject("userJSP", editUser);
         model.addAttribute("user", editUser);
@@ -34,8 +34,9 @@ public class UserEditController {
     }
 
     @RequestMapping(value = "/editProcess", method = RequestMethod.POST)
-    public ModelAndView submitEdit(@Valid @ModelAttribute("userJSP") User user,BindingResult result,Principal principal) {
-        String userMail  = principal.getName();
+    public ModelAndView submitEdit(@Valid @ModelAttribute("userJSP") User user, BindingResult result,
+            Principal principal) {
+        String userMail = principal.getName();
 
         UserEditValidator validator = new UserEditValidator();
         validator.validate(user, result);

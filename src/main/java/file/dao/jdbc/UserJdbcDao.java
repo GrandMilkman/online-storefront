@@ -27,18 +27,18 @@ import file.entity.Role;
 import file.entity.User;
 
 @Component
-public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
-    
+public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
+
     @Autowired
     public void setDs(DataSource dataSource) {
-         setDataSource(dataSource);
+        setDataSource(dataSource);
     }
-    
-//    @Autowired
-//    public void setJT(JdbcTemplate jdbcTemplate) {
-//         setJdbcTemplate(jdbcTemplate);
-//    }
-    
+
+    // @Autowired
+    // public void setJT(JdbcTemplate jdbcTemplate) {
+    // setJdbcTemplate(jdbcTemplate);
+    // }
+
     @Autowired
     private UserRowMapper userRowMapper;
 
@@ -77,22 +77,21 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
                 user.getRoles().add(roleRowMapper.mapRow(rs, count));
                 count++;
-            };
+            }
+            ;
             return u;
         }
     };
+
     public void setExtractor(ResultSetExtractor<List<User>> extractor) {
         this.extractor = extractor;
     }
-    /*
-    @Autowired
-    private DataSource dataSource;
 
-    @PostConstruct
-    private void initialize() {
-        setDataSource(dataSource);
-    }
-    */
+    /*
+     * @Autowired private DataSource dataSource;
+     * 
+     * @PostConstruct private void initialize() { setDataSource(dataSource); }
+     */
     @Override
     public void create(final User u) {
 
@@ -103,14 +102,13 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 
-                final PreparedStatement ps = con.prepareStatement("INSERT INTO users (user_name, user_password,user_mail) VALUES (?, md5(?),?)",
+                final PreparedStatement ps = con.prepareStatement(
+                        "INSERT INTO users (user_name, user_password,user_mail) VALUES (?, md5(?),?)",
                         PreparedStatement.RETURN_GENERATED_KEYS);
                 final PreparedStatementSetter pss = new ArgumentPreparedStatementSetter(
-                        new Object[] {
-                                u.getName(), u.getPassword(),u.getMail()
-                                });
+                        new Object[] { u.getName(), u.getPassword(), u.getMail() });
                 try {
-                    if(pss != null) {
+                    if (pss != null) {
                         pss.setValues(ps);
                     }
                 } finally {
@@ -135,8 +133,7 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
                 + "u.user_password AS user_password , u.user_mail AS user_mail FROM users u "
                 + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ",
-                extractor, uid);
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ", extractor, uid);
         return u.get(0);
     }
 
@@ -144,11 +141,12 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     public User update(final User u) {
 
         if (u.getPassword() != null) {
-            getJdbcTemplate().update("UPDATE users SET user_name = ?,user_mail = ?, user_password = md5(?) WHERE user_id = ? ",
-                    u.getName(), u.getMail(),u.getPassword(), u.getId());
+            getJdbcTemplate().update(
+                    "UPDATE users SET user_name = ?,user_mail = ?, user_password = md5(?) WHERE user_id = ? ",
+                    u.getName(), u.getMail(), u.getPassword(), u.getId());
         } else {
-            getJdbcTemplate().update("UPDATE users SET user_name = ? , user_mail = ? WHERE user_id = ?",
-                    u.getName(),u.getMail(), u.getId());
+            getJdbcTemplate().update("UPDATE users SET user_name = ? , user_mail = ? WHERE user_id = ?", u.getName(),
+                    u.getMail(), u.getId());
 
         }
         return null;
@@ -165,10 +163,8 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
         return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
                 + "u.user_password AS user_password,u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name " + "FROM users u "
-                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id >0",
-                extractor);
+                + "r.role_name AS role_name " + "FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id >0", extractor);
     }
 
     @Override
@@ -176,10 +172,8 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
                 + "u.user_password AS user_password, u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name " + "FROM users u "
-                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ",
-                extractor, uid);
+                + "r.role_name AS role_name " + "FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ", extractor, uid);
 
         if (u.size() != 0) {
             return u.get(0);
@@ -194,10 +188,8 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
                 + "u.user_password AS user_password , u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name FROM users u "
-                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_mail= ? ",
-                extractor, mail);
+                + "r.role_name AS role_name FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_mail= ? ", extractor, mail);
 
         if (u.size() != 0) {
             return u.get(0);
@@ -208,12 +200,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao{
     }
 
     /*
-    @Override
-    public List<User> findByRole(Role r) {
-
-        return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
-                +"u.user_password AS user_password, u.user_roleid AS user_roleid FROM user u WHERE u.user_roleid = ?",
-                extractor, r.getId());
-    }
-    */
+     * @Override public List<User> findByRole(Role r) {
+     * 
+     * return getJdbcTemplate().
+     * query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
+     * +"u.user_password AS user_password, u.user_roleid AS user_roleid FROM user u WHERE u.user_roleid = ?"
+     * , extractor, r.getId()); }
+     */
 }

@@ -293,25 +293,20 @@
                                 <li class="cart_item clearfix">
                                     <div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                        <div class="cart_item_name cart_info_col">
-                                            <div class="cart_item_title">Name</div>
-                                            <div class="cart_item_text">MacBook Air 13</div>
-                                        </div>
-                                        <div class="cart_item_color cart_info_col">
-                                            <div class="cart_item_title">Color</div>
-                                            <div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
-                                        </div>
-                                        <div class="cart_item_quantity cart_info_col">
-                                            <div class="cart_item_title">Quantity</div>
-                                            <div class="cart_item_text">1</div>
-                                        </div>
-                                        <div class="cart_item_price cart_info_col">
-                                            <div class="cart_item_title">Price</div>
-                                            <div class="cart_item_text">$2000</div>
-                                        </div>
-                                        <div class="cart_item_total cart_info_col">
-                                            <div class="cart_item_title">Total</div>
-                                            <div class="cart_item_text">$2000</div>
+                                        <div class="ware_table">
+                                            <table >
+                                                <tr>
+                                                    <th></th>
+                                                    <th>name</th>
+                                                    <th>price</th>
+                                                </tr>
+                                                <tr id="123" th:each="ware : ${wares}">
+                                                    <td th:text="${ware.id}" type="hidden" />
+                                                    <td th:text="${ware.name}" />
+                                                    <td th:text="${ware.price}" />
+                                                    <td><a th:href="@{deleteWareFromCart{wareId}(wareId=${ware.id})}"> Delete</a></td>
+                                                </tr>
+                                            </table>
                                         </div>
                                     </div>
                                 </li>
@@ -321,14 +316,14 @@
                         <!-- Order Total -->
                         <div class="order_total">
                             <div class="order_total_content text-md-right">
-                                <div class="order_total_title">Order Total:</div>
-                                <div class="order_total_amount">$2000</div>
+                                <div class="order_total_title">Order Total: </div>
+                                <div class="order_total_amount" th:text="${totalPrice}"></div>
                             </div>
                         </div>
 
                         <div class="cart_buttons">
                             <button type="button" class="button cart_button_clear">Add to Cart</button>
-                            <button type="button" class="button cart_button_checkout">Add to Cart</button>
+                            <div><a th:href="@{/checkout}" th:modelAttribute="wares" th:object="${wares}"> CheckOut</a></div>>
                         </div>
                     </div>
                 </div>

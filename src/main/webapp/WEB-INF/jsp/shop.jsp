@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%-->
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 
@@ -141,7 +142,7 @@
                                         <div class="cart_count"><span>10</span></div>
                                     </div>
                                     <div class="cart_content">
-                                        <div class="cart_text"><a href="#">Cart</a></div>
+                                        <div class="cart_text"><a href="/cart">Cart</a></div>
                                         <div class="cart_price">$85</div>
                                     </div>
                                 </div>
@@ -402,18 +403,18 @@
                             <div class="product_grid_border"></div>
 
                             <!-- ware table-->
-                            <div class="ware_table">
+                            <div class="user_table">
                                 <table >
                                     <tr>
                                         <th></th>
                                         <th>name</th>
                                         <th>price</th>
                                     </tr>
-                                        <tr th:each="ware : ${wares}">
+                                        <tr id="123" th:each="ware : ${wares}">
                                             <td th:text="${ware.id}" type="hidden" />
                                             <td th:text="${ware.name}" />
                                             <td th:text="${ware.price}" />
-                                            <td><a href="button">button</a></td>
+                                            <td><a th:href="@{addToCart{wareId}(wareId=${ware.id})}"> Add To Cart</a></td>
                                         </tr>
                                 </table>
                             </div>

@@ -11,11 +11,11 @@ import file.service.RoleService;
 
 @Component
 public class RoleServiceImpl implements RoleService {
-    
+
     @Autowired
     private RoleDao roleDao;
-    
-	public RoleDao getRoleDao() {
+
+    public RoleDao getRoleDao() {
         return roleDao;
     }
 
@@ -24,8 +24,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-	public List<Role> getAll() {
-		return roleDao.findAll();
-	}
+    public List<Role> getAll() {
+        return roleDao.findAll();
+    }
 
 }

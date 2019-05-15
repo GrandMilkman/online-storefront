@@ -17,8 +17,8 @@ public class SignUpValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required.name");
-         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mail", "required.mail");
-         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required.name");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mail", "required.mail");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password");
     }
 }

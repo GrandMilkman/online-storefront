@@ -7,8 +7,6 @@ import org.springframework.validation.Validator;
 import file.entity.User;
 import file.service.UserService;
 
-
-
 @Component
 public class UserValidator implements Validator {
 
@@ -25,7 +23,7 @@ public class UserValidator implements Validator {
         User user = (User) target;
         validateMail(user, errors);
         validatePassword(user, errors);
-        validateName(user,errors);
+        validateName(user, errors);
     }
 
     private void validateMail(User u, Errors e) {
@@ -45,6 +43,7 @@ public class UserValidator implements Validator {
             }
         }
     }
+
     private void validateName(User u, Errors e) {
 
         if (u.getId() == null) {

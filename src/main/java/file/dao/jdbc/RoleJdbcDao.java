@@ -18,17 +18,17 @@ import file.entity.Role;
 
 @Component
 public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao {
-    
+
     @Autowired
     public void setDs(DataSource dataSource) {
-         setDataSource(dataSource);
+        setDataSource(dataSource);
     }
-    
-//    @Autowired
-//    public void setJT(JdbcTemplate jdbcTemplate) {
-//         setJdbcTemplate(jdbcTemplate);
-//    }
-    
+
+    // @Autowired
+    // public void setJT(JdbcTemplate jdbcTemplate) {
+    // setJdbcTemplate(jdbcTemplate);
+    // }
+
     @Autowired
     private RoleRowMapper roleRowMapper;
 
@@ -60,10 +60,9 @@ public class RoleJdbcDao extends JdbcDaoSupport implements RoleDao {
     public void setExtractor(ResultSetExtractor<List<Role>> extractor) {
         this.extractor = extractor;
     }
-    
+
     @Override
     public List<Role> findAll() {
-        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM roles r",
-                extractor);
+        return getJdbcTemplate().query("SELECT r.role_id AS role_id, r.role_name AS role_name FROM roles r", extractor);
     }
 }

@@ -28,16 +28,16 @@ import file.entity.Ware;
 
 @Component
 public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
-    
+
     @Autowired
     public void setDs(DataSource dataSource) {
-         setDataSource(dataSource);
+        setDataSource(dataSource);
     }
-    
-//    @Autowired
-//    public void setJT(JdbcTemplate jdbcTemplate) {
-//         setJdbcTemplate(jdbcTemplate);
-//    }
+
+    // @Autowired
+    // public void setJT(JdbcTemplate jdbcTemplate) {
+    // setJdbcTemplate(jdbcTemplate);
+    // }
 
     @Autowired
     private WareRowMapper wrm;
@@ -76,13 +76,16 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
                 }
                 ware.getGroups().add(grm.mapRow(rs, count));
                 count++;
-            };
+            }
+            ;
             return w;
         }
     };
+
     public void setExtractor(ResultSetExtractor<List<Ware>> extractor) {
         this.extractor = extractor;
     }
+
     @Override
     public void create(final Ware w) {
 
@@ -142,18 +145,16 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
     public List<Ware> findAll() {
 
         return getJdbcTemplate().query("SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
-                + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w " + 
-                "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid", extractor);
+                + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w "
+                + "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid", extractor);
     }
 
     @Override
     public Ware findById(Long wid) {
 
-        final List<Ware> w = getJdbcTemplate().query(
-                "SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
-                        + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w" + 
-                        "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid WHERE ware_id = ?",
-                extractor, wid);
+        final List<Ware> w = getJdbcTemplate().query("SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
+                + "w.ware_price AS ware_price, g.group_id AS group_id, g.group_name AS group_name FROM ware w "
+                + "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid WHERE ware_id = ?", extractor, wid);
 
         if (w != null) {
             return w.get(0);
@@ -186,6 +187,11 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
                 "SELECT w.ware_id AS ware_id, w.ware_name AS ware_name,"
                         + "w.ware_price AS ware_price, ware_groupid AS ware_groupid FROM ware w WHERE ware_groupid = ?",
                 extractor, g.getId());
+    }
+
+    @Override
+    public void setWareToUser(User u, Ware w) {
+        getJdbcTemplate().update("INSERT INTO user_ware(user_id, ware_id) VALUES(?, ?)", u.getId(), w.getId());
     }
 
 }

@@ -26,17 +26,17 @@ import file.entity.Group;
 
 @Component
 public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
-    
+
     @Autowired
     public void setDs(DataSource dataSource) {
-         setDataSource(dataSource);
+        setDataSource(dataSource);
     }
-    
-//    @Autowired
-//    public void setJT(JdbcTemplate jdbcTemplate) {
-//         setJdbcTemplate(jdbcTemplate);
-//    }
-    
+
+    // @Autowired
+    // public void setJT(JdbcTemplate jdbcTemplate) {
+    // setJdbcTemplate(jdbcTemplate);
+    // }
+
     @Autowired
     private GroupRowMapper grm;
 
@@ -47,7 +47,6 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
     public void setGroupRowMapper(GroupRowMapper grm) {
         this.grm = grm;
     }
-
 
     private ResultSetExtractor<List<Group>> extractor = new ResultSetExtractor<List<Group>>() {
 
@@ -65,7 +64,6 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
             return g;
         }
     };
-
 
     @Override
     public void create(Group g) {
@@ -101,7 +99,8 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
     @Override
     public Group read(Long gid) {
 
-        final List<Group> g = getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g", extractor, gid);
+        final List<Group> g = getJdbcTemplate()
+                .query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g", extractor, gid);
 
         return g.get(0);
     }
@@ -122,7 +121,8 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
     @Override
     public List<Group> findAll() {
 
-        return getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g", extractor);
+        return getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g",
+                extractor);
     }
 
 }

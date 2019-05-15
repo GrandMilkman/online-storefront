@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                         "/sign_up**", "/fonts/**", "/images/**",
                         "/js/**", "/plugins/**", "styles/**", "/resources/**").permitAll()
                 .antMatchers("/user_list**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/checkout**").authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")
@@ -46,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
             .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/")
                 .permitAll()
                 .and()
             .headers()

@@ -3,11 +3,11 @@ package file.entity;
 import java.util.ArrayList;
 
 public class Ware extends Entity {
-    
+
     private String name;
-    
+
     private Double price;
-    
+
     private ArrayList<Group> group;
 
     public String getName() {
@@ -33,5 +33,5 @@ public class Ware extends Entity {
     public void setGroups(ArrayList<Group> arrayList) {
         this.group = arrayList;
     }
-    
+
 }

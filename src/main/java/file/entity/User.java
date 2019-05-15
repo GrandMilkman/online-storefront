@@ -2,7 +2,7 @@ package file.entity;
 
 import java.util.ArrayList;
 
-public class User extends Entity{
+public class User extends Entity {
 
     private String name;
 
@@ -18,7 +18,7 @@ public class User extends Entity{
 
     }
 
-    public User(long id,String name, String password, ArrayList<Role> roles, Cart cart,String mail) {
+    public User(long id, String name, String password, ArrayList<Role> roles, Cart cart, String mail) {
         super();
         this.mail = mail;
         this.name = name;

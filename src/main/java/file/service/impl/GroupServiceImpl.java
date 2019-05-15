@@ -12,10 +12,10 @@ import file.service.GroupService;
 @Component
 public class GroupServiceImpl implements GroupService {
 
-	@Autowired
-	private GroupDao groupDao;
-	
-	public GroupDao getGroupDao() {
+    @Autowired
+    private GroupDao groupDao;
+
+    public GroupDao getGroupDao() {
         return groupDao;
     }
 
@@ -24,20 +24,18 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-	public List<Group> getAll() {
-		return groupDao.findAll();
-	}
+    public List<Group> getAll() {
+        return groupDao.findAll();
+    }
 
-	@Override
-	public void addGroup(Group group) {
-		 groupDao.create(group);
-	}
+    @Override
+    public void addGroup(Group group) {
+        groupDao.create(group);
+    }
 
-	@Override
-	public void editGroup(Group group) {
-		 groupDao.update(group);
-	}
-
-	
+    @Override
+    public void editGroup(Group group) {
+        groupDao.update(group);
+    }
 
 }

@@ -21,16 +21,18 @@ import liquibase.integration.spring.SpringLiquibase;
 @ComponentScan(basePackages = { "file.mvc", "file.service.impl", "file.dao.jdbc", "file.security", "file.config" })
 public class Application extends SpringBootServletInitializer {
 
-//    @Override
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//
-//        XmlWebApplicationContext context = new XmlWebApplicationContext();
-//        context.setConfigLocation("/WEB-INF/mvc-servlet.xml");
-//
-//        ServletRegistration.Dynamic mvc = servletContext.addServlet("mvc", new DispatcherServlet(context));
-//        mvc.setLoadOnStartup(1);
-//        mvc.addMapping("/*");
-//    }
+    // @Override
+    // public void onStartup(ServletContext servletContext) throws ServletException
+    // {
+    //
+    // XmlWebApplicationContext context = new XmlWebApplicationContext();
+    // context.setConfigLocation("/WEB-INF/mvc-servlet.xml");
+    //
+    // ServletRegistration.Dynamic mvc = servletContext.addServlet("mvc", new
+    // DispatcherServlet(context));
+    // mvc.setLoadOnStartup(1);
+    // mvc.addMapping("/*");
+    // }
 
     // @Override
     // protected SpringApplicationBuilder configure(SpringApplicationBuilder
@@ -40,18 +42,18 @@ public class Application extends SpringBootServletInitializer {
 
     final String changelog = "classpath:databaseChangeLog.xml";
     final String contexts = "derby";
-    
-//    @Bean(destroyMethod = "close")
-//    public DataSourceConnectionFactory dataSource(Environment env) {
-//        final BasicDataSource conf = new BasicDataSource();
-//        conf.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-//        conf.setUrl("jdbc:derby:.derby;create=true");
-//        conf.setMaxTotal(100);
-//        conf.setMaxIdle(20);
-//        return new DataSourceConnectionFactory(conf);
-//
-//    }
-    
+
+    // @Bean(destroyMethod = "close")
+    // public DataSourceConnectionFactory dataSource(Environment env) {
+    // final BasicDataSource conf = new BasicDataSource();
+    // conf.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+    // conf.setUrl("jdbc:derby:.derby;create=true");
+    // conf.setMaxTotal(100);
+    // conf.setMaxIdle(20);
+    // return new DataSourceConnectionFactory(conf);
+    //
+    // }
+
     @Bean("liquibase")
     @ConfigurationProperties("spring.datasource")
     public SpringLiquibase springLiquibase(@Autowired final DataSource dataSource) {
