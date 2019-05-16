@@ -1,13 +1,13 @@
-<b:beans xmlns="http://www.springframework.org/schema/security"
+<!-- <b:beans xmlns="http://www.springframework.org/schema/security"
     xmlns:b="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
-        <!--intercept-url pattern="/**" access="permitAll" /-->
+        intercept-url pattern="/**" access="permitAll" /
         <intercept-url pattern="/login**" access="permitAll" />
         <intercept-url pattern="/index**" access="permitAll"/>
         <intercept-url pattern="/sign_up**" access="permitAll"/>
@@ -16,11 +16,11 @@
         <intercept-url pattern="/js/**" access="permitAll"/>
         <intercept-url pattern="/plugins/**" access="permitAll"/>
         <intercept-url pattern="/styles/**" access="permitAll"/>
-        
+
         <intercept-url pattern="/user_list**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/shop**" access="hasRole('ROLE_USER')"/>
-        
-        <form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login?error" username-parameter="user_name" password-parameter="user_password" />
+
+        <form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login?error" username-parameter="mail" password-parameter="password" />
         <logout logout-success-url="/login?logout" />
     </http>
 
@@ -33,9 +33,10 @@
     <b:bean id="encoder" class="org.springframework.security.crypto.password.MessageDigestPasswordEncoder">
         <b:constructor-arg value="MD5" />
     </b:bean>
-    
+
     <b:bean id="userDetailsService" class="file.security.UserDetailsServiceImpl">
-        <b:property name="userService" ref="userService" />
+        b:property name="userService" ref="UserServiceImpl" /
     </b:bean>
-    
+
 </b:beans>
+ -->

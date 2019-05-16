@@ -5,11 +5,11 @@ import java.util.List;
 public class Cart extends Entity {
 
     private Long id;
-    
+
     private User user;
-    
+
     private List<Ware> wares;
-    
+
     private Double total;
 
     public Long getId() {
@@ -35,7 +35,7 @@ public class Cart extends Entity {
     public void setWares(List<Ware> wares) {
         this.wares = wares;
     }
-    
+
     public Double getTotal() {
         return total;
     }

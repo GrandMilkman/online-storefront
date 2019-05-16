@@ -1,7 +1,7 @@
 package file.entity;
 
 public class Role extends Entity {
-    
+
     private String name;
 
     public String getName() {
@@ -11,5 +11,5 @@ public class Role extends Entity {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

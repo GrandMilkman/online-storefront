@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.ParameterDisposer;
@@ -16,18 +19,35 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import file.dao.GroupDao;
 import file.entity.Group;
 
+@Component
 public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
 
+    @Autowired
+    public void setDs(DataSource dataSource) {
+        setDataSource(dataSource);
+    }
+
+    // @Autowired
+    // public void setJT(JdbcTemplate jdbcTemplate) {
+    // setJdbcTemplate(jdbcTemplate);
+    // }
+
+    @Autowired
     private GroupRowMapper grm;
-    
+
+    public GroupRowMapper getGroupRowMapper() {
+        return grm;
+    }
+
     public void setGroupRowMapper(GroupRowMapper grm) {
         this.grm = grm;
     }
-    
+
     private ResultSetExtractor<List<Group>> extractor = new ResultSetExtractor<List<Group>>() {
 
         public List<Group> extractData(final ResultSet rs) throws SQLException, DataAccessException {
@@ -44,8 +64,7 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
             return g;
         }
     };
-    
-    
+
     @Override
     public void create(Group g) {
 
@@ -56,7 +75,7 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 
-                final PreparedStatement ps = con.prepareStatement("INSERT INTO group (group_name VALUES (?)",
+                final PreparedStatement ps = con.prepareStatement("INSERT INTO \"group\" (group_name VALUES (?)",
                         PreparedStatement.RETURN_GENERATED_KEYS);
                 final PreparedStatementSetter pss = new ArgumentPreparedStatementSetter(new Object[] { g.getName() });
                 try {
@@ -81,27 +100,29 @@ public class GroupJdbcDao extends JdbcDaoSupport implements GroupDao {
     public Group read(Long gid) {
 
         final List<Group> g = getJdbcTemplate()
-                .query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM group g", extractor, gid);
+                .query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g", extractor, gid);
+
         return g.get(0);
     }
 
     @Override
     public Group update(Group g) {
 
-        getJdbcTemplate().update("UPDATE group SET group_name = ? WHERE group_id = ?", g.getName(), g.getId());
+        getJdbcTemplate().update("UPDATE \"group\" SET group_name = ? WHERE group_id = ?", g.getName(), g.getId());
         return null;
     }
 
     @Override
     public void delete(Long gid) {
 
-        getJdbcTemplate().update("DELETE FROM group WHERE group_id = ?", gid);
+        getJdbcTemplate().update("DELETE FROM \"group\" WHERE group_id = ?", gid);
     }
 
     @Override
     public List<Group> findAll() {
-        
-        return getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM group g", extractor);
+
+        return getJdbcTemplate().query("SELECT g.group_id AS group_id, g.group_name AS group_name FROM \"group\" g",
+                extractor);
     }
 
 }

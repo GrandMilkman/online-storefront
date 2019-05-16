@@ -1,8 +1,10 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!--%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%-->
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 
@@ -13,359 +15,358 @@
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="<c:url value="/resources/styles/cart_responsive.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/styles/cart_styles.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css"/>" rel="stylesheet">
-<link href="<c:url value="/resources/styles/bootstrap4/bootstrap.min.css" />" rel="stylesheet">
+<link th:href="@{/resources/styles/cart_responsive.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/cart_styles.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/cart.css}" rel="stylesheet">
+<link th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}" rel="stylesheet">
 
-<script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/popper.js"/>"></script>
-<script src="<c:url value="/resources/styles/bootstrap4/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TweenMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/TimelineMax.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/scrollmagic/ScrollMagic.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/animation.gsap.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/greensock/ScrollToPlugin.min.js"/>"></script>
-<script src="<c:url value="/resources/plugins/easing/easing.js"/>"></script>
-<script src="<c:url value="/resources/js/cart_custom.js"/>"></script>
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/styles/bootstrap4/popper.js"></script>
+<script src="/resources/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/resources/plugins/greensock/TweenMax.min.js"></script>
+<script src="/resources/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/resources/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/resources/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/resources/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/resources/plugins/easing/easing.js"></script>
+<script src="/resources/js/cart_custom.js"></script>
 
 </head>
 
 <body>
 
 <div class="super_container">
-	
-	<!-- Header -->
-	
-	<header class="header">
 
-		<!-- Top Bar -->
+    <!-- Header -->
 
-		<div class="top_bar">
-			<div class="container">
-				<div class="row">
-					<div class="col d-flex flex-row">
-						<div class="top_bar_content ml-auto">
-							<div class="top_bar_user">
-								<div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
-								<div><a href="sign_up">Register</a></div>
-								<div><a href="login">Sign in</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>		
-		</div>
+    <header class="header">
 
-		<!-- Header Main -->
+        <!-- Top Bar -->
 
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
+        <div class="top_bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col d-flex flex-row">
+                        <div class="top_bar_content ml-auto">
+                            <div class="top_bar_user">
+                                <div class="Mail" sec:authorize="isAuthenticated()">
+                                    <div>
+                                        <a class="userPrincipal" href="user_editing" sec:authentication="name"></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="index">  Home  </a>
+                                </div>
+                                <div class="Logout" sec:authorize="isAuthenticated()">
+                                    <form th:action="@{/logout}" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-					<!-- Logo -->
-					<div class="col-lg-2 col-sm-3 col-3 order-1">
-						<div class="logo_container">
-							<div class="logo"><a href="index">Storefront</a></div>
-						</div>
-					</div>
+        <!-- Header Main -->
 
-					<!-- Search -->
-					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">All Categories</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
-													<li><a class="clc" href="#">Hardware</a></li>
-													<li><a class="clc" href="#">Smartphones</a></li>
-												</ul>
-											</div>
-										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="resources/images/search.png" alt=""></button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+        <div class="header_main">
+            <div class="container">
+                <div class="row">
 
-					<!-- Wishlist -->
-					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-						
-							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="cart">Cart</a></div>
-										<div class="cart_price">$85</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Main Navigation -->
+                    <!-- Logo -->
+                    <div class="col-lg-2 col-sm-3 col-3 order-1">
+                        <div class="logo_container">
+                            <div class="logo"><a href="index">Storefront</a></div>
+                        </div>
+                    </div>
 
-		<nav class="main_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						
-						<div class="main_nav_content d-flex flex-row">
+                    <!-- Search -->
+                    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                        <div class="header_search">
+                            <div class="header_search_content">
+                                <div class="header_search_form_container">
+                                    <form action="#" class="header_search_form clearfix">
+                                        <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                        <div class="custom_dropdown">
+                                            <div class="custom_dropdown_list">
+                                                <span class="custom_dropdown_placeholder clc">All Categories</span>
+                                                <i class="fas fa-chevron-down"></i>
+                                                <ul class="custom_list clc">
+                                                    <li><a class="clc" href="#">All Categories</a></li>
+                                                    <li><a class="clc" href="#">Computers</a></li>
+                                                    <li><a class="clc" href="#">Laptops</a></li>
+                                                    <li><a class="clc" href="#">Cameras</a></li>
+                                                    <li><a class="clc" href="#">Hardware</a></li>
+                                                    <li><a class="clc" href="#">Smartphones</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="header_search_button trans_300" value="Submit"><img src="resources/images/search.png" alt=""></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-							<!-- Categories Menu -->
+                    <!-- Wishlist -->
+                    <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                        <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 
-							<div class="cat_menu_container">
-								<div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-									<div class="cat_burger"><span></span><span></span><span></span></div>
-									<div class="cat_menu_text">categories</div>
-								</div>
+                            <!-- Cart -->
+                            <div class="cart">
+                                <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                    <div class="cart_icon">
+                                        <img src="resources/images/cart.png" alt="">
+                                        <div class="cart_count"><span>10</span></div>
+                                    </div>
+                                    <div class="cart_content">
+                                        <div class="cart_text"><a href="cart">Cart</a></div>
+                                        <div class="cart_price">$85</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-								<ul class="cat_menu">
-									<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-									<li class="hassubs">
-										<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-										<ul>
-											<li class="hassubs">
-												<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-										</ul>
-									</li>
-									<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
-								</ul>
-							</div>
+        <!-- Main Navigation -->
 
-							<!-- Main Nav Menu -->
+        <nav class="main_nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="main_nav_content d-flex flex-row">
 
-							<div class="main_nav_menu ml-auto">
-								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="index">Home<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="shop">Catalog<i class="fas fa-chevron-down"></i></a></li>
-									<li class="hassubs">
-										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li>
-												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li>
-												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
+                            <!-- Categories Menu -->
 
-							<!-- Menu Trigger -->
+                            <div class="cat_menu_container">
+                                <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cat_burger"><span></span><span></span><span></span></div>
+                                    <div class="cat_menu_text">categories</div>
+                                </div>
 
-							<div class="menu_trigger_container ml-auto">
-								<div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-									<div class="menu_burger">
-										<div class="menu_trigger_text">menu</div>
-										<div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
-									</div>
-								</div>
-							</div>
+                                <ul class="cat_menu">
+                                    <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
+                                    <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
+                                    <li class="hassubs">
+                                        <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
+                                        <ul>
+                                            <li class="hassubs">
+                                                <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
+                                                <ul>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-		
-		<!-- Menu -->
+                            <!-- Main Nav Menu -->
 
-		<div class="page_menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						
-						<div class="page_menu_content">
-							
-							<div class="page_menu_search">
-								<form action="#">
-									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
-								</form>
-							</div>
-							<ul class="page_menu_nav">
-								<li class="page_menu_item">
-									<a href="index">Home<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item">
-									<a href="shop">Category<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-										<li class="page_menu_item has-children">
-											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-											<ul class="page_menu_selection">
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                            <div class="main_nav_menu ml-auto">
+                                <ul class="standard_dropdown main_nav_dropdown">
+                                    <li><a href="index">Home<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="shop">Catalog<i class="fas fa-chevron-down"></i></a></li>
+                                    <li class="hassubs">
+                                        <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                <ul>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="hassubs">
+                                        <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                <ul>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
 
-	</header>
+                            <!-- Menu Trigger -->
 
-	<!-- Cart -->
+                            <div class="menu_trigger_container ml-auto">
+                                <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                    <div class="menu_burger">
+                                        <div class="menu_trigger_text">menu</div>
+                                        <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
 
-	<div class="cart_section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="cart_container">
-						<div class="cart_title">Shopping Cart</div>
-						<div class="cart_items">
-							<ul class="cart_list">
-								<li class="cart_item clearfix">
-									<div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
-									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-										<div class="cart_item_name cart_info_col">
-											<div class="cart_item_title">Name</div>
-											<div class="cart_item_text">MacBook Air 13</div>
-										</div>
-										<div class="cart_item_color cart_info_col">
-											<div class="cart_item_title">Color</div>
-											<div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
-										</div>
-										<div class="cart_item_quantity cart_info_col">
-											<div class="cart_item_title">Quantity</div>
-											<div class="cart_item_text">1</div>
-										</div>
-										<div class="cart_item_price cart_info_col">
-											<div class="cart_item_title">Price</div>
-											<div class="cart_item_text">$2000</div>
-										</div>
-										<div class="cart_item_total cart_info_col">
-											<div class="cart_item_title">Total</div>
-											<div class="cart_item_text">$2000</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						
-						<!-- Order Total -->
-						<div class="order_total">
-							<div class="order_total_content text-md-right">
-								<div class="order_total_title">Order Total:</div>
-								<div class="order_total_amount">$2000</div>
-							</div>
-						</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear">Add to Cart</button>
-							<button type="button" class="button cart_button_checkout">Add to Cart</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <!-- Menu -->
 
-	<!-- Copyright -->
+        <div class="page_menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="page_menu_content">
+                            <div class="page_menu_search">
+                                <form action="#">
+                                    <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+                                </form>
+                            </div>
+                            <ul class="page_menu_nav">
+                                <li class="page_menu_item">
+                                    <a href="index">Home<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="page_menu_item">
+                                    <a href="shop">Category<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li class="page_menu_item has-children">
+                                    <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
+                                    <ul class="page_menu_selection">
+                                        <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
+                                        <li class="page_menu_item has-children">
+                                            <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
+                                            <ul class="page_menu_selection">
+                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                    </ul>
+                                </li>
+                                <li class="page_menu_item has-children">
+                                    <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
+                                    <ul class="page_menu_selection">
+                                        <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
-						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!-- Cart -->
+
+    <div class="cart_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                        <div class="cart_title">Shopping Cart</div>
+                        <div class="cart_items">
+                            <ul class="cart_list">
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img src="resources/images/shopping_cart.jpg" alt=""></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="ware_table">
+                                            <table >
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>name</th>
+                                                    <th>price</th>
+                                                </tr>
+                                                <tr id="123" th:each="ware : ${wares}">
+                                                    <td th:text="${ware.id}" />
+                                                    <td th:text="${ware.name}" />
+                                                    <td th:text="${ware.price}" />
+                                                    <td><a th:href="@{deleteWareFromCart{wareId}(wareId=${ware.id})}"> Delete</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Order Total -->
+                        <div class="order_total">
+                            <div class="order_total_content text-md-right">
+                                <div class="order_total_title">Order Total: </div>
+                                <div class="order_total_amount" th:text="${totalPrice}"></div>
+                            </div>
+                        </div>
+
+                            <div class="checkout">
+                                <a th:href="@{/checkout}" th:modelAttribute="wares" th:object="${wares}"> CheckOut</a>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+                        <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
-						<div class="logos ml-sm-auto">
-							<ul class="logos_list">
-								<li><a href="#"><img src="resources/images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="resources/images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="resources/images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="resources/images/logos_4.png" alt=""></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <div class="logos ml-sm-auto">
+                            <ul class="logos_list">
+                                <li><a href="#"><img src="resources/images/logos_1.png" alt=""></a></li>
+                                <li><a href="#"><img src="resources/images/logos_2.png" alt=""></a></li>
+                                <li><a href="#"><img src="resources/images/logos_3.png" alt=""></a></li>
+                                <li><a href="#"><img src="resources/images/logos_4.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 </body>
-
 </html>
