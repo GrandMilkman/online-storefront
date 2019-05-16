@@ -1,7 +1,7 @@
 package file.entity;
 
 public class Entity {
-    
+
     private Long id;
 
     public Long getId() {
@@ -11,5 +11,5 @@ public class Entity {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
 }

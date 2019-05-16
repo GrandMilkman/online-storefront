@@ -122,17 +122,21 @@
                     </div>
                 </div>
 
-                <form id="regForm" th:modelAttribute="userJSP" th:action="@{editProcess}"
+                <form id="regForm" th:modelAttribute="userJSP" th:action="@{editUserProcess}"
                     method="post" th:object="${userJSP}">
                     <div class="login-table">
                         <table>
+                            <div class="ID">
+                                <input name="id" id="id" type="hidden" 
+                                    th:value="${userJSP} ? ${userJSP.id}" />
+                            </div>
                             <div class="Mail-Validation"
                                 th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">
                             </div>
                             <div class="Mail">
                                 <label for="mail">Mail</label>
                                 <input type="text" name="mail" id="mail" 
-                                    th:value="${userJSP} ? ${userJSP.mail}"/>
+                                    th:value="${userJSP} ? ${userJSP.mail}" />
                             </div>
 
                             <div class="Username-Validation"
@@ -140,26 +144,28 @@
                             </div>
 
                             <div class="Username">
-                                <label for="name">Your Name</label>
+                                <label path="name">Your Name</label>
                                 <input type="text" name="name" id="name" 
-                                    th:value="${userJSP} ? ${userJSP.name}"/>
+                                    th:value="${userJSP} ? ${userJSP.name}" />
                             </div>
-                            
+
                             <div class="Password-Validation"
                                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
                             </div>
 
                             <div class="Password">
-                                <label for="password">Password</label>
+                                <label path="password">Password</label>
                                 <input type="password" name="password" id="password" />
                             </div>
 
                             <div class="Register">
                                 <input type="submit" id="register" name="register" value="Edit"/>
                             </div>
+
                             </table>
                         </div>
                     </form>
+
         </header>
 
 
@@ -169,6 +175,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+
                     <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                         <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -188,5 +195,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
+
+
 </body>
+
 </html>

@@ -6,20 +6,20 @@ import java.util.List;
 
 public interface UserService {
 
-	void addUser(User user);
+    void addUser(User user);
 
-	void deleteUserById(Long id);
+    void deleteUserById(Long id);
 
-	void editUser(User user);
+    void editUser(User user);
 
-	List<User> getAll();
+    List<User> getAll();
 
-	User getUser(String mail);
+    User getUser(String mail);
 
-	User getUser(Long id);
+	  User getUser(Long id);
 	
-	User getUserByConfirmToken(String token);
+	  User getUserByConfirmToken(String token);
 
-	List<Role> getRoles();
+    List<Role> getRoles();
 
 }

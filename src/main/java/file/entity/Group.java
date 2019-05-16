@@ -1,6 +1,6 @@
 package file.entity;
 
-public class Group extends Entity{
+public class Group extends Entity {
 
     private String name;
 
@@ -11,5 +11,5 @@ public class Group extends Entity{
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

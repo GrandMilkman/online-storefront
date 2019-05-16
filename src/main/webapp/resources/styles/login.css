@@ -23,6 +23,21 @@
     border: 2px solid white !important;
     border-radius: 6px !important;
 }
+.regText{
+    color: white;
+    margin-left: 0% !important;
+    margin-top: 15vh;
+}
+.Register input{
+    margin-left: 0% !important;
+    margin-top: 2vh;
+    width: 25vw;
+    height: 4vh !important;
+    background-color: #AFEEEE !important;
+    color:#4682B4 !important;
+    border: 2px solid white !important;
+    border-radius: 6px !important;
+}
 .Er{
     padding-top: 2vh !important;
     margin-left:  35vw !important;

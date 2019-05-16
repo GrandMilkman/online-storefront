@@ -1,4 +1,4 @@
-<b:beans xmlns="http://www.springframework.org/schema/security"
+<!-- <b:beans xmlns="http://www.springframework.org/schema/security"
     xmlns:b="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
-        <!--intercept-url pattern="/**" access="permitAll" /-->
+        intercept-url pattern="/**" access="permitAll" /
         <intercept-url pattern="/login**" access="permitAll" />
         <intercept-url pattern="/index**" access="permitAll"/>
         <intercept-url pattern="/sign_up**" access="permitAll"/>
@@ -36,7 +36,8 @@
     </b:bean>
 
     <b:bean id="userDetailsService" class="file.security.UserDetailsServiceImpl">
-        <b:property name="userService" ref="userService" />
+        b:property name="userService" ref="UserServiceImpl" /
     </b:bean>
 
 </b:beans>
+ -->

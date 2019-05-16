@@ -204,4 +204,50 @@
 
     </changeSet>
 
+    <changeSet id="1.8.0" author="vic">
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="0"/>
+            <column name="ware_name">one peace</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="1"/>
+            <column name="ware_name">naruto</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="2"/>
+            <column name="ware_name">gintama</column>
+            <column name="ware_price" valueNumeric="50"/>
+            <column name="ware_groupid" valueNumeric="0"/>
+        </insert>
+        <insert tableName="group">
+            <column name="group_id" valueNumeric="0"/>
+            <column name="group_name">manga</column>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="1.9.0" author="mikita">
+        <createTable tableName="cart_ware">
+            <column name="cart_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ware_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey tableName="cart_ware" columnNames="cart_id, ware_id"/>
+        
+        <addForeignKeyConstraint constraintName="cart_ware_cart_fk"
+        referencedTableName="cart" baseColumnNames="cart_id"
+        baseTableName="cart_ware" referencedColumnNames="cart_id"/>
+        <addForeignKeyConstraint constraintName="cart_ware_ware_id" 
+        referencedTableName="ware" baseColumnNames="ware_id" 
+        baseTableName="cart_ware" referencedColumnNames="ware_id"/>
+          
+    </changeSet>
+
 </databaseChangeLog>

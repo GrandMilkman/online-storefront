@@ -1,4 +1,4 @@
-tr[id]{
+tr{
     cursor: pointer;
 }
 tr:hover{
@@ -15,17 +15,14 @@ tr:hover{
     border: 0px solid white !important;
     border-radius: 0px !important;
 }
-.free-space{
-    padding-top: 35vh;
-}
-.user_table table {
-    margin-left: 30vw !important;
+.ware_table table {
+    margin-left: 0vw !important;
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 14px;
     border-spacing: 0;
     text-align: center;
 }
-.user_table th {
+.ware_table th {
     border-top-color:  white !important;
     border-top: 4px !important;
     border-left-color: white !important;
@@ -34,52 +31,38 @@ tr:hover{
     color: white;
     padding: 10px 20px;
 }
-.user_table  th, td {
+.ware_table  th, td {
     border-style: solid;
     border-width:  1px 1px 1px ;
     border-color: black;
 }
-.user_table  th:first-child, td:first-child {
+.ware_table  th:first-child, td:first-child {
     text-align: left;
 }
-.user_table  th:first-child {
+.ware_table  th:first-child {
     border-top-left-radius: 10px;
     border-top: white;
     border-left: white;
 }
-.user_table th:last-child{
+.ware_table th:last-child{
     border-top-right-radius: 10px;
     border-top: white;
     border-right: white;
 }
-.user_table td {
+.ware_table td:last-child{
+    border-radius: 20px;
+    border-top: white;
+    border-right: white;
+    border-bottom: white;
+    background: lightblue;
+}
+.ware_table td {
     padding: 10px 20px;
     background: white;
 }
-.user_table td:last-child {
-    border-bottom: 0px !important;
-    border-bottom-color: white;
-    border-radius: 20px;
-    background: #ADD8E6;
-    border-top: white;
-    border-right: white;
-    border-left-color: white;
-}
-.user_table td:nth-last-child(2) {
-    border-bottom: 0px !important;
-    border-bottom-color: white;
-    border-radius: 20px;
-    background: #ADD8E6;
-    border-top: white;
-    border-right: white;
-}
-.copyright
-{
-    width: 100%;
-    background: #fafafa;
-    bottom: 0;
-}
-.top_bar_user div:nth-child(3)
-{
-    margin-right: 21px;
+.checkout{
+    text-align: center;
+    width: 6vw;
+    padding: 1vh;
+    background: lightblue;
 }
