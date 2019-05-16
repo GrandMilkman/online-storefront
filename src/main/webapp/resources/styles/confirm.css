@@ -1,0 +1,29 @@
+* {
+    background-color: #4682B4 !important;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    padding-top: 15vh !important;
+    margin-left:  42vw !important;
+    color: white !important;
+}
+.table {
+    margin-left: 40% !important;
+    margin-right: 30% !important;
+    padding-top:10vh !important;
+    background-color: #4682B4 !important;
+}
+input[type=button]{
+	width: 5vw !important;
+    height: 4vh !important;
+    background-color: #AFEEEE !important;
+	color:#4682B4 !important;
+    border: 2px solid white !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    margin-right: 8.5vw;
+}
+input[type=button]:focus{
+	background-color: white !important;
+}

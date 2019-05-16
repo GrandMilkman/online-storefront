@@ -101,12 +101,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
 
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-
                 final PreparedStatement ps = con.prepareStatement(
-                        "INSERT INTO users (user_name, user_password,user_mail) VALUES (?, md5(?),?)",
+                        "INSERT INTO users (user_name, user_password,user_mail, user_confirm) VALUES (?, md5(?), ?, ?)",
                         PreparedStatement.RETURN_GENERATED_KEYS);
                 final PreparedStatementSetter pss = new ArgumentPreparedStatementSetter(
-                        new Object[] { u.getName(), u.getPassword(), u.getMail() });
+                        new Object[] { u.getName(), u.getPassword(), u.getMail(), u.getConfirmToken() });
                 try {
                     if (pss != null) {
                         pss.setValues(ps);
@@ -131,7 +130,8 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
     public User read(final Long uid) {
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name,"
-                + "u.user_password AS user_password , u.user_mail AS user_mail FROM users u "
+                + "u.user_password AS user_password , u.user_mail AS user_mail"
+                + "u.user_confirm AS user_confirm FROM users u "
                 + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
                 + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ", extractor, uid);
         return u.get(0);
@@ -142,11 +142,11 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
 
         if (u.getPassword() != null) {
             getJdbcTemplate().update(
-                    "UPDATE users SET user_name = ?,user_mail = ?, user_password = md5(?) WHERE user_id = ? ",
-                    u.getName(), u.getMail(), u.getPassword(), u.getId());
+                    "UPDATE users SET user_name = ?,user_mail = ?, user_password = md5(?), user_confirm = ? WHERE user_id = ? ",
+                    u.getName(), u.getMail(), u.getPassword(), u.getConfirmToken(), u.getId());
         } else {
-            getJdbcTemplate().update("UPDATE users SET user_name = ? , user_mail = ? WHERE user_id = ?", u.getName(),
-                    u.getMail(), u.getId());
+            getJdbcTemplate().update("UPDATE users SET user_name = ? , user_mail = ?, user_confirm = ? WHERE user_id = ?", u.getName(),
+                    u.getMail(), u.getConfirmToken(), u.getId());
 
         }
         return null;
@@ -162,19 +162,24 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
     public List<User> findAll() {
 
         return getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
-                + "u.user_password AS user_password,u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name " + "FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id >0", extractor);
+                + "u.user_password AS user_password,u.user_mail AS user_mail,"
+                + "u.user_confirm AS user_confirm, r.role_id AS role_id, "
+                + "r.role_name AS role_name " + "FROM users u "
+                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id >0",
+                extractor);
     }
 
     @Override
     public User findById(final Long uid) {
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
-                + "u.user_password AS user_password, u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name " + "FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ", extractor, uid);
-
+                + "u.user_password AS user_password, u.user_mail AS user_mail,"
+                + "u.user_confirm AS user_confirm r.role_id AS role_id, "
+                + "r.role_name AS role_name " + "FROM users u "
+                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_id = ? ",
+                extractor, uid);
         if (u.size() != 0) {
             return u.get(0);
 
@@ -187,9 +192,12 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
     public User findByMail(final String mail) {
 
         final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
-                + "u.user_password AS user_password , u.user_mail AS user_mail, r.role_id AS role_id, "
-                + "r.role_name AS role_name FROM users u " + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
-                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_mail= ? ", extractor, mail);
+                + "u.user_password AS user_password , u.user_mail AS user_mail,"
+                + "u.user_confirm AS user_confirm, r.role_id AS role_id, "
+                + "r.role_name AS role_name FROM users u "
+                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_mail= ? ",
+                extractor, mail);
 
         if (u.size() != 0) {
             return u.get(0);
@@ -198,7 +206,24 @@ public class UserJdbcDao extends JdbcDaoSupport implements UserDao {
             return null;
         }
     }
+    @Override
+    public User findByConfirmToken(String token) {
+    	
+    	final List<User> u = getJdbcTemplate().query("SELECT u.user_id AS user_id, u.user_name AS user_name, "
+                + "u.user_password AS user_password , u.user_mail AS user_mail,"
+                + "u.user_confirm AS user_confirm, r.role_id AS role_id, "
+                + "r.role_name AS role_name FROM users u "
+                + "LEFT JOIN user_role ur ON ur.user_id = u.user_id "
+                + "LEFT JOIN roles r ON r.role_id = ur.role_id WHERE u.user_confirm= ? ",
+                extractor, token);
 
+        if (u.size() != 0) {
+            return u.get(0);
+
+        } else {
+            return null;
+        }	
+    }
     /*
      * @Override public List<User> findByRole(Role r) {
      * 

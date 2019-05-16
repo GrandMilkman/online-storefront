@@ -1,6 +1,7 @@
 package file.entity;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class User extends Entity {
 
@@ -13,18 +14,21 @@ public class User extends Entity {
     private Cart cart;
 
     private String mail;
+    
+    private String confirmToken;
 
     public User() {
 
     }
 
-    public User(long id, String name, String password, ArrayList<Role> roles, Cart cart, String mail) {
+    public User(long id, String name, String password, ArrayList<Role> roles, Cart cart, String mail, String confirmToken) {
         super();
         this.mail = mail;
         this.name = name;
         this.password = password;
         this.roles = roles;
         this.cart = cart;
+        this.confirmToken=confirmToken;
     }
 
     public String getName() {
@@ -67,4 +71,24 @@ public class User extends Entity {
         this.mail = mail;
     }
 
+	public String getConfirmToken() {
+		return confirmToken;
+	}
+
+	public void setConfirmToken(String string) {
+		this.confirmToken = string;
+	}
+	public String generateToken() {
+		
+		String characters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOASDFGHJKLZXCVBNM";
+	    Random rnd = new Random();
+	    char[] text = new char[61];
+	    for (int i = 0; i < 61; i++)
+	    {
+	        text[i] = characters.charAt(rnd.nextInt(characters.length()));
+	    }
+	    return new String(text);
+		
+		
+	}
 }

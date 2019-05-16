@@ -66,7 +66,12 @@ public class UserServiceImpl implements UserService {
     public User getUser(Long id) {
         return userDao.findById(id);
     }
-
+    
+    @Override
+	  public User getUserByConfirmToken(String token) {
+		    return userDao.findByConfirmToken(token);
+	  }
+	
     @Override
     public List<Role> getRoles() {
         return roleDao.findAll();
