@@ -21,6 +21,7 @@
 <link th:href="@{/resources/plugins/OwlCarousel2-2.2.1/animate.css}" rel="stylesheet">
 <link th:href="@{/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.css}" rel="stylesheet">
 <link th:href="@{/resources/styles/shop_styles.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/shop.css}" rel="stylesheet">
 <link th:href="@{/resources/styles/shop_responsive.css}" rel="stylesheet">
 
 <script src="/resources/js/jquery-3.3.1.min.js"></script>
@@ -42,9 +43,9 @@
 
 <body>
 <div class="super_container">
-    
+
     <!-- Header -->
-    
+
     <header class="header">
 
         <!-- Top Bar -->
@@ -259,7 +260,7 @@
         <div class="page_menu">
             <div class="container">
                 <div class="row">
-                    <div class="col">                        
+                    <div class="col">
                         <div class="page_menu_content">
                             <div class="page_menu_search">
                                 <form action="#">
@@ -403,15 +404,15 @@
                             <div class="product_grid_border"></div>
 
                             <!-- ware table-->
-                            <div class="user_table">
+                            <div class="ware_table">
                                 <table >
                                     <tr>
-                                        <th></th>
+                                        <th>id</th>
                                         <th>name</th>
                                         <th>price</th>
                                     </tr>
                                         <tr id="123" th:each="ware : ${wares}">
-                                            <td th:text="${ware.id}" type="hidden" />
+                                            <td th:text="${ware.id}" />
                                             <td th:text="${ware.name}" />
                                             <td th:text="${ware.price}" />
                                             <td><a th:href="@{addToCart{wareId}(wareId=${ware.id})}"> Add To Cart</a></td>

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%-->
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
@@ -17,6 +17,7 @@
 
 <link th:href="@{/resources/styles/cart_responsive.css}" rel="stylesheet">
 <link th:href="@{/resources/styles/cart_styles.css}" rel="stylesheet">
+<link th:href="@{/resources/styles/cart.css}" rel="stylesheet">
 <link th:href="@{/resources/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css}" rel="stylesheet">
 <link th:href="@{/resources/styles/bootstrap4/bootstrap.min.css}" rel="stylesheet">
 
@@ -36,9 +37,9 @@
 <body>
 
 <div class="super_container">
-    
+
     <!-- Header -->
-    
+
     <header class="header">
 
         <!-- Top Bar -->
@@ -56,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
 
         <!-- Header Main -->
@@ -103,12 +104,12 @@
                     <!-- Wishlist -->
                     <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-                        
+
                             <!-- Cart -->
                             <div class="cart">
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
-                                        <img src="images/cart.png" alt="">
+                                        <img src="resources/images/cart.png" alt="">
                                         <div class="cart_count"><span>10</span></div>
                                     </div>
                                     <div class="cart_content">
@@ -122,7 +123,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Main Navigation -->
 
         <nav class="main_nav">
@@ -225,7 +226,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <!-- Menu -->
 
         <div class="page_menu">
@@ -291,17 +292,17 @@
                         <div class="cart_items">
                             <ul class="cart_list">
                                 <li class="cart_item clearfix">
-                                    <div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
+                                    <div class="cart_item_image"><img src="resources/images/shopping_cart.jpg" alt=""></div>
                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                         <div class="ware_table">
                                             <table >
                                                 <tr>
-                                                    <th></th>
+                                                    <th>id</th>
                                                     <th>name</th>
                                                     <th>price</th>
                                                 </tr>
                                                 <tr id="123" th:each="ware : ${wares}">
-                                                    <td th:text="${ware.id}" type="hidden" />
+                                                    <td th:text="${ware.id}" />
                                                     <td th:text="${ware.name}" />
                                                     <td th:text="${ware.price}" />
                                                     <td><a th:href="@{deleteWareFromCart{wareId}(wareId=${ware.id})}"> Delete</a></td>
@@ -312,7 +313,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <!-- Order Total -->
                         <div class="order_total">
                             <div class="order_total_content text-md-right">
@@ -321,10 +322,10 @@
                             </div>
                         </div>
 
-                        <div class="cart_buttons">
-                            <button type="button" class="button cart_button_clear">Add to Cart</button>
-                            <div><a th:href="@{/checkout}" th:modelAttribute="wares" th:object="${wares}"> CheckOut</a></div>>
-                        </div>
+                            <div class="checkout">
+                                <a th:href="@{/checkout}" th:modelAttribute="wares" th:object="${wares}"> CheckOut</a>
+                            </div>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -337,7 +338,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    
+
                     <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                         <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>

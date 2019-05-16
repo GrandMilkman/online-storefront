@@ -60,3 +60,9 @@ tr:hover{
     padding: 10px 20px;
     background: white;
 }
+.checkout{
+    text-align: center;
+    width: 6vw;
+    padding: 1vh;
+    background: lightblue;
+}
