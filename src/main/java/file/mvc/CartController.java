@@ -81,6 +81,8 @@ public class CartController {
                 if (c.getName().substring(0, 4).equals(WARE_CONST)) {
                     Ware w = wareService.getWare(Long.parseLong(c.getName().substring(4)));
                     wareList.add(w);
+                    c.setMaxAge(0);
+                    response.addCookie(c);
                 }
             }
         }
@@ -89,6 +91,7 @@ public class CartController {
                 wareService.mapWareToUser(userService.getUser(p.getName()), w);
             }
         }
+        
         return "redirect:/cart";
     }
 }

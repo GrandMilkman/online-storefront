@@ -50,9 +50,19 @@
                     <div class="col d-flex flex-row">
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_user">
-                                <div class="user_icon"><img src="resources/images/user.svg" alt=""></div>
-                                <div><a href="sign_up">Register</a></div>
-                                <div><a href="login">Sign in</a></div>
+                                <div class="Mail" sec:authorize="isAuthenticated()">
+                                    <div>
+                                        <a class="userPrincipal" href="user_editing" sec:authentication="name"></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="index">  Home  </a>
+                                </div>
+                                <div class="Logout" sec:authorize="isAuthenticated()">
+                                    <form th:action="@{/logout}" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
