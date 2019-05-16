@@ -31,7 +31,7 @@ public class MailSender {
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getMail()));
 		message.setSubject("Confirm message");
 		message.setText("This is confirmation message.\nClick the link below to confirm your account:\n"
-				+"http://localhost:8080/storefront/confirm/"+user.getConfirmToken()
+				+"http://localhost:8080/confirm/"+user.getConfirmToken()
 				);
 		}catch(AddressException e) {
 			e.printStackTrace();
