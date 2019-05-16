@@ -193,5 +193,13 @@ public class WareJdbcDao extends JdbcDaoSupport implements WareDao {
     public void setWareToUser(User u, Ware w) {
         getJdbcTemplate().update("INSERT INTO user_ware(user_id, ware_id) VALUES(?, ?)", u.getId(), w.getId());
     }
+    
+    @Override
+    public List<Ware> findUserWare(User u) {
+        return getJdbcTemplate().query("SELECT uw.ware_id AS ware_id, w.ware_name AS ware_name, w.ware_price AS ware_price, " 
+                + "g.group_id AS group_id, g.group_name AS group_name FROM user_ware uw "
+                + "LEFT JOIN ware w ON w.ware_id = uw.ware_id "
+                + "LEFT JOIN \"group\" g ON g.group_id = w.ware_groupid WHERE uw.user_id = ?", extractor, u.getId());
+    }
 
 }

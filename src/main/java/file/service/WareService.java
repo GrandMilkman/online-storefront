@@ -22,5 +22,7 @@ public interface WareService {
     void editWare(Ware ware);
 
     void mapWareToUser(User u, Ware w);
+    
+    List<Ware> getWareForUser(User u);
 
 }

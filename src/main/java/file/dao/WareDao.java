@@ -17,5 +17,7 @@ public interface WareDao extends CrudDao<Ware, Long> {
     public List<Ware> findByGroup(Group g);
 
     public void setWareToUser(User u, Ware w);
+    
+    public List<Ware> findUserWare(User u);
 
 }

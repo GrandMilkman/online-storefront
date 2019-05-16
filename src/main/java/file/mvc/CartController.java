@@ -75,6 +75,8 @@ public class CartController {
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public String checkOut(HttpServletRequest request, HttpServletResponse response, Principal p) {
         List<Ware> wareList = new ArrayList<>();
+        List<Ware> symilarWareList = new ArrayList<>();
+        boolean foundFlag = false;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie c : cookies) {
@@ -87,7 +89,18 @@ public class CartController {
             }
         }
         if(wareList.size() != 0) {
+            symilarWareList = wareService.getWareForUser(userService.getUser(p.getName()));
             for(Ware w : wareList) {
+                for (Ware symWare : symilarWareList) {
+                    if(w.getId() == symWare.getId()) {
+                        foundFlag = true;
+                        break;
+                    }
+                }
+                if(foundFlag) {
+                    foundFlag = false;
+                    continue;
+                }
                 wareService.mapWareToUser(userService.getUser(p.getName()), w);
             }
         }

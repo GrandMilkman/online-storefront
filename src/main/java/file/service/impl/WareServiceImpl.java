@@ -64,4 +64,9 @@ public class WareServiceImpl implements WareService {
     public void mapWareToUser(User u, Ware w) {
         wareDao.setWareToUser(u, w);
     }
+    
+    @Override
+    public List<Ware> getWareForUser(User u) {
+        return wareDao.findUserWare(u);
+    }
 }
