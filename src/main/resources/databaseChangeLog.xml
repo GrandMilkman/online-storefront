@@ -246,5 +246,30 @@
         baseTableName="cart_ware" referencedColumnNames="ware_id"/>
           
     </changeSet>
+    
+    <changeSet id="1.10.0" author="mikita">
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="3"/>
+            <column name="ware_name">Dell Inspiron-553410i</column>
+            <column name="ware_price" valueNumeric="1000"/>
+            <column name="ware_groupid" valueNumeric="1"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="4"/>
+            <column name="ware_name">Lenovo Laptop</column>
+            <column name="ware_price" valueNumeric="700"/>
+            <column name="ware_groupid" valueNumeric="1"/>
+        </insert>
+        <insert tableName="ware">
+            <column name="ware_id" valueNumeric="5"/>
+            <column name="ware_name">Acer 9360</column>
+            <column name="ware_price" valueNumeric="956"/>
+            <column name="ware_groupid" valueNumeric="1"/>
+        </insert>
+        <insert tableName="group">
+            <column name="group_id" valueNumeric="1"/>
+            <column name="group_name">laptop</column>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>
